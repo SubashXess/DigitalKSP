@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/pages/blog_post_page/blog_post_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1730963396825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730963409218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,9 @@\n   const BlogPostPage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold();\r\n+    return Scaffold(\r\n+      appBar: AppBar(),\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730963546281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,8 @@\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       appBar: AppBar(),\r\n+      body: SafeArea(child: SingleChildScrollView(),),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730963554316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,13 @@\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       appBar: AppBar(),\r\n       body: SafeArea(\r\n-        child: SingleChildScrollView(),\r\n+        child: SingleChildScrollView(\r\n+          child: Column(\r\n+            children: [],\r\n+          ),\r\n+        ),\r\n       ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730963572911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,18 @@\n   const BlogPostPage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n+    final Size size = MediaQuery.of(context).size;\r\n     return Scaffold(\r\n       appBar: AppBar(),\r\n       body: SafeArea(\r\n         child: SingleChildScrollView(\r\n           child: Column(\r\n             crossAxisAlignment: CrossAxisAlignment.start,\r\n-            children: [],\r\n+            children: [\r\n+              Row()\r\n+            ],\r\n           ),\r\n         ),\r\n       ),\r\n     );\r\n"
+                }
+            ],
+            "date": 1730963396824,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass BlogPostPage extends StatelessWidget {\r\n  const BlogPostPage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold();\r\n  }\r\n}"
+        }
+    ]
+}

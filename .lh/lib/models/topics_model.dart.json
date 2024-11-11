@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/models/topics_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1730895809616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730895862623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,8 @@\n-class TopicModel {}\r\n+class TopicModel {\r\n+  final String title;\r\n+  final String subtitle;\r\n+  final String imageUrl;\r\n+  final int count;\r\n+\r\n+  const TopicModel({required this.title, required this.subtitle, required this.imageUrl, required this.count});\r\n+}\r\n"
+                },
+                {
+                    "date": 1730895998306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,5 +8,7 @@\n       {required this.title,\r\n       required this.subtitle,\r\n       required this.imageUrl,\r\n       required this.count});\r\n+\r\n+  static List<TopicModel> generatedItem = [];\r\n }\r\n"
+                },
+                {
+                    "date": 1730896011374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,6 +9,127 @@\n       required this.subtitle,\r\n       required this.imageUrl,\r\n       required this.count});\r\n \r\n-  static List<TopicModel> generatedItem = [];\r\n+  static List<TopicModel> generatedItem = [\r\n+    const TopicModel(\r\n+    title: 'Technology',\r\n+    subtitle: 'Latest trends and innovations',\r\n+    imageUrl: 'assets/images/technology.jpg',\r\n+    count: 125,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Health & Wellness',\r\n+    subtitle: 'Tips for a healthy lifestyle',\r\n+    imageUrl: 'assets/images/health.jpg',\r\n+    count: 87,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Business',\r\n+    subtitle: 'Insights on industry and commerce',\r\n+    imageUrl: 'assets/images/business.jpg',\r\n+    count: 203,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Travel',\r\n+    subtitle: 'Explore destinations worldwide',\r\n+    imageUrl: 'assets/images/travel.jpg',\r\n+    count: 54,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Food & Recipes',\r\n+    subtitle: 'Delicious recipes and cooking tips',\r\n+    imageUrl: 'assets/images/food.jpg',\r\n+    count: 162,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Education',\r\n+    subtitle: 'Learning resources and trends',\r\n+    imageUrl: 'assets/images/education.jpg',\r\n+    count: 98,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Finance',\r\n+    subtitle: 'Advice on managing money',\r\n+    imageUrl: 'assets/images/finance.jpg',\r\n+    count: 115,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Personal Development',\r\n+    subtitle: 'Grow your skills and mindset',\r\n+    imageUrl: 'assets/images/personal_development.jpg',\r\n+    count: 73,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Environment',\r\n+    subtitle: 'Sustainability and eco-tips',\r\n+    imageUrl: 'assets/images/environment.jpg',\r\n+    count: 45,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Fashion & Style',\r\n+    subtitle: 'Trends and style tips',\r\n+    imageUrl: 'assets/images/fashion.jpg',\r\n+    count: 134,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Science',\r\n+    subtitle: 'Discoveries and research',\r\n+    imageUrl: 'assets/images/science.jpg',\r\n+    count: 67,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Sports',\r\n+    subtitle: 'News and updates in sports',\r\n+    imageUrl: 'assets/images/sports.jpg',\r\n+    count: 88,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Politics',\r\n+    subtitle: 'Current events and analysis',\r\n+    imageUrl: 'assets/images/politics.jpg',\r\n+    count: 44,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Mental Health',\r\n+    subtitle: 'Support and wellness tips',\r\n+    imageUrl: 'assets/images/mental_health.jpg',\r\n+    count: 90,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Parenting',\r\n+    subtitle: 'Guides and tips for parents',\r\n+    imageUrl: 'assets/images/parenting.jpg',\r\n+    count: 55,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Relationships',\r\n+    subtitle: 'Advice for healthy connections',\r\n+    imageUrl: 'assets/images/relationships.jpg',\r\n+    count: 76,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Career Advice',\r\n+    subtitle: 'Tips for job growth and success',\r\n+    imageUrl: 'assets/images/career.jpg',\r\n+    count: 102,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Art & Culture',\r\n+    subtitle: 'Insights on art and heritage',\r\n+    imageUrl: 'assets/images/art.jpg',\r\n+    count: 48,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'Real Estate',\r\n+    subtitle: 'Buying, selling, and market trends',\r\n+    imageUrl: 'assets/images/real_estate.jpg',\r\n+    count: 37,\r\n+  ),\r\n+  const TopicModel(\r\n+    title: 'DIY Projects',\r\n+    subtitle: 'Creative projects and tips',\r\n+    imageUrl: 'assets/images/diy.jpg',\r\n+    count: 65,\r\n+  ),\r\n+  ];\r\n }\r\n"
+                }
+            ],
+            "date": 1730895809615,
+            "name": "Commit-0",
+            "content": "class TopicModel {}"
+        }
+    ]
+}

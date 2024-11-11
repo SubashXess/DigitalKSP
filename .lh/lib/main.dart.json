@@ -1,0 +1,50 @@
+{
+    "sourceFile": "lib/main.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1730786981824,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730787070865,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,12 @@\n   const MyApp({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return MaterialApp();\r\n+    return MaterialApp(\r\n+      title: 'Digital KSP',\r\n+      debugShowCheckedModeBanner: false,\r\n+      theme: ThemeData(primaryColor: Colors.orange),\r\n+      home: const HomePage(),\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730787128360,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n import 'package:flutter/material.dart';\r\n \r\n+import 'pages/homepage.dart';\r\n+\r\n void main() {\r\n   runApp(const MyApp());\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1730787445603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import 'package:digitalksp/constants/constants.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n import 'pages/homepage.dart';\r\n \r\n@@ -11,9 +12,9 @@\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return MaterialApp(\r\n-      title: 'Digital KSP',\r\n+      title: APP_NAME,\r\n       debugShowCheckedModeBanner: false,\r\n       theme: ThemeData(primaryColor: Colors.orange),\r\n       home: const HomePage(),\r\n     );\r\n"
+                },
+                {
+                    "date": 1730895894840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import 'package:digitalksp/constants/constants.dart';\r\n+import 'package:digitalksp/pages/explore_page/explore_by_topic.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n import 'pages/homepage.dart';\r\n \r\n@@ -15,8 +16,8 @@\n     return MaterialApp(\r\n       title: APP_NAME,\r\n       debugShowCheckedModeBanner: false,\r\n       theme: ThemeData(primaryColor: Colors.orange),\r\n-      home: const HomePage(),\r\n+      home: const ExploreByTopic(),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730954618521,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import 'package:digitalksp/constants/constants.dart';\r\n import 'package:digitalksp/pages/explore_page/explore_by_topic.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n-import 'pages/homepage.dart';\r\n+import 'pages/homepage/homepage.dart';\r\n \r\n void main() {\r\n   runApp(const MyApp());\r\n }\r\n"
+                },
+                {
+                    "date": 1730954624669,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import 'package:digitalksp/constants/constants.dart';\r\n+import 'package:digitalksp/pages/dashboard.dart';\r\n import 'package:digitalksp/pages/explore_page/explore_by_topic.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n import 'pages/homepage/homepage.dart';\r\n@@ -16,8 +17,8 @@\n     return MaterialApp(\r\n       title: APP_NAME,\r\n       debugShowCheckedModeBanner: false,\r\n       theme: ThemeData(primaryColor: Colors.orange),\r\n-      home: const ExploreByTopic(),\r\n+      home: const Dashboard(),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730963525421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import 'package:digitalksp/constants/constants.dart';\r\n+import 'package:digitalksp/pages/blog_post_page/blog_post_page.dart';\r\n import 'package:digitalksp/pages/dashboard.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n void main() {\r\n@@ -14,8 +15,9 @@\n     return MaterialApp(\r\n       title: APP_NAME,\r\n       debugShowCheckedModeBanner: false,\r\n       theme: ThemeData(primaryColor: Colors.orange),\r\n-      home: const Dashboard(),\r\n+      // home: const Dashboard(),\r\n+      home: BlogPostPage(),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1731043068854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n import 'package:digitalksp/constants/constants.dart';\r\n import 'package:digitalksp/pages/blog_post_page/blog_post_page.dart';\r\n-import 'package:digitalksp/pages/dashboard.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n void main() {\r\n   runApp(const MyApp());\r\n"
+                }
+            ],
+            "date": 1730786981824,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nvoid main() {\r\n  runApp(const MyApp());\r\n}\r\n\r\nclass MyApp extends StatelessWidget {\r\n  const MyApp({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return MaterialApp();\r\n  }\r\n}"
+        }
+    ]
+}

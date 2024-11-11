@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/utilities/utilities.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731050065182,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731050333201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,7 @@\n+class Utilities {\r\n+\r\n+static shareIt({required String url, required String text}) {\r\n+  final content = text != null ? '$text\\n$url' : url;\r\n+}\r\n+\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731050356498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,9 @@\n+import 'package:share_plus/share_plus.dart';\r\n+\r\n class Utilities {\r\n   static shareIt({required String url, required String text}) {\r\n     final content = text != null ? '$text\\n$url' : url;\r\n+\r\n+    Share.share(content);\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1731050366743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import 'package:share_plus/share_plus.dart';\r\n \r\n class Utilities {\r\n   static shareIt({required String url, required String text}) {\r\n-    final content = text != null ? '$text\\n$url' : url;\r\n+    final content = text.isNotEmpty ? '$text\\n$url' : url;\r\n \r\n     Share.share(content);\r\n   }\r\n }\r\n"
+                }
+            ],
+            "date": 1731050065182,
+            "name": "Commit-0",
+            "content": "class Utilities {}"
+        }
+    ]
+}

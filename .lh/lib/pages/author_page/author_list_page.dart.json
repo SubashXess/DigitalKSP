@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/pages/author_page/author_list_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731325684423,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731325720669,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,9 @@\n \r\n class _AuthorListPageState extends State<AuthorListPage> {\r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold();\r\n+    return Scaffold(\r\n+      body: SafeArea(child: SingleChildScrollView(child: Column(children: [],),),),\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1731325726734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       body: SafeArea(\r\n         child: SingleChildScrollView(\r\n-          child: Column(\r\n+          child: Column(crossAxisAlignment: CrossAxisAlignment.start,\r\n             children: [],\r\n           ),\r\n         ),\r\n       ),\r\n"
+                },
+                {
+                    "date": 1731325975972,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,11 @@\n       body: SafeArea(\r\n         child: SingleChildScrollView(\r\n           child: Column(\r\n             crossAxisAlignment: CrossAxisAlignment.start,\r\n-            children: [],\r\n+            children: [\r\n+              Text('Our Authors', style: Theme.of(context).textTheme.displayMedium,),\r\n+            ],\r\n           ),\r\n         ),\r\n       ),\r\n     );\r\n"
+                }
+            ],
+            "date": 1731325684423,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass AuthorListPage extends StatefulWidget {\r\n  const AuthorListPage({super.key});\r\n\r\n  @override\r\n  State<AuthorListPage> createState() => _AuthorListPageState();\r\n}\r\n\r\nclass _AuthorListPageState extends State<AuthorListPage> {\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold();\r\n  }\r\n}"
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/pages/dashboard.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1730954239804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730954293311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,11 @@\n \r\n class _DashboardState extends State<Dashboard> {\r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold();\r\n+    return Scaffold(\r\n+      bottomNavigationBar: BottomNavigationBar(items: [\r\n+        BottomNavigationBarItem(icon: Icon(Icons.home)),\r\n+      ]),\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730954300526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       bottomNavigationBar: BottomNavigationBar(items: [\r\n-        BottomNavigationBarItem(icon: Icon(Icons.home)),\r\n+        BottomNavigationBarItem(icon: Icon(Icons.home),),\r\n       ]),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730954309811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,11 @@\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       bottomNavigationBar: BottomNavigationBar(items: [\r\n         BottomNavigationBarItem(icon: Icon(Icons.home)),\r\n+        BottomNavigationBarItem(icon: Icon(Icons.home)),\r\n+        BottomNavigationBarItem(icon: Icon(Icons.home)),\r\n+        BottomNavigationBarItem(icon: Icon(Icons.home)),\r\n       ]),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730954391188,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n class _DashboardState extends State<Dashboard> {\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n-      bottomNavigationBar: BottomNavigationBar(items: [\r\n+      bottomNavigationBar: BottomNavigationBar(items: const [\r\n         BottomNavigationBarItem(icon: Icon(Icons.home)),\r\n         BottomNavigationBarItem(icon: Icon(Icons.explore)),\r\n         BottomNavigationBarItem(icon: Icon(Icons.search)),\r\n         BottomNavigationBarItem(icon: Icon(Icons.person)),\r\n"
+                }
+            ],
+            "date": 1730954239804,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass Dashboard extends StatefulWidget {\r\n  const Dashboard({super.key});\r\n\r\n  @override\r\n  State<Dashboard> createState() => _DashboardState();\r\n}\r\n\r\nclass _DashboardState extends State<Dashboard> {\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold();\r\n  }\r\n}"
+        }
+    ]
+}

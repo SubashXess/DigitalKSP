@@ -1,0 +1,22 @@
+{
+    "sourceFile": "lib/controllers/config.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1731348052963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731348075437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,9 @@\n $username = \"root\";\r\n $password = \"\";\r\n $dbname = \"u430985337_digitalksp\";\r\n \r\n-// Create connection\r\n $conn = new mysqli($servername, $username, $password, $dbname);\r\n \r\n-// Check connection\r\n if ($conn->connect_error) {\r\n     die(\"Connection failed: \" . $conn->connect_error);\r\n }\r\n"
+                }
+            ],
+            "date": 1731348052963,
+            "name": "Commit-0",
+            "content": "<?php\r\n$servername = \"localhost\";\r\n$username = \"root\";\r\n$password = \"\";\r\n$dbname = \"u430985337_digitalksp\";\r\n\r\n// Create connection\r\n$conn = new mysqli($servername, $username, $password, $dbname);\r\n\r\n// Check connection\r\nif ($conn->connect_error) {\r\n    die(\"Connection failed: \" . $conn->connect_error);\r\n}\r\n?>"
+        }
+    ]
+}

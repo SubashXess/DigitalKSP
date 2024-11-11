@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/models/blog_post_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1731041695134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731041710802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,8 @@\n class SocialMediaModel {\r\n   final String title;\r\n   final String url;\r\n   final String icon;\r\n+\r\n+  const SocialMediaModel(\r\n+      {required this.title, required this.url, required this.icon});\r\n }\r\n"
+                },
+                {
+                    "date": 1731041857298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,5 +4,13 @@\n   final String icon;\r\n \r\n   const SocialMediaModel(\r\n       {required this.title, required this.url, required this.icon});\r\n+\r\n+  static final List<SocialMediaModel> generatedItem = [\r\n+    const SocialMediaModel(title: 'Facebook', url: 'https://www.facebook.com/', icon: 'assets/icons/social-media-facebook.svg'),\r\n+    const SocialMediaModel(title: 'Instagram', url: 'https://www.instagram.com/', icon: 'assets/icons/social-media-instagram.svg'),\r\n+    const SocialMediaModel(title: 'Facebook', url: 'https://www.facebook.com/', icon: 'assets/icons/social-media-facebook.svg'),\r\n+    const SocialMediaModel(title: 'Facebook', url: 'https://www.facebook.com/', icon: 'assets/icons/social-media-facebook.svg'),\r\n+    const SocialMediaModel(title: 'Facebook', url: 'https://www.facebook.com/', icon: 'assets/icons/social-media-facebook.svg'),\r\n+  ];\r\n }\r\n"
+                },
+                {
+                    "date": 1731042284878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,17 +15,17 @@\n         title: 'Instagram',\r\n         url: 'https://www.instagram.com/',\r\n         icon: 'assets/icons/social-media-instagram.svg'),\r\n     const SocialMediaModel(\r\n-        title: 'Facebook',\r\n-        url: 'https://www.facebook.com/',\r\n-        icon: 'assets/icons/social-media-facebook.svg'),\r\n+        title: 'X',\r\n+        url: 'https://www.x.com/',\r\n+        icon: 'assets/icons/social-media-x.svg'),\r\n     const SocialMediaModel(\r\n-        title: 'Facebook',\r\n-        url: 'https://www.facebook.com/',\r\n-        icon: 'assets/icons/social-media-facebook.svg'),\r\n+        title: 'Linkedin',\r\n+        url: 'https://www.linkedin.com/',\r\n+        icon: 'assets/icons/social-media-linkedin.svg'),\r\n     const SocialMediaModel(\r\n-        title: 'Facebook',\r\n-        url: 'https://www.facebook.com/',\r\n-        icon: 'assets/icons/social-media-facebook.svg'),\r\n+        title: 'Youtube',\r\n+        url: 'https://www.youtube.com/',\r\n+        icon: 'assets/icons/social-media-youtube.svg'),\r\n   ];\r\n }\r\n"
+                },
+                {
+                    "date": 1731043025310,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         url: 'https://www.instagram.com/',\r\n         icon: 'assets/icons/social-media-instagram.svg'),\r\n     const SocialMediaModel(\r\n         title: 'X',\r\n-        url: 'https://www.x.com/',\r\n+        url: 'https://x.com/',\r\n         icon: 'assets/icons/social-media-x.svg'),\r\n     const SocialMediaModel(\r\n         title: 'LinkedIn',\r\n         url: 'https://www.linkedin.com/',\r\n"
+                }
+            ],
+            "date": 1731041695134,
+            "name": "Commit-0",
+            "content": "class SocialMediaModel {\r\n  final String title;\r\n  final String url;\r\n  final String icon;\r\n}\r\n"
+        }
+    ]
+}

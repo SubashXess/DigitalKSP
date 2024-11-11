@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/pages/author_page/author_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731052325453,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731052344847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,8 @@\n   const AuthorPage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n+    final Size size = MediaQuery.of(context).size;\r\n     return Scaffold();\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1731052356684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+import 'package:flutter/material.dart';\r\n+\r\n+class AuthorPage extends StatelessWidget {\r\n+  const AuthorPage({super.key});\r\n+\r\n+  @override\r\n+  Widget build(BuildContext context) {\r\n+    final Size size = MediaQuery.of(context).size;\r\n+    return Scaffold(\r\n+      appBar: AppBar(),\r\n+    );\r\n+  }\r\n+}\r\n"
+                }
+            ],
+            "date": 1731052325453,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass AuthorPage extends StatelessWidget {\r\n  const AuthorPage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Placeholder();\r\n  }\r\n}\r\n"
+        }
+    ]
+}

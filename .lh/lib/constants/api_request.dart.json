@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/constants/api_request.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731310282731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731310309361,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,8 @@\n-class ApiRequest {}\r\n+class ApiRequest {\r\n+\r\n+   static const String AUTHORIZATION = 'Authorization';\r\n+  static const String CONTENT_TYPE = 'Content-Type';\r\n+  static const String CONTENT_TYPE_JSON = 'application/json';\r\n+\r\n+  static const String API_GET_SERVICE_CATEGORY = '$BASE_URL/category';\r\n+}\r\n"
+                },
+                {
+                    "date": 1731310439551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n // ignore_for_file: constant_identifier_names\r\n \r\n class ApiRequest {\r\n+\r\n+  static const String BASE_URL = 'http://192.168.29.168/DigitalKSP-Backend/controllers/'; \r\n+\r\n   static const String AUTHORIZATION = 'Authorization';\r\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n"
+                },
+                {
+                    "date": 1731310475444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n   static const String AUTHORIZATION = 'Authorization';\r\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n-  static const String API_GET_SERVICE_CATEGORY = '$BASE_URL/category';\r\n+  static const String API_GET_SERVICE_CATEGORY = 'get_categories.php';\r\n }\r\n"
+                }
+            ],
+            "date": 1731310282731,
+            "name": "Commit-0",
+            "content": "class ApiRequest {}"
+        }
+    ]
+}

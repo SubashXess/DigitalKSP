@@ -1,0 +1,22 @@
+{
+    "sourceFile": "lib/pages/profile_page/profile_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730954571526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730954587760,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,9 @@\n   const ProfilePage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Container();\r\n+    return Center(\r\n+      child: Text('Profile Page'),\r\n\\ No newline at end of file\n+    );\r\n   }\r\n-}\n+}\r\n"
+                }
+            ],
+            "date": 1730954571526,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass ProfilePage extends StatelessWidget {\r\n  const ProfilePage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Container();\r\n  }\r\n}"
+        }
+    ]
+}

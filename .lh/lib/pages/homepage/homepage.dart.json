@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/pages/homepage/homepage.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1730955151464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730955166866,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n   const HomePage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold();\r\n+    return SafeArea(child: SingleChildScrollView(),);\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730955192850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,12 @@\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return SafeArea(\r\n-      child: SingleChildScrollView(),\r\n+      child: SingleChildScrollView(\r\n+        child: Column(\r\n+          children: List.generate(10, (index) => Card(),),\r\n+        ),\r\n+      ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1730955203635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n       child: SingleChildScrollView(\r\n         child: Column(\r\n           children: List.generate(\r\n             10,\r\n-            (index) => Card(),\r\n+            (index) => Card(color: Colors.indigo.shade200,),\r\n           ),\r\n         ),\r\n       ),\r\n     );\r\n"
+                }
+            ],
+            "date": 1730955151464,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass HomePage extends StatelessWidget {\r\n  const HomePage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold();\r\n  }\r\n}\r\n"
+        }
+    ]
+}

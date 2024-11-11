@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/pages/search_page/search_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1730954612057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1730954612056,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass SearchPage extends StatelessWidget {\r\n  const SearchPage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Center(\r\n      child: Text('Search Page'),\r\n    );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

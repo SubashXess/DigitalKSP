@@ -1,0 +1,62 @@
+{
+    "sourceFile": "lib/constants/urls.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1731312586299,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731315674224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,5 +8,6 @@\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n+  static const String API_GET_BLOGS_AUTHOR = 'get_categories.php';\r\n }\r\n"
+                },
+                {
+                    "date": 1731315705489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,6 @@\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n-  static const String API_GET_BLOGS_AUTHOR = 'get_categories.php';\r\n+  static const String API_GET_BLOGS_AUTHOR = 'blogs/blogs_by_author.php';\r\n }\r\n"
+                },
+                {
+                    "date": 1731316425931,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,6 @@\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n-  static const String API_GET_BLOGS_AUTHOR = 'blogs/blogs_by_author.php';\r\n+  static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n }\r\n"
+                },
+                {
+                    "date": 1731320253325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n // ignore_for_file: constant_identifier_names\r\n \r\n class ApiRequest {\r\n+\r\n+  static const String IMAGE_URLS =\r\n+      'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n   static const String BASE_URL =\r\n       'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n \r\n   static const String AUTHORIZATION = 'Authorization';\r\n"
+                },
+                {
+                    "date": 1731320260382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,9 @@\n // ignore_for_file: constant_identifier_names\r\n \r\n class ApiRequest {\r\n-\r\n   static const String IMAGE_URLS =\r\n-      'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n+      'http://192.168.29.168/DigitalKSP-Backend/uploads/';\r\n   static const String BASE_URL =\r\n       'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n \r\n   static const String AUTHORIZATION = 'Authorization';\r\n"
+                },
+                {
+                    "date": 1731320287254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,9 @@\n // ignore_for_file: constant_identifier_names\r\n \r\n class ApiRequest {\r\n+  // static const String DOMAIN =\r\n+  //     'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n   static const String IMAGE_URLS =\r\n       'http://192.168.29.168/DigitalKSP-Backend/uploads/';\r\n   static const String BASE_URL =\r\n       'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n"
+                },
+                {
+                    "date": 1731320322709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \r\n class ApiRequest {\r\n   // static const String DOMAIN =\r\n   //     'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n-  static const String IMAGE_URLS =\r\n+  static const String IMAGE_URL_WITH_UPLOADS =\r\n       'http://192.168.29.168/DigitalKSP-Backend/uploads/';\r\n   static const String BASE_URL =\r\n       'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n \r\n"
+                },
+                {
+                    "date": 1731320333196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,10 @@\n   // static const String DOMAIN =\r\n   //     'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n   static const String IMAGE_URL_WITH_UPLOADS =\r\n       'http://192.168.29.168/DigitalKSP-Backend/uploads/';\r\n+      static const String IMAGE_URL_WITHOUT_UPLOADS =\r\n+      'http://192.168.29.168/DigitalKSP-Backend/';\r\n   static const String BASE_URL =\r\n       'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n \r\n   static const String AUTHORIZATION = 'Authorization';\r\n"
+                },
+                {
+                    "date": 1731325069155,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,16 +4,18 @@\n   // static const String DOMAIN =\r\n   //     'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n   static const String IMAGE_URL_WITH_UPLOADS =\r\n       'http://192.168.29.168/DigitalKSP-Backend/uploads/';\r\n-      static const String IMAGE_URL_WITHOUT_UPLOADS =\r\n+  static const String IMAGE_URL_WITHOUT_UPLOADS =\r\n       'http://192.168.29.168/DigitalKSP-Backend/';\r\n+\r\n   static const String BASE_URL =\r\n       'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n \r\n   static const String AUTHORIZATION = 'Authorization';\r\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n+  static const String API_GET_CATEGORIES = 'get_categories.php';\r\n   static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n }\r\n"
+                },
+                {
+                    "date": 1731325074551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,8 @@\n   static const String AUTHORIZATION = 'Authorization';\r\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n+  static const String API_GET_AUTHORS = 'get_categories.php';\r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n-  static const String API_GET_CATEGORIES = 'get_categories.php';\r\n   static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n }\r\n"
+                },
+                {
+                    "date": 1731325083608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,8 @@\n   static const String AUTHORIZATION = 'Authorization';\r\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n-  static const String API_GET_AUTHORS = 'get_categories.php';\r\n+  static const String API_GET_AUTHORS = 'get_author.php';\r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n   static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n }\r\n"
+                }
+            ],
+            "date": 1731312586299,
+            "name": "Commit-0",
+            "content": "// ignore_for_file: constant_identifier_names\r\n\r\nclass ApiRequest {\r\n  static const String BASE_URL =\r\n      'http://192.168.29.168/DigitalKSP-Backend/controllers/';\r\n\r\n  static const String AUTHORIZATION = 'Authorization';\r\n  static const String CONTENT_TYPE = 'Content-Type';\r\n  static const String CONTENT_TYPE_JSON = 'application/json';\r\n\r\n  static const String API_GET_CATEGORIES = 'get_categories.php';\r\n}\r\n"
+        }
+    ]
+}

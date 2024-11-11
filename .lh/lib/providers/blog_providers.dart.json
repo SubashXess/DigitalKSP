@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/providers/blog_providers.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731059412172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731059433953,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,5 +2,7 @@\n \r\n class BlogProviders extends ChangeNotifier {\r\n   String? _selectedCategory;\r\n   String? get selectedCategory => _selectedCategory;\r\n+\r\n+  void selectCategory(String? value) {}\r\n }\r\n"
+                },
+                {
+                    "date": 1731072167245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,8 @@\n class BlogProviders extends ChangeNotifier {\r\n   String? _selectedCategory;\r\n   String? get selectedCategory => _selectedCategory;\r\n \r\n-  void selectCategory(String? value) {}\r\n+  void selectCategory(String? value) {\r\n+    \r\n+  }\r\n }\r\n"
+                },
+                {
+                    "date": 1731315812207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,6 @@\n class BlogProviders extends ChangeNotifier {\r\n   String? _selectedCategory;\r\n   String? get selectedCategory => _selectedCategory;\r\n \r\n-  void selectCategory(String? value) {\r\n-    \r\n-  }\r\n+  void selectCategory(String? value) {}\r\n }\r\n"
+                }
+            ],
+            "date": 1731059412172,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/foundation.dart';\r\n\r\nclass BlogProviders extends ChangeNotifier {\r\n  String? _selectedCategory;\r\n  String? get selectedCategory => _selectedCategory;\r\n}\r\n"
+        }
+    ]
+}

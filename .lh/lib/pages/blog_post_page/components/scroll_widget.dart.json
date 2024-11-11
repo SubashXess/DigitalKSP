@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/pages/blog_post_page/components/scroll_widget.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731048104345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731048110928,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,12 @@\n import 'package:flutter/material.dart';\r\n \r\n class ScrollToHideWidget extends StatefulWidget {\r\n-  const ScrollToHideWidget({super.key});\r\n+  const ScrollToHideWidget(\r\n+      {super.key,\r\n+      required this.child,\r\n+      required this.controller,\r\n+      required this.duration});\r\n \r\n   final Widget child;\r\n   final ScrollController controller;\r\n   final Duration duration;\r\n"
+                },
+                {
+                    "date": 1731048121339,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   const ScrollToHideWidget(\r\n       {super.key,\r\n       required this.child,\r\n       required this.controller,\r\n-      required this.duration});\r\n+      this.duration = const Duration(milliseconds: 200)});\r\n \r\n   final Widget child;\r\n   final ScrollController controller;\r\n   final Duration duration;\r\n"
+                }
+            ],
+            "date": 1731048104345,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass ScrollToHideWidget extends StatefulWidget {\r\n  const ScrollToHideWidget({super.key});\r\n\r\n  final Widget child;\r\n  final ScrollController controller;\r\n  final Duration duration; \r\n\r\n  @override\r\n  State<ScrollToHideWidget> createState() => _ScrollToHideWidgetState();\r\n}\r\n\r\nclass _ScrollToHideWidgetState extends State<ScrollToHideWidget> {\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Placeholder();\r\n  }\r\n}\r\n"
+        }
+    ]
+}

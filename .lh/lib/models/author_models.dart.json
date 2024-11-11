@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/models/author_models.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1731315832864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731315852070,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,3 @@\n class AuthorModels {}\r\n+\r\n+class BlogByAuthorModel {}\r\n"
+                },
+                {
+                    "date": 1731315943854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,10 @@\n class AuthorModels {}\r\n \r\n-class BlogByAuthorModel {}\r\n+class BlogByAuthorModel {\r\n+  final int id;\r\n+  final String title;\r\n+  final String image;\r\n+  final String category;\r\n+  final String content;\r\n+  \r\n+}\r\n"
+                },
+                {
+                    "date": 1731315990533,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,5 +4,13 @@\n   final String title;\r\n   final String image;\r\n   final String category;\r\n   final String content;\r\n+\r\n+  const BlogByAuthorModel(\r\n+      {required this.title,\r\n+      required this.image,\r\n+      required this.category,\r\n+      required this.content});\r\n+\r\n+      \r\n }\r\n"
+                },
+                {
+                    "date": 1731316121603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,8 @@\n       {required this.title,\r\n       required this.image,\r\n       required this.category,\r\n       required this.content});\r\n+\r\n+  factory BlogByAuthorModel.fromJson(Map<String, dynamic> json) =>\r\n+      BlogByAuthorModel(category: json['category'],);\r\n }\r\n"
+                }
+            ],
+            "date": 1731315832864,
+            "name": "Commit-0",
+            "content": "class AuthorModels {}"
+        }
+    ]
+}
