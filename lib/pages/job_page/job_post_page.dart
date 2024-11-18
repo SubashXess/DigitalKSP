@@ -1,6 +1,5 @@
 import 'package:digitalksp/constants/styles.dart';
 import 'package:digitalksp/pages/job_page/apply_job_page.dart';
-import 'package:digitalksp/widgets/buttons_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';

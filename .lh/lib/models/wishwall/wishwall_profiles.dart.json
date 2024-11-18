@@ -1,0 +1,38 @@
+{
+    "sourceFile": "lib/models/wishwall/wishwall_profiles.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1731929769959,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731929776543,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,18 @@\n-class OrgProfileModel {}\r\n+class OrgProfileModel {\r\n+  final int id;\r\n+  final String orgName;\r\n+  final String orgEmail;\r\n+  final String orgMobile;\r\n+  final DateTime estDate;\r\n+  final String industry;\r\n+  final String orgAddress;\r\n+  final int serviceYears;\r\n+  final String bio;\r\n+  final String otherInformation;\r\n+  final String achievements;\r\n+  final String profilePhoto;\r\n+  final String profilesStatus;\r\n+  final String orgUrl;\r\n+  final DateTime createdAt;\r\n+  final DateTime updatedAt;\r\n+}\r\n"
+                },
+                {
+                    "date": 1731929787289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,18 @@\n class OrgProfileModel {\r\n-  final int id;\r\n+  final String id;\r\n   final String orgName;\r\n   final String orgEmail;\r\n   final String orgMobile;\r\n-  final DateTime estDate;\r\n+  final String estDate;\r\n   final String industry;\r\n   final String orgAddress;\r\n-  final int serviceYears;\r\n+  final String serviceYears;\r\n   final String bio;\r\n   final String otherInformation;\r\n   final String achievements;\r\n   final String profilePhoto;\r\n   final String profilesStatus;\r\n   final String orgUrl;\r\n-  final DateTime createdAt;\r\n-  final DateTime updatedAt;\r\n+  final String createdAt;\r\n+  final String updatedAt;\r\n }\r\n"
+                },
+                {
+                    "date": 1731929802879,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,44 @@\n   final String profilesStatus;\r\n   final String orgUrl;\r\n   final String createdAt;\r\n   final String updatedAt;\r\n+\r\n+  OrgProfile({\r\n+        required this.id,\r\n+        required this.orgName,\r\n+        required this.orgEmail,\r\n+        required this.orgMobile,\r\n+        required this.estDate,\r\n+        required this.industry,\r\n+        required this.orgAddress,\r\n+        required this.serviceYears,\r\n+        required this.bio,\r\n+        required this.otherInformation,\r\n+        required this.achievements,\r\n+        required this.profilePhoto,\r\n+        required this.profilesStatus,\r\n+        required this.orgUrl,\r\n+        required this.createdAt,\r\n+        required this.updatedAt,\r\n+    });\r\n+\r\n+    factory OrgProfile.fromJson(Map<String, dynamic> json) => OrgProfile(\r\n+        id: json[\"id\"],\r\n+        orgName: json[\"org_name\"],\r\n+        orgEmail: json[\"org_email\"],\r\n+        orgMobile: json[\"org_mobile\"],\r\n+        estDate: DateTime.parse(json[\"est_date\"]),\r\n+        industry: json[\"industry\"],\r\n+        orgAddress: json[\"org_address\"],\r\n+        serviceYears: json[\"service_years\"],\r\n+        bio: json[\"bio\"],\r\n+        otherInformation: json[\"other_information\"],\r\n+        achievements: json[\"achievements\"],\r\n+        profilePhoto: json[\"profile_photo\"],\r\n+        profilesStatus: json[\"profiles_status\"],\r\n+        orgUrl: json[\"org_url\"],\r\n+        createdAt: DateTime.parse(json[\"created_at\"]),\r\n+        updatedAt: DateTime.parse(json[\"updated_at\"]),\r\n+    );\r\n+\r\n }\r\n"
+                },
+                {
+                    "date": 1731929809578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n   final String orgUrl;\r\n   final String createdAt;\r\n   final String updatedAt;\r\n \r\n-  OrgProfile({\r\n+  const OrgProfileModel({\r\n     required this.id,\r\n     required this.orgName,\r\n     required this.orgEmail,\r\n     required this.orgMobile,\r\n"
+                },
+                {
+                    "date": 1731929831012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n         id: json[\"id\"],\r\n         orgName: json[\"org_name\"],\r\n         orgEmail: json[\"org_email\"],\r\n         orgMobile: json[\"org_mobile\"],\r\n-        estDate: DateTime.parse(json[\"est_date\"]),\r\n+        estDate: json[\"est_date\"],\r\n         industry: json[\"industry\"],\r\n         orgAddress: json[\"org_address\"],\r\n         serviceYears: json[\"service_years\"],\r\n         bio: json[\"bio\"],\r\n@@ -50,8 +50,8 @@\n         achievements: json[\"achievements\"],\r\n         profilePhoto: json[\"profile_photo\"],\r\n         profilesStatus: json[\"profiles_status\"],\r\n         orgUrl: json[\"org_url\"],\r\n-        createdAt: DateTime.parse(json[\"created_at\"]),\r\n-        updatedAt: DateTime.parse(json[\"updated_at\"]),\r\n+        createdAt: json[\"created_at\"],\r\n+        updatedAt: json[\"updated_at\"],\r\n       );\r\n }\r\n"
+                }
+            ],
+            "date": 1731929769959,
+            "name": "Commit-0",
+            "content": "class OrgProfileModel {}\r\n"
+        }
+    ]
+}

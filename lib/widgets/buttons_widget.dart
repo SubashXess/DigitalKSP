@@ -8,11 +8,13 @@ class ActionButton extends StatelessWidget {
     required this.icon,
     required this.onTap,
     this.count,
+    this.iconSize = 24.0,
   });
 
   final String icon;
   final VoidCallback onTap;
   final String? count;
+  final double iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +34,8 @@ class ActionButton extends StatelessWidget {
           count: int.parse(count ?? '0'),
           child: SvgPicture.asset(
             icon,
-            width: 24.0,
-            height: 24.0,
+            width: iconSize,
+            height: iconSize,
             alignment: Alignment.center,
             fit: BoxFit.scaleDown,
           ),

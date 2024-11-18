@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:digitalksp/models/jobs/jobs_models.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../constants/urls.dart';
 
@@ -53,6 +53,48 @@ class JobsProviders extends ChangeNotifier {
         notifyListeners();
       } else {
         throw Exception('Failed to load data');
+      }
+    } catch (err) {
+      throw Exception('Unexpected error occured $err');
+    }
+  }
+
+  Future<void> applyJob(context, {required JobApplyModel job}) async {
+    final Uri url =
+        Uri.parse('${ApiRequest.BASE_URL}${ApiRequest.API_POST_JOB_APPLY}');
+
+    try {
+      final request = http.MultipartRequest('POST', url)
+        ..fields['name'] = job.name
+        ..fields['email'] = job.email
+        ..fields['mobile'] = job.phone
+        ..fields['current_ctc'] = job.ctc
+        ..fields['current_company'] = job.company
+        ..fields['job_id'] = job.jobId;
+
+      final resume = await http.MultipartFile.fromPath(
+        'resume',
+        job.resume.path,
+      );
+      request.files.add(resume);
+
+      var response = await request.send();
+
+      if (response.statusCode == 200) {
+        final responseBody = await response.stream.bytesToString();
+        final Map<String, dynamic> jsonData = json.decode(responseBody);
+
+        if (jsonData['success'] == true) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(jsonData['message'])));
+          notifyListeners();
+        } else {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(jsonData['message'])));
+        }
+      } else {
+        throw Exception(
+            'Failed to submit application. Status code: ${response.statusCode}');
       }
     } catch (err) {
       throw Exception('Unexpected error occured $err');

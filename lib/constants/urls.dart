@@ -28,4 +28,11 @@ class ApiRequest {
   static const String API_GET_JOBS = 'jobs/get_jobs.php';
   static const String API_GET_JOB_POST =
       'jobs/get_job_post.php'; // PARAMETERS: job_id = ?
+  static const String API_POST_JOB_APPLY = 'jobs/apply_job.php';
+
+  // Wish-Wall Profiles
+  static const String API_GET_IND_PROFILE =
+      'wishwall/get_wishwall_profile.php'; // PARAMETERS: id = ? (optional)
+  static const String API_GET_ORG_PROFILE =
+      'wishwall/get_org_profile.php'; // PARAMETERS: id = ? (optional)
 }

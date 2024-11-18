@@ -1,12 +1,10 @@
 import 'package:digitalksp/constants/constants.dart';
-import 'package:digitalksp/pages/author_page/author_list_page.dart';
-import 'package:digitalksp/pages/job_page/apply_job_page.dart';
-import 'package:digitalksp/pages/job_page/job_post_page.dart';
 import 'package:digitalksp/providers/author_providers.dart';
 import 'package:digitalksp/providers/blog_providers.dart';
 import 'package:digitalksp/providers/categories_provider.dart';
 import 'package:digitalksp/providers/jobs_providers.dart';
 import 'package:digitalksp/providers/miscellaneous_provider.dart';
+import 'package:digitalksp/providers/wishwall_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +25,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CategoriesProvider()),
         ChangeNotifierProvider(create: (_) => AuthorProviders()),
         ChangeNotifierProvider(create: (_) => BlogProviders()),
+        ChangeNotifierProvider(create: (_) => WishWallProviders()),
         ChangeNotifierProvider(create: (_) => JobsProviders()),
       ],
       builder: (context, child) => MaterialApp(
@@ -34,8 +33,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primaryColor: Colors.orange, scaffoldBackgroundColor: Colors.white),
-        // home: const Dashboard(),
-        home: const ApplyJobPage(),
+        home: const Dashboard(),
+        // home: const OrgProfileWallPage(profileId: '9'),
       ),
     );
   }

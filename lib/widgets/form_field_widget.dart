@@ -77,11 +77,13 @@ class RoundedFormField extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           obscureText: obscureText,
           enabled: enabled,
+          cursorColor: Theme.of(context).primaryColor,
           decoration: InputDecoration(
             hintText: hintText,
             fillColor: fillColor ?? Colors.grey.shade100,
             filled: true,
             counterText: '',
+
             // suffixIconConstraints:
             //     const BoxConstraints(minHeight: 40.0, minWidth: 40.0),
             contentPadding:
@@ -94,6 +96,10 @@ class RoundedFormField extends StatelessWidget {
                     BorderRadius.circular(AppDimensions.borderRadius)),
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey.shade200),
+                borderRadius: borderRadius ??
+                    BorderRadius.circular(AppDimensions.borderRadius)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Theme.of(context).primaryColor),
                 borderRadius: borderRadius ??
                     BorderRadius.circular(AppDimensions.borderRadius)),
             hintStyle: Theme.of(context)

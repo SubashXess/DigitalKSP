@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class JobModels {
   final String id;
   final String jobTitle;
@@ -85,4 +87,36 @@ class JobPostModel {
         userId: json["user_id"] ?? '',
         companyLogo: json["company_logo"] ?? '',
       );
+}
+
+class JobApplyModel {
+  final String jobId;
+  final String name;
+  final String phone;
+  final String email;
+  final String ctc;
+  final String company;
+  final File resume;
+
+  const JobApplyModel({
+    required this.jobId,
+    required this.name,
+    required this.phone,
+    required this.email,
+    required this.ctc,
+    required this.company,
+    required this.resume,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'job_id': jobId,
+      'name': name,
+      'mobile': phone,
+      'email': email,
+      'current_ctc': ctc,
+      'current_company': company,
+      'resume': resume.path,
+    };
+  }
 }

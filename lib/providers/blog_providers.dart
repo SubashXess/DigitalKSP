@@ -61,12 +61,6 @@ class BlogProviders extends ChangeNotifier {
         _blogTypeMap[type] = blogs;
         _assignBlogsToType();
 
-        // if (type == 'Normal') {
-        //   _normalBlogModel = BlogModels.blogsFromJson(jsonData);
-        // } else if()
-
-        // _blogModel = BlogModels.blogsFromJson(jsonData);
-
         notifyListeners();
       } else {
         throw Exception('Failed to load data');

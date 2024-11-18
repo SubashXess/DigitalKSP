@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/pages/profile_walls_page/profile_walls_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731935433064,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731935439178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n   const ProfileWallsPage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Placeholder();\r\n+    return Scaffold();\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1731935452846,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,5 +6,7 @@\n   final String profileId;\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-   \n\\ No newline at end of file\n+    return Scaffold();\r\n+  }\r\n+}\r\n"
+                },
+                {
+                    "date": 1731935459706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import 'package:flutter/material.dart';\r\n \r\n class ProfileWallsPage extends StatelessWidget {\r\n-  const ProfileWallsPage({super.key});\r\n+  const ProfileWallsPage({super.key, required this.profileId});\r\n \r\n   final String profileId;\r\n \r\n   @override\r\n"
+                }
+            ],
+            "date": 1731935433063,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass ProfileWallsPage extends StatelessWidget {\r\n  const ProfileWallsPage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Placeholder();\r\n  }\r\n}"
+        }
+    ]
+}

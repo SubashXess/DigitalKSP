@@ -129,7 +129,7 @@ class _AuthorPageState extends State<AuthorPage> {
                                       Theme.of(context).primaryColor,
                                   readMoreAlign: Alignment.centerLeft,
                                   style: Theme.of(context).textTheme.bodyMedium,
-                                )
+                                ),
                               ],
                             );
                     }),
