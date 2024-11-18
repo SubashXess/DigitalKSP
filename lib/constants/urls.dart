@@ -15,7 +15,17 @@ class ApiRequest {
   static const String CONTENT_TYPE = 'Content-Type';
   static const String CONTENT_TYPE_JSON = 'application/json';
 
-  static const String API_GET_AUTHORS = 'get_author.php';
+  static const String API_GET_QUOTE = 'get_quotes.php';
+  static const String API_GET_AUTHORS = 'author/get_author.php';
   static const String API_GET_CATEGORIES = 'get_categories.php';
   static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';
+  static const String API_GET_AUTHOR_BLOG_CATEGORIES =
+      'author/get_author_blog_categories.php';
+  static const String API_GET_BLOG_POST = 'blogs/get_blog_post.php';
+  static const String API_GET_BLOGS = 'blogs/get_blog.php';
+
+  // Jobs
+  static const String API_GET_JOBS = 'jobs/get_jobs.php';
+  static const String API_GET_JOB_POST =
+      'jobs/get_job_post.php'; // PARAMETERS: job_id = ?
 }

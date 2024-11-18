@@ -9,6 +9,9 @@ class CategoriesProvider extends ChangeNotifier {
   List<CategoriesModel> _categories = [];
   List<CategoriesModel> get categories => _categories;
 
+  int? _categorySelectedIndex;
+  int? get categorySelectedIndex => _categorySelectedIndex;
+
   Future<void> getCategory() async {
     final Uri url =
         Uri.parse('${ApiRequest.BASE_URL}${ApiRequest.API_GET_CATEGORIES}');
@@ -28,5 +31,14 @@ class CategoriesProvider extends ChangeNotifier {
     } catch (err) {
       throw Exception('Unexpected error occured $err');
     }
+  }
+
+  void onCategorySelected(int index) {
+    if (categorySelectedIndex == index) {
+      _categorySelectedIndex = null;
+    } else {
+      _categorySelectedIndex = index;
+    }
+    notifyListeners();
   }
 }

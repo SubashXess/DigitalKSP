@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/pages/blog_post_page/content_section.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731496261210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731496308025,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n   const ContentSection({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold();\r\n+    return Container();\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1731496340826,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,13 @@\n import 'package:flutter/material.dart';\r\n \r\n+import '../../models/blog_post_model.dart';\r\n+\r\n class ContentSection extends StatelessWidget {\r\n-  const ContentSection({super.key});\r\n+  const ContentSection({super.key, required this.content});\r\n \r\n+  final BlogContentModel content;\r\n+\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Container();\r\n   }\r\n"
+                }
+            ],
+            "date": 1731496261210,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass ContentSection extends StatelessWidget {\r\n  const ContentSection({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Placeholder();\r\n  }\r\n}"
+        }
+    ]
+}

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1731312586299,
@@ -52,6 +52,18 @@
                 {
                     "date": 1731325083608,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,8 @@\n   static const String AUTHORIZATION = 'Authorization';\r\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n-  static const String API_GET_AUTHORS = 'get_categories.php';\r\n+  static const String API_GET_AUTHORS = 'get_author.php';\r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n   static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n }\r\n"
+                },
+                {
+                    "date": 1731389190004,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,5 +17,7 @@\n \r\n   static const String API_GET_AUTHORS = 'get_author.php';\r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n   static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n+  static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n+\r\n }\r\n"
+                },
+                {
+                    "date": 1731389232759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,6 +17,6 @@\n \r\n   static const String API_GET_AUTHORS = 'get_author.php';\r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n   static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n-  static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n+  static const String API_GET_AUTHOR_BLOG_CATEGORIES = 'author/get_author_blog_categories.php';\r\n }\r\n"
+                },
+                {
+                    "date": 1731389589157,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   static const String AUTHORIZATION = 'Authorization';\r\n   static const String CONTENT_TYPE = 'Content-Type';\r\n   static const String CONTENT_TYPE_JSON = 'application/json';\r\n \r\n-  static const String API_GET_AUTHORS = 'get_author.php';\r\n+  static const String API_GET_AUTHORS = 'author/get_author.php';\r\n   static const String API_GET_CATEGORIES = 'get_categories.php';\r\n   static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';\r\n   static const String API_GET_AUTHOR_BLOG_CATEGORIES =\r\n       'author/get_author_blog_categories.php';\r\n"
                 }
             ],
             "date": 1731312586299,

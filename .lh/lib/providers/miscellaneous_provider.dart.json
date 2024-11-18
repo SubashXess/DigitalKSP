@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/providers/miscellaneous_provider.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731577420588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731577685207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,7 @@\n+import 'package:digitalksp/models/quote_models.dart';\r\n import 'package:flutter/foundation.dart';\r\n \r\n-class MiscellaneousProvider extends ChangeNotifier {}\r\n+class MiscellaneousProvider extends ChangeNotifier {\r\n+  List<QuoteModels> _quotes = [];\r\n+  List<QuoteModels> get quotes => _quotes;\r\n+}\r\n"
+                },
+                {
+                    "date": 1731577704814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,5 +3,7 @@\n \r\n class MiscellaneousProvider extends ChangeNotifier {\r\n   List<QuoteModels> _quotes = [];\r\n   List<QuoteModels> get quotes => _quotes;\r\n+\r\n+  Future<void> getQuotes() async {}\r\n }\r\n"
+                }
+            ],
+            "date": 1731577420588,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/foundation.dart';\r\n\r\nclass MiscellaneousProvider extends ChangeNotifier{}"
+        }
+    ]
+}

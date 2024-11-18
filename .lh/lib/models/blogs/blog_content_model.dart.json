@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/models/blogs/blog_content_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731482574621,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731482589200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,5 +15,25 @@\n   final dynamic imagePath3;\r\n   final String altText3;\r\n   final dynamic imagePath4;\r\n   final String altText4;\r\n+\r\n+   BlogContentModel({\r\n+        required this.id,\r\n+        required this.blogId,\r\n+        required this.headingType,\r\n+        required this.heading,\r\n+        required this.subHeadingType,\r\n+        required this.subHeading,\r\n+        required this.content,\r\n+        required this.imageCategory,\r\n+        required this.imagePath,\r\n+        required this.imagePath1,\r\n+        required this.altText1,\r\n+        required this.imagePath2,\r\n+        required this.altText2,\r\n+        required this.imagePath3,\r\n+        required this.altText3,\r\n+        required this.imagePath4,\r\n+        required this.altText4,\r\n+    });\r\n }\r\n"
+                },
+                {
+                    "date": 1731482676163,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,5 +35,25 @@\n     required this.altText3,\r\n     required this.imagePath4,\r\n     required this.altText4,\r\n   });\r\n+\r\n+   factory BlogContent.fromJson(Map<String, dynamic> json) => BlogContent(\r\n+        id: json[\"id\"],\r\n+        blogId: json[\"blog_id\"],\r\n+        headingType: json[\"heading_type\"],\r\n+        heading: json[\"heading\"],\r\n+        subHeadingType: json[\"sub_heading_type\"],\r\n+        subHeading: json[\"sub_heading\"],\r\n+        content: json[\"content\"],\r\n+        imageCategory: json[\"image_category\"],\r\n+        imagePath: json[\"image_path\"],\r\n+        imagePath1: json[\"image_path1\"],\r\n+        altText1: json[\"alt_text1\"],\r\n+        imagePath2: json[\"image_path2\"],\r\n+        altText2: json[\"alt_text2\"],\r\n+        imagePath3: json[\"image_path3\"],\r\n+        altText3: json[\"alt_text3\"],\r\n+        imagePath4: json[\"image_path4\"],\r\n+        altText4: json[\"alt_text4\"],\r\n+    );\r\n }\r\n"
+                }
+            ],
+            "date": 1731482574621,
+            "name": "Commit-0",
+            "content": "class BlogContentModel {\r\n   final int id;\r\n    final int blogId;\r\n    final String headingType;\r\n    final String heading;\r\n    final String subHeadingType;\r\n    final String subHeading;\r\n    final String content;\r\n    final String imageCategory;\r\n    final String imagePath;\r\n    final dynamic imagePath1;\r\n    final String altText1;\r\n    final dynamic imagePath2;\r\n    final String altText2;\r\n    final dynamic imagePath3;\r\n    final String altText3;\r\n    final dynamic imagePath4;\r\n    final String altText4;\r\n}"
+        }
+    ]
+}

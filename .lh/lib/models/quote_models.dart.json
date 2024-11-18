@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/models/quote_models.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1731577449409,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731577510648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,5 @@\n-class QuoteModels {}\r\n+class QuoteModels {\r\n+  final String id;\r\n+  final String quote;\r\n+  final String createdAt;\r\n+}\r\n"
+                },
+                {
+                    "date": 1731577559201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,12 @@\n class QuoteModels {\r\n   final String id;\r\n   final String quote;\r\n   final String createdAt;\r\n+\r\n+  const QuoteModels(\r\n+      {required this.id, required this.quote, required this.createdAt});\r\n+\r\n+      factory QuoteModels.fromJson(Map<String, dynamic> json) {\r\n+        return QuoteModels(id: json['id'], quote: json['quote'], createdAt: json['createdAt'])\r\n+      }\r\n }\r\n"
+                },
+                {
+                    "date": 1731577569322,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+class QuoteModels {\r\n+  final String id;\r\n+  final String quote;\r\n+  final String createdAt;\r\n+\r\n+  const QuoteModels(\r\n+      {required this.id, required this.quote, required this.createdAt});\r\n+\r\n+  factory QuoteModels.fromJson(Map<String, dynamic> json) {\r\n+    return QuoteModels(\r\n+        id: json['id'], quote: json['name'], createdAt: json['created_at']);\r\n+  }\r\n+}\r\n"
+                },
+                {
+                    "date": 1731577647583,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,5 +12,10 @@\n       quote: json['name'],\r\n       createdAt: json['created_at'],\r\n     );\r\n   }\r\n+\r\n+  static List<QuoteModels> quoteFromJson(Map<String, dynamic> jsonData) {\r\n+    final categories = jsonData['data']['quote'] as List;\r\n+    return categories.map((data) => QuoteModels.fromJson(data)).toList();\r\n+  }\r\n }\r\n"
+                }
+            ],
+            "date": 1731577449409,
+            "name": "Commit-0",
+            "content": "class QuoteModels {}"
+        }
+    ]
+}

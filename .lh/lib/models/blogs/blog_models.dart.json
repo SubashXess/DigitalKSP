@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/models/blogs/blog_models.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731584587557,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731584615168,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,60 @@\n-class BlogModels {}\r\n+class BlogModels {\r\n+   final int id;\r\n+    final String title;\r\n+    final String coverPhoto;\r\n+    final String coverTag;\r\n+    final String coverTitle;\r\n+    final String category;\r\n+    final String content;\r\n+    final int author;\r\n+    final DateTime publishDate;\r\n+    final String blogDescription;\r\n+    final DateTime publishedDate;\r\n+    final dynamic updatedDate;\r\n+    final String status;\r\n+    final String remark;\r\n+    final String type;\r\n+    final int shareCount;\r\n+    final int userId;\r\n+\r\n+    Blog({\r\n+        required this.id,\r\n+        required this.title,\r\n+        required this.coverPhoto,\r\n+        required this.coverTag,\r\n+        required this.coverTitle,\r\n+        required this.category,\r\n+        required this.content,\r\n+        required this.author,\r\n+        required this.publishDate,\r\n+        required this.blogDescription,\r\n+        required this.publishedDate,\r\n+        required this.updatedDate,\r\n+        required this.status,\r\n+        required this.remark,\r\n+        required this.type,\r\n+        required this.shareCount,\r\n+        required this.userId,\r\n+    });\r\n+\r\n+    factory Blog.fromJson(Map<String, dynamic> json) => Blog(\r\n+        id: json[\"id\"],\r\n+        title: json[\"title\"],\r\n+        coverPhoto: json[\"cover_photo\"],\r\n+        coverTag: json[\"cover_tag\"],\r\n+        coverTitle: json[\"cover_title\"],\r\n+        category: json[\"category\"],\r\n+        content: json[\"content\"],\r\n+        author: json[\"author\"],\r\n+        publishDate: DateTime.parse(json[\"publish_date\"]),\r\n+        blogDescription: json[\"blog_description\"],\r\n+        publishedDate: DateTime.parse(json[\"published_date\"]),\r\n+        updatedDate: json[\"updated_date\"],\r\n+        status: json[\"status\"],\r\n+        remark: json[\"remark\"],\r\n+        type: json[\"type\"],\r\n+        shareCount: json[\"share_count\"],\r\n+        userId: json[\"user_id\"],\r\n+    );\r\n+\r\n+}\r\n"
+                },
+                {
+                    "date": 1731584630384,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n   final String type;\r\n   final int shareCount;\r\n   final int userId;\r\n \r\n-  Blog({\r\n+  BlogModels({\r\n     required this.id,\r\n     required this.title,\r\n     required this.coverPhoto,\r\n     required this.coverTag,\r\n@@ -36,9 +36,9 @@\n     required this.shareCount,\r\n     required this.userId,\r\n   });\r\n \r\n-  factory Blog.fromJson(Map<String, dynamic> json) => Blog(\r\n+  factory BlogModels.fromJson(Map<String, dynamic> json) => BlogModels(\r\n         id: json[\"id\"],\r\n         title: json[\"title\"],\r\n         coverPhoto: json[\"cover_photo\"],\r\n         coverTag: json[\"cover_tag\"],\r\n"
+                },
+                {
+                    "date": 1731584645226,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n   final int author;\r\n   final DateTime publishDate;\r\n   final String blogDescription;\r\n   final DateTime publishedDate;\r\n-  final dynamic updatedDate;\r\n+  final DateTime updatedDate;\r\n   final String status;\r\n   final String remark;\r\n   final String type;\r\n   final int shareCount;\r\n"
+                }
+            ],
+            "date": 1731584587557,
+            "name": "Commit-0",
+            "content": "class BlogModels {}\r\n"
+        }
+    ]
+}

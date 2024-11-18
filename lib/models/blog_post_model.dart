@@ -1,3 +1,75 @@
+import '../constants/urls.dart';
+
+class BlogContentModel {
+  final String id;
+  final String blogId;
+  final String headingType;
+  final String heading;
+  final String subHeadingType;
+  final String subHeading;
+  final String content;
+  final String imageCategory;
+  final List<String> imagePaths;
+  final List<String> altTexts;
+
+  const BlogContentModel({
+    required this.id,
+    required this.blogId,
+    required this.headingType,
+    required this.heading,
+    required this.subHeadingType,
+    required this.subHeading,
+    required this.content,
+    required this.imageCategory,
+    required this.imagePaths,
+    required this.altTexts,
+  });
+
+  factory BlogContentModel.fromJson(Map<String, dynamic> json) {
+    List<String> imagePaths = [];
+    List<String> altTexts = [];
+
+    // Define the path and alt text keys
+    final pathKeys = [
+      'image_path',
+      'image_path1',
+      'image_path2',
+      'image_path3',
+      'image_path4'
+    ];
+    final altTextKeys = ['alt_text1', 'alt_text2', 'alt_text3', 'alt_text4'];
+
+    // Populate imagePaths with URLs
+    for (var key in pathKeys) {
+      String path = json[key] ?? '';
+      if (path.startsWith('../')) {
+        path = path.substring(3);
+      }
+      if (path.isNotEmpty) {
+        imagePaths.add('${ApiRequest.IMAGE_URL_WITHOUT_UPLOADS}$path');
+      }
+    }
+
+    // Populate altTexts
+    for (var key in altTextKeys) {
+      altTexts.add(json[key] ?? '');
+    }
+
+    return BlogContentModel(
+      id: json["id"].toString(),
+      blogId: json["blog_id"].toString(),
+      headingType: json["heading_type"] ?? '',
+      heading: json["heading"] ?? '',
+      subHeadingType: json["sub_heading_type"] ?? '',
+      subHeading: json["sub_heading"] ?? '',
+      content: json["content"] ?? '',
+      imageCategory: json["image_category"] ?? '',
+      imagePaths: imagePaths,
+      altTexts: altTexts,
+    );
+  }
+}
+
 class SocialMediaModel {
   final String title;
   final String url;

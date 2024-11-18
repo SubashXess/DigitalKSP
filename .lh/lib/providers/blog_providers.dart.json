@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1731059412172,
@@ -20,6 +20,26 @@
                 {
                     "date": 1731315812207,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,6 @@\n class BlogProviders extends ChangeNotifier {\r\n   String? _selectedCategory;\r\n   String? get selectedCategory => _selectedCategory;\r\n \r\n-  void selectCategory(String? value) {\r\n-    \r\n-  }\r\n+  void selectCategory(String? value) {}\r\n }\r\n"
+                },
+                {
+                    "date": 1731410858361,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,33 @@\n import 'package:flutter/foundation.dart';\r\n+import 'package:http/http.dart' as http;\r\n+import '../constants/urls.dart';\r\n \r\n class BlogProviders extends ChangeNotifier {\r\n   String? _selectedCategory;\r\n   String? get selectedCategory => _selectedCategory;\r\n \r\n+  Future<void> getBlogPost(String authorId, String category) async {\r\n+    final Uri url = Uri.parse(\r\n+        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_BLOG_POST}?author=$authorId&category=$category');\r\n+\r\n+    try {\r\n+      final response = await http.get(url, headers: {\r\n+        ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n+      });\r\n+\r\n+      if (response.statusCode == 200) {\r\n+        final Map<String, dynamic> jsonData = json.decode(response.body);\r\n+\r\n+        _blogByAuthor =\r\n+            BlogByAuthorModel.blogByAuthorFromJson(jsonData).toList();\r\n+        notifyListeners();\r\n+      } else {\r\n+        throw Exception('Failed to load data');\r\n+      }\r\n+    } catch (err) {\r\n+      throw Exception('Unexpected error occured $err');\r\n+    }\r\n+  }\r\n+\r\n   void selectCategory(String? value) {}\r\n }\r\n"
+                },
+                {
+                    "date": 1731410863719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n+import 'dart:convert';\r\n+\r\n import 'package:flutter/foundation.dart';\r\n import 'package:http/http.dart' as http;\r\n import '../constants/urls.dart';\r\n \r\n"
+                },
+                {
+                    "date": 1731410871844,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,10 +19,9 @@\n \r\n       if (response.statusCode == 200) {\r\n         final Map<String, dynamic> jsonData = json.decode(response.body);\r\n \r\n-        _blogByAuthor =\r\n-            BlogByAuthorModel.blogByAuthorFromJson(jsonData).toList();\r\n+        \r\n         notifyListeners();\r\n       } else {\r\n         throw Exception('Failed to load data');\r\n       }\r\n"
+                },
+                {
+                    "date": 1731410880231,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,10 @@\n \r\n       if (response.statusCode == 200) {\r\n         final Map<String, dynamic> jsonData = json.decode(response.body);\r\n \r\n+        print(jsonData);\r\n+\r\n         notifyListeners();\r\n       } else {\r\n         throw Exception('Failed to load data');\r\n       }\r\n"
+                },
+                {
+                    "date": 1731411441871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,11 +7,11 @@\n class BlogProviders extends ChangeNotifier {\r\n   String? _selectedCategory;\r\n   String? get selectedCategory => _selectedCategory;\r\n \r\n-  Future<void> getBlogPost(String authorId, String category) async {\r\n+  Future<void> getBlogPost(String blogId) async {\r\n     final Uri url = Uri.parse(\r\n-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_BLOG_POST}?author=$authorId&category=$category');\r\n+        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_BLOG_POST}?blog_id=$blogId');\r\n \r\n     try {\r\n       final response = await http.get(url, headers: {\r\n         ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n"
                 }
             ],
             "date": 1731059412172,

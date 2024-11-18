@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/models/author/author_models.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1731389334524,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731389402131,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,8 +36,10 @@\n     return blog.map((data) => AuthorModels.fromJson(data)).toList();\r\n   }\r\n }\r\n \r\n+class AuthorBlogCategoriesModel {}\r\n+\r\n class BlogByAuthorModel {\r\n   final String title;\r\n   final String image;\r\n   final String category;\r\n"
+                },
+                {
+                    "date": 1731389414454,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,10 +36,14 @@\n     return blog.map((data) => AuthorModels.fromJson(data)).toList();\r\n   }\r\n }\r\n \r\n-class AuthorBlogCategoriesModel {}\r\n+class AuthorBlogCategoriesModel {\r\n+ final List<String> categories;\r\n \r\n+\r\n+}\r\n+\r\n class BlogByAuthorModel {\r\n   final String title;\r\n   final String image;\r\n   final String category;\r\n"
+                }
+            ],
+            "date": 1731389334524,
+            "name": "Commit-0",
+            "content": "import '../../constants/urls.dart';\r\n\r\nclass AuthorModels {\r\n  final String id;\r\n  final String name;\r\n  final String bio;\r\n  final String photoUrl;\r\n\r\n  const AuthorModels(\r\n      {required this.id,\r\n      required this.name,\r\n      required this.bio,\r\n      required this.photoUrl});\r\n\r\n  factory AuthorModels.fromJson(Map<String, dynamic> json) {\r\n    String imagePath = json['profile_picture'];\r\n\r\n    if (imagePath.startsWith('../')) {\r\n      imagePath = imagePath.substring(3);\r\n    }\r\n\r\n    final imageUrl = imagePath.isNotEmpty\r\n        ? '${ApiRequest.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'\r\n        : 'assets/images/placeholder-user.png';\r\n\r\n    return AuthorModels(\r\n      id: json['id'],\r\n      name: json['name'],\r\n      bio: json['address'],\r\n      photoUrl: imageUrl,\r\n    );\r\n  }\r\n\r\n  static List<AuthorModels> authorsFromJson(Map<String, dynamic> jsonData) {\r\n    final blog = jsonData['data']['authors'] as List;\r\n    return blog.map((data) => AuthorModels.fromJson(data)).toList();\r\n  }\r\n}\r\n\r\n\r\n\r\nclass BlogByAuthorModel {\r\n  final String title;\r\n  final String image;\r\n  final String category;\r\n  final String description;\r\n  final String publishDate;\r\n\r\n  const BlogByAuthorModel(\r\n      {required this.title,\r\n      required this.image,\r\n      required this.category,\r\n      required this.description,\r\n      required this.publishDate});\r\n\r\n  factory BlogByAuthorModel.fromJson(Map<String, dynamic> json) {\r\n    String imagePath = json['cover_photo'];\r\n\r\n    if (imagePath.startsWith('../')) {\r\n      imagePath = imagePath.substring(3);\r\n    }\r\n\r\n    final imageUrl = imagePath.isNotEmpty\r\n        ? '${ApiRequest.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'\r\n        : '';\r\n\r\n    return BlogByAuthorModel(\r\n      title: json['title'] ?? '',\r\n      category: json['category'] ?? '',\r\n      description: json['blog_description'] ?? '',\r\n      image: imageUrl,\r\n      publishDate: json['publish_date'] ?? '',\r\n    );\r\n  }\r\n\r\n  static List<BlogByAuthorModel> blogByAuthorFromJson(\r\n      Map<String, dynamic> jsonData) {\r\n    final blog = jsonData['data'] as List;\r\n    return blog.map((data) => BlogByAuthorModel.fromJson(data)).toList();\r\n  }\r\n}\r\n\r\n\r\n// 60 website\r\n\r\n"
+        }
+    ]
+}

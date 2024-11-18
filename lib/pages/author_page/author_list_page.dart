@@ -22,21 +22,24 @@ class _AuthorListPageState extends State<AuthorListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Our Authors'),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Our Authors',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.w600),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              //   child: Text(
+              //     'Our Authors',
+              //     style: Theme.of(context)
+              //         .textTheme
+              //         .headlineMedium
+              //         ?.copyWith(fontWeight: FontWeight.w600),
+              //   ),
+              // ),
               const SizedBox(height: 20.0),
               Consumer<AuthorProviders>(builder: (context, provider, _) {
                 return ListView.separated(
@@ -49,20 +52,17 @@ class _AuthorListPageState extends State<AuthorListPage> {
                     final author = provider.author[index];
                     return GestureDetector(
                       onTap: () {
-                        context
-                            .read<AuthorProviders>()
-                            .getBlogByAuthor(author.id)
-                            .then((_) => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (_) =>
-                                        AuthorPage(authorModels: author))));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) =>
+                                    AuthorPage(authorId: author.id)));
                       },
                       child: Row(
                         children: [
                           Container(
-                            width: 80.0,
-                            height: 100.0,
+                            width: 60.0,
+                            height: 80.0,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.borderRadius),
@@ -77,11 +77,17 @@ class _AuthorListPageState extends State<AuthorListPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(author.name,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium),
+                                author.blogCount == '0'
+                                    ? const SizedBox()
+                                    : Text('${author.blogCount} Blogs',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.copyWith(color: Colors.grey)),
                                 const SizedBox(height: 4.0),
+                                Text(author.name,
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall),
                               ],
                             ),
                           ),
@@ -95,6 +101,7 @@ class _AuthorListPageState extends State<AuthorListPage> {
                   ),
                 );
               }),
+              const SizedBox(height: 16.0),
             ],
           ),
         ),
