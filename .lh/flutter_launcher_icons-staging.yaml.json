@@ -1,0 +1,38 @@
+{
+    "sourceFile": "flutter_launcher_icons-staging.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1732025212759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732025220939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n flutter_icons:\r\n   android: true\r\n   ios: true\r\n-  image_path: \"assets/staging-digital-ksp-logo.png\"\r\n+  image_path: \"assets/test-digital-ksp-logo.png\"\r\n"
+                },
+                {
+                    "date": 1732025239070,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n flutter_icons:\r\n   android: true\r\n   ios: true\r\n-  image_path: \"assets/test-digital-ksp-logo.png\"\r\n+  image_path: \"assets/staging-digital-ksp-logo.png\"\r\n"
+                },
+                {
+                    "date": 1732025352499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n flutter_icons:\r\n   android: true\r\n   ios: true\r\n   image_path: \"assets/staging-digital-ksp-logo.png\"\r\n+  remove_alpha_ios: true\r\n+# flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*\r\n"
+                },
+                {
+                    "date": 1732025605825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-flutter_icons:\r\n+flutter_launcher_icons:\r\n   android: true\r\n   ios: true\r\n   image_path: \"assets/staging-digital-ksp-logo.png\"\r\n   remove_alpha_ios: true\r\n"
+                },
+                {
+                    "date": 1732027261899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n flutter_launcher_icons:\r\n   android: true\r\n   ios: true\r\n   image_path: \"assets/staging-digital-ksp-logo.png\"\r\n+   remove_alpha_channel_ios: true\r\n   remove_alpha_ios: true\r\n+  adaptive_icon_background: \"#FFFFFF\"\r\n # flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*\r\n"
+                }
+            ],
+            "date": 1732025212759,
+            "name": "Commit-0",
+            "content": "flutter_icons:\r\n  android: true\r\n  ios: true\r\n  image_path: \"assets/staging-digital-ksp-logo.png\"\r\n"
+        }
+    ]
+}

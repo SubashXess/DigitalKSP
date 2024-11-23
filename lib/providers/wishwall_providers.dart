@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../constants/urls.dart';
 import '../models/wishwall/wishwall_profiles_model.dart';
@@ -19,8 +20,8 @@ class WishWallProviders extends ChangeNotifier {
   List<IndProfileModel> get indDetailProfile => _indDetailProfile;
 
   Future<void> getOrgProfiles({String limit = '10'}) async {
-    final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_ORG_PROFILE}?limit=$limit');
+    final Uri url =
+        Uri.parse('${ApiRequest.instance.apiGetOrgProfile}?limit=$limit');
 
     try {
       final response = await http.get(url, headers: {
@@ -42,8 +43,7 @@ class WishWallProviders extends ChangeNotifier {
 
   Future<void> getOrgDetailsProfile({required String id}) async {
     _orgDetailProfile = [];
-    final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_ORG_PROFILE}?id=$id');
+    final Uri url = Uri.parse('${ApiRequest.instance.apiGetOrgProfile}?id=$id');
 
     try {
       final response = await http.get(url, headers: {
@@ -65,8 +65,8 @@ class WishWallProviders extends ChangeNotifier {
   }
 
   Future<void> getIndProfiles({String limit = '10'}) async {
-    final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_IND_PROFILE}?limit=$limit');
+    final Uri url =
+        Uri.parse('${ApiRequest.instance.apiGetIndProfile}?limit=$limit');
 
     try {
       final response = await http.get(url, headers: {
@@ -88,8 +88,7 @@ class WishWallProviders extends ChangeNotifier {
 
   Future<void> getIndDetailsProfile({required String id}) async {
     _indDetailProfile = [];
-    final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_IND_PROFILE}?id=$id');
+    final Uri url = Uri.parse('${ApiRequest.instance.apiGetIndProfile}?id=$id');
 
     try {
       final response = await http.get(url, headers: {

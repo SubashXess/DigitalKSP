@@ -1,0 +1,42 @@
+{
+    "sourceFile": "lib/main_development.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1732018318394,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732018384454,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,4 +6,7 @@\n     flavor: 'Development',\r\n     baseUrl: 'http://192.168.29.168/',\r\n   ));\r\n }\r\n+\r\n+\r\n+// run -> flutter run --target lib/main_development.dart\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732018451431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n void main() {\r\n-  runApp(const MyApp(\r\n+  runApp(const App(\r\n     flavor: 'Development',\r\n     baseUrl: 'http://192.168.29.168/',\r\n   ));\r\n }\r\n"
+                },
+                {
+                    "date": 1732019111153,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+import 'package:digitalksp/main.dart';\r\n+import 'package:flutter/material.dart';\r\n+\r\n+void main() {\r\n+  runApp(const App(\r\n+    flavor: 'Development',\r\n+    baseUrl: 'http://192.168.29.168/',\r\n+  ));\r\n+}\r\n+\r\n+\r\n+// run -> flutter run --target lib/main_development.dart --flavor development\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732025877439,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,17 +8,5 @@\n   ));\r\n }\r\n \r\n \r\n-// run -> flutter run --target lib/main_development.dart --flavor development\n-import 'package:digitalksp/main.dart';\r\n-import 'package:flutter/material.dart';\r\n-\r\n-void main() {\r\n-  runApp(const App(\r\n-    flavor: 'Development',\r\n-    baseUrl: 'http://192.168.29.168/',\r\n-  ));\r\n-}\r\n-\r\n-\r\n-// run -> flutter run --target lib/main_development.dart\n\\ No newline at end of file\n+// run -> flutter run --target lib/main_development.dart --flavor development\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732126119920,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,11 @@\n+import 'package:digitalksp/constants/app_config.dart';\r\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n void main() {\r\n   runApp(const App(\r\n-    flavor: 'Development',\r\n+    flavor: FlavorType.DEVELOPMENT,\r\n     baseUrl: 'http://192.168.29.168',\r\n   ));\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1732126293114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n \r\n void main() {\r\n   runApp(const App(\r\n     flavor: FlavorType.DEVELOPMENT,\r\n+    name: 'DigitalKSP Development',\r\n     baseUrl: 'http://192.168.29.168',\r\n   ));\r\n }\r\n \r\n"
+                }
+            ],
+            "date": 1732018318394,
+            "name": "Commit-0",
+            "content": "import 'package:digitalksp/main.dart';\r\nimport 'package:flutter/material.dart';\r\n\r\nvoid main() {\r\n  runApp(const MyApp(\r\n    flavor: 'Development',\r\n    baseUrl: 'http://192.168.29.168/',\r\n  ));\r\n}\r\n"
+        }
+    ]
+}

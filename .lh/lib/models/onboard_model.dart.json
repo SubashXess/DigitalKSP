@@ -1,0 +1,62 @@
+{
+    "sourceFile": "lib/models/onboard_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1732194847724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732194888751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,7 @@\n-class OnboardModel {}\r\n+class OnboardModel {\r\n+  final String image;\r\n+  final String title;\r\n+  final String description;\r\n+  \r\n+  const OnboardModel({required this.image, required this.title, required this.description});\r\n+}\r\n"
+                },
+                {
+                    "date": 1732194899778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n class OnboardModel {\r\n   final String image;\r\n   final String title;\r\n   final String description;\r\n-  \r\n-  const OnboardModel({required this.image, required this.title, required this.description});\r\n-}\n\\ No newline at end of file\n+\r\n+  const OnboardModel(\r\n+      {required this.image, required this.title, required this.description});\r\n+\r\n+  static List<OnboardModel> generatedItem = [];\r\n+}\r\n"
+                },
+                {
+                    "date": 1732194923963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,6 +5,25 @@\n \r\n   const OnboardModel(\r\n       {required this.image, required this.title, required this.description});\r\n \r\n-  static List<OnboardModel> generatedItem = [];\r\n+  static List<OnboardModel> generatedItem = [\r\n+    OnboardModel(\r\n+    image: \"assets/images/on-boarding/onboarding1.png\",\r\n+    title: \"Title 01\",\r\n+    description:\r\n+        \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+  ),\r\n+  OnboardModel(\r\n+    image: \"assets/images/on-boarding/onboarding2.png\",\r\n+    title: \"Title 02\",\r\n+    description:\r\n+        \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+  ),\r\n+  OnboardModel(\r\n+    image: \"assets/images/on-boarding/onboarding3.png\",\r\n+    title: \"Title 03\",\r\n+    description:\r\n+        \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+  ),\r\n+  ];\r\n }\r\n"
+                },
+                {
+                    "date": 1732252847156,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,24 +6,24 @@\n   const OnboardModel(\r\n       {required this.image, required this.title, required this.description});\r\n \r\n   static List<OnboardModel> generatedItem = [\r\n-    OnboardModel(\r\n-    image: \"assets/images/on-boarding/onboarding1.png\",\r\n-    title: \"Title 01\",\r\n-    description:\r\n-        \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n-  ),\r\n-  OnboardModel(\r\n-    image: \"assets/images/on-boarding/onboarding2.png\",\r\n-    title: \"Title 02\",\r\n-    description:\r\n-        \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n-  ),\r\n-  OnboardModel(\r\n-    image: \"assets/images/on-boarding/onboarding3.png\",\r\n-    title: \"Title 03\",\r\n-    description:\r\n-        \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n-  ),\r\n+    const OnboardModel(\r\n+      image: \"assets/images/on-boarding/onboarding1.png\",\r\n+      title: \"Title 01\",\r\n+      description:\r\n+          \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+    ),\r\n+    const OnboardModel(\r\n+      image: \"assets/images/on-boarding/onboarding2.png\",\r\n+      title: \"Title 02\",\r\n+      description:\r\n+          \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+    ),\r\n+    const OnboardModel(\r\n+      image: \"assets/images/on-boarding/onboarding3.png\",\r\n+      title: \"Title 03\",\r\n+      description:\r\n+          \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+    ),\r\n   ];\r\n }\r\n"
+                },
+                {
+                    "date": 1732252860158,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n \r\n   static List<OnboardModel> generatedItem = [\r\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding1.png\",\r\n-      title: \"Title 01\",\r\n+      title: \"Find Inspiring Reads\",\r\n       description:\r\n-          \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+          \"Explore blogs that spark ideas, knowledge, and inspiration—anytime, anywhere.\",\r\n     ),\r\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding2.png\",\r\n       title: \"Title 02\",\r\n"
+                },
+                {
+                    "date": 1732252874561,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,11 +14,11 @@\n           \"Explore blogs that spark ideas, knowledge, and inspiration—anytime, anywhere.\",\r\n     ),\r\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding2.png\",\r\n-      title: \"Title 02\",\r\n+      title: \"Stay Updated\",\r\n       description:\r\n-          \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+          \"Follow your favorite categories and never miss the latest posts.\",\r\n     ),\r\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding3.png\",\r\n       title: \"Title 03\",\r\n"
+                },
+                {
+                    "date": 1732252884942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           \"Follow your favorite categories and never miss the latest posts.\",\r\n     ),\r\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding3.png\",\r\n-      title: \"Title 03\",\r\n+      title: \"Share Your Favorites\",\r\n       description:\r\n           \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n     ),\r\n   ];\r\n"
+                },
+                {
+                    "date": 1732252893824,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,8 @@\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding3.png\",\r\n       title: \"Share Your Favorites\",\r\n       description:\r\n-          \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n+          \"Spread the word by sharing blogs that resonate with you.\",\r\n     ),\r\n   ];\r\n }\r\n"
+                },
+                {
+                    "date": 1732260140127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,16 +14,15 @@\n           \"Explore blogs that spark ideas, knowledge, and inspiration—anytime, anywhere.\",\r\n     ),\r\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding2.png\",\r\n-      title: \"Stay Updated\",\r\n+      title: \"Browse Your Interests\",\r\n       description:\r\n-          \"Follow your favorite categories and never miss the latest posts.\",\r\n+          \"Find blogs tailored to your favorite topics and discover new ideas that captivate you.\",\r\n     ),\r\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding3.png\",\r\n       title: \"Share Your Favorites\",\r\n-      description:\r\n-          \"Spread the word by sharing blogs that resonate with you.\",\r\n+      description: \"Spread the word by sharing blogs that resonate with you.\",\r\n     ),\r\n   ];\r\n }\r\n"
+                },
+                {
+                    "date": 1732260155603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,10 @@\n           \"Find blogs tailored to your favorite topics and discover new ideas that captivate you.\",\r\n     ),\r\n     const OnboardModel(\r\n       image: \"assets/images/on-boarding/onboarding3.png\",\r\n-      title: \"Share Your Favorites\",\r\n-      description: \"Spread the word by sharing blogs that resonate with you.\",\r\n+      title: \"Share What You Love\",\r\n+      description:\r\n+          \"Easily share inspiring blogs with your friends and community.\",\r\n     ),\r\n   ];\r\n }\r\n"
+                },
+                {
+                    "date": 1732261407910,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,21 +7,21 @@\n       {required this.image, required this.title, required this.description});\r\n \r\n   static List<OnboardModel> generatedItem = [\r\n     const OnboardModel(\r\n-      image: \"assets/images/on-boarding/onboarding1.png\",\r\n+      image: \"assets/images/onboard-1.jpg\",\r\n       title: \"Find Inspiring Reads\",\r\n       description:\r\n           \"Explore blogs that spark ideas, knowledge, and inspiration—anytime, anywhere.\",\r\n     ),\r\n     const OnboardModel(\r\n-      image: \"assets/images/on-boarding/onboarding2.png\",\r\n+      image: \"assets/images/onboard-2.jpg\",\r\n       title: \"Browse Your Interests\",\r\n       description:\r\n           \"Find blogs tailored to your favorite topics and discover new ideas that captivate you.\",\r\n     ),\r\n     const OnboardModel(\r\n-      image: \"assets/images/on-boarding/onboarding3.png\",\r\n+      image: \"assets/images/onboard-3.jpg\",\r\n       title: \"Share What You Love\",\r\n       description:\r\n           \"Easily share inspiring blogs with your friends and community.\",\r\n     ),\r\n"
+                }
+            ],
+            "date": 1732194847724,
+            "name": "Commit-0",
+            "content": "class OnboardModel {}"
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-package com.example.digitalksp
+package com.ddnenterprises.digitalksp
 
 import io.flutter.embedding.android.FlutterActivity
 

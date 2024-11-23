@@ -1,0 +1,174 @@
+{
+    "sourceFile": "lib/pages/splash_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 39,
+            "patches": [
+                {
+                    "date": 1732262543496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732262560230,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n   const SplashPage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Placeholder();\r\n+    return Scaffold();\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732266902456,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,11 @@\n   const SplashPage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold();\r\n+    return Scaffold(\r\n+      body: Center(\r\n+        child: Image.asset('assets/'),\r\n+      ),\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732267050179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import 'package:digitalksp/constants/app_config.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n class SplashPage extends StatelessWidget {\r\n   const SplashPage({super.key});\r\n@@ -6,9 +7,9 @@\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       body: Center(\r\n-        child: Image.asset('assets/'),\r\n+        child: Image.asset(AppConfig.instance.appIcon),\r\n       ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732267069293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,13 @@\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       body: Center(\r\n-        child: Image.asset(AppConfig.instance.appIcon),\r\n+        child: Column(\r\n+          children: [\r\n+            Image.asset(AppConfig.instance.appIcon),\r\n+          ],\r\n+        ),\r\n       ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732267080145,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,13 @@\n     return Scaffold(\r\n       body: Center(\r\n         child: Column(\r\n           children: [\r\n-            Image.asset(AppConfig.instance.appIcon),\r\n+            Image.asset(\r\n+              AppConfig.instance.appIcon,\r\n+              width: 100.0,\r\n+              height: 100.0,\r\n+            ),\r\n           ],\r\n         ),\r\n       ),\r\n     );\r\n"
+                },
+                {
+                    "date": 1732267089347,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,10 @@\n         child: Column(\r\n           children: [\r\n             Image.asset(\r\n               AppConfig.instance.appIcon,\r\n-              width: 100.0,\r\n-              height: 100.0,\r\n+              width: 512.0,\r\n+              height: 512.0,\r\n             ),\r\n           ],\r\n         ),\r\n       ),\r\n"
+                },
+                {
+                    "date": 1732267099072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,10 @@\n         child: Column(\r\n           children: [\r\n             Image.asset(\r\n               AppConfig.instance.appIcon,\r\n-              width: 512.0,\r\n-              height: 512.0,\r\n+              width: 256.0,\r\n+              height: 256.0,\r\n             ),\r\n           ],\r\n         ),\r\n       ),\r\n"
+                },
+                {
+                    "date": 1732267142913,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,10 @@\n         child: Column(\r\n           children: [\r\n             Image.asset(\r\n               AppConfig.instance.appIcon,\r\n-              width: 256.0,\r\n-              height: 256.0,\r\n+              width: 144.0,\r\n+              height: 144.0,\r\n             ),\r\n           ],\r\n         ),\r\n       ),\r\n"
+                },
+                {
+                    "date": 1732267154951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n               AppConfig.instance.appIcon,\r\n               width: 144.0,\r\n               height: 144.0,\r\n             ),\r\n+            const SizedBox(height: 10.0),\r\n           ],\r\n         ),\r\n       ),\r\n     );\r\n"
+                },
+                {
+                    "date": 1732267171526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,9 @@\n               width: 144.0,\r\n               height: 144.0,\r\n             ),\r\n             const SizedBox(height: 10.0),\r\n+            Text(AppConfig.instance.appIcon),\r\n           ],\r\n         ),\r\n       ),\r\n     );\r\n"
+                },
+                {
+                    "date": 1732267196885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,12 @@\n               width: 144.0,\r\n               height: 144.0,\r\n             ),\r\n             const SizedBox(height: 10.0),\r\n-            Text(AppConfig.instance.appIcon),\r\n+            Text(\r\n+              AppConfig.instance.appName,\r\n+              style: Theme.of(context).textTheme.headlineMedium,\r\n+            ),\r\n           ],\r\n         ),\r\n       ),\r\n     );\r\n"
+                },
+                {
+                    "date": 1732267209397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,12 @@\n             ),\r\n             const SizedBox(height: 10.0),\r\n             Text(\r\n               AppConfig.instance.appName,\r\n-              style: Theme.of(context).textTheme.headlineMedium,\r\n+              style: Theme.of(context)\r\n+                  .textTheme\r\n+                  .headlineSmall\r\n+                  ?.copyWith(fontWeight: FontWeight.w500),\r\n             ),\r\n           ],\r\n         ),\r\n       ),\r\n"
+                },
+                {
+                    "date": 1732267217084,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n               AppConfig.instance.appIcon,\r\n               width: 144.0,\r\n               height: 144.0,\r\n             ),\r\n-            const SizedBox(height: 10.0),\r\n+            const SizedBox(height: 9.0),\r\n             Text(\r\n               AppConfig.instance.appName,\r\n               style: Theme.of(context)\r\n                   .textTheme\r\n"
+                },
+                {
+                    "date": 1732267306263,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,16 @@\n import 'package:digitalksp/constants/app_config.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n-class SplashPage extends StatelessWidget {\r\n+class SplashPage extends StatefulWidget {\r\n   const SplashPage({super.key});\r\n \r\n   @override\r\n+  State<SplashPage> createState() => _SplashPageState();\r\n+}\r\n+\r\n+class _SplashPageState extends State<SplashPage> {\r\n+  @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       body: Center(\r\n         child: Column(\r\n@@ -14,9 +19,9 @@\n               AppConfig.instance.appIcon,\r\n               width: 144.0,\r\n               height: 144.0,\r\n             ),\r\n-            const SizedBox(height: 9.0),\r\n+            const SizedBox(height: 0.0),\r\n             Text(\r\n               AppConfig.instance.appName,\r\n               style: Theme.of(context)\r\n                   .textTheme\r\n"
+                },
+                {
+                    "date": 1732267314414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,13 @@\n }\r\n \r\n class _SplashPageState extends State<SplashPage> {\r\n   @override\r\n+  void initState() {\r\n+    super.initState();\r\n+  }\r\n+\r\n+  @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       body: Center(\r\n         child: Column(\r\n"
+                },
+                {
+                    "date": 1732267337411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,26 @@\n class _SplashPageState extends State<SplashPage> {\r\n   @override\r\n   void initState() {\r\n     super.initState();\r\n+    _loadSplash();\r\n   }\r\n \r\n+  Future<Timer> loadSplash() async {\r\n+    return Timer(\r\n+      const Duration(seconds: 3),\r\n+      onDoneLoading,\r\n+    );\r\n+  }\r\n+\r\n+  onDoneLoading() {\r\n+    Navigator.of(context).pushReplacement(\r\n+      MaterialPageRoute(\r\n+        builder: ((context) => const HomeScreenPage()),\r\n+      ),\r\n+    );\r\n+  }\r\n+\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       body: Center(\r\n"
+                },
+                {
+                    "date": 1732267350668,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,8 @@\n+import 'dart:async';\r\n+\r\n import 'package:digitalksp/constants/app_config.dart';\r\n+import 'package:digitalksp/pages/onboard_page/onboard_page.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n class SplashPage extends StatefulWidget {\r\n   const SplashPage({super.key});\r\n@@ -14,9 +17,9 @@\n     super.initState();\r\n     _loadSplash();\r\n   }\r\n \r\n-  Future<Timer> loadSplash() async {\r\n+  Future<Timer> _loadSplash() async {\r\n     return Timer(\r\n       const Duration(seconds: 3),\r\n       onDoneLoading,\r\n     );\r\n@@ -24,9 +27,9 @@\n \r\n   onDoneLoading() {\r\n     Navigator.of(context).pushReplacement(\r\n       MaterialPageRoute(\r\n-        builder: ((context) => const HomeScreenPage()),\r\n+        builder: ((context) => const OnboardPage()),\r\n       ),\r\n     );\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1732267364117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,10 +24,10 @@\n       onDoneLoading,\r\n     );\r\n   }\r\n \r\n-  onDoneLoading() {\r\n-    Navigator.of(context).pushReplacement(\r\n+  Widget onDoneLoading() {\r\n+    return Navigator.of(context).pushReplacement(\r\n       MaterialPageRoute(\r\n         builder: ((context) => const OnboardPage()),\r\n       ),\r\n     );\r\n"
+                },
+                {
+                    "date": 1732267383249,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n       onDoneLoading,\r\n     );\r\n   }\r\n \r\n-  Widget onDoneLoading() {\r\n+  Future<dynamic> onDoneLoading() {\r\n     return Navigator.of(context).pushReplacement(\r\n       MaterialPageRoute(\r\n         builder: ((context) => const OnboardPage()),\r\n       ),\r\n"
+                },
+                {
+                    "date": 1732267454785,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,13 +25,18 @@\n     );\r\n   }\r\n \r\n   Future<dynamic> onDoneLoading() {\r\n-    return Navigator.of(context).pushReplacement(\r\n-      MaterialPageRoute(\r\n-        builder: ((context) => const OnboardPage()),\r\n-      ),\r\n-    );\r\n+    // return Navigator.of(context).pushAndRemoveUntil(\r\n+    //   MaterialPageRoute(\r\n+    //     builder: ((context) => const OnboardPage()),\r\n+    //     (state) => false\r\n+    //   ),\r\n+    // );\r\n+    return Navigator.pushAndRemoveUntil(\r\n+        context,\r\n+        MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n+        (route) => false);\r\n   }\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n"
+                },
+                {
+                    "date": 1732267469731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,14 +25,8 @@\n     );\r\n   }\r\n \r\n   Future<dynamic> onDoneLoading() {\r\n-    // return Navigator.of(context).pushAndRemoveUntil(\r\n-    //   MaterialPageRoute(\r\n-    //     builder: ((context) => const OnboardPage()),\r\n-    //     (state) => false\r\n-    //   ),\r\n-    // );\r\n     return Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false);\r\n"
+                },
+                {
+                    "date": 1732267593709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,10 @@\n   @override\r\n   State<SplashPage> createState() => _SplashPageState();\r\n }\r\n \r\n-class _SplashPageState extends State<SplashPage> {\r\n+class _SplashPageState extends State<SplashPage>\r\n+    with SingleTickerProviderStateMixin {\r\n   @override\r\n   void initState() {\r\n     super.initState();\r\n     _loadSplash();\r\n"
+                },
+                {
+                    "date": 1732267616256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,12 @@\n }\r\n \r\n class _SplashPageState extends State<SplashPage>\r\n     with SingleTickerProviderStateMixin {\r\n+  late AnimationController _controller;\r\n+  late Animation<double> _fadeAnimation;\r\n+  late Animation<Offset> _slideAnimation;\r\n+\r\n   @override\r\n   void initState() {\r\n     super.initState();\r\n     _loadSplash();\r\n"
+                },
+                {
+                    "date": 1732267638683,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,15 +12,33 @@\n }\r\n \r\n class _SplashPageState extends State<SplashPage>\r\n     with SingleTickerProviderStateMixin {\r\n-  late AnimationController _controller;\r\n-  late Animation<double> _fadeAnimation;\r\n-  late Animation<Offset> _slideAnimation;\r\n+  late final AnimationController _controller;\r\n+  late final Animation<double> _fadeAnimation;\r\n+  late final Animation<Offset> _slideAnimation;\r\n \r\n   @override\r\n   void initState() {\r\n     super.initState();\r\n+    _controller = AnimationController(\r\n+      vsync: this,\r\n+      duration: const Duration(milliseconds: 1500),\r\n+    );\r\n+\r\n+    _fadeAnimation = CurvedAnimation(\r\n+      parent: _controller,\r\n+      curve: Curves.easeInOut,\r\n+    );\r\n+\r\n+    _slideAnimation = Tween<Offset>(\r\n+      begin: const Offset(0, 0.5),\r\n+      end: Offset.zero,\r\n+    ).animate(\r\n+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),\r\n+    );\r\n+\r\n+    _controller.forward();\r\n     _loadSplash();\r\n   }\r\n \r\n   Future<Timer> _loadSplash() async {\r\n"
+                },
+                {
+                    "date": 1732267648210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,8 +37,9 @@\n       CurvedAnimation(parent: _controller, curve: Curves.easeOut),\r\n     );\r\n \r\n     _controller.forward();\r\n+    _checkOnboardingStatus();\r\n     _loadSplash();\r\n   }\r\n \r\n   Future<Timer> _loadSplash() async {\r\n"
+                },
+                {
+                    "date": 1732267686372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \r\n import 'package:digitalksp/constants/app_config.dart';\r\n import 'package:digitalksp/pages/onboard_page/onboard_page.dart';\r\n import 'package:flutter/material.dart';\r\n+import 'package:shared_preferences/shared_preferences.dart';\r\n \r\n class SplashPage extends StatefulWidget {\r\n   const SplashPage({super.key});\r\n \r\n@@ -38,11 +39,34 @@\n     );\r\n \r\n     _controller.forward();\r\n     _checkOnboardingStatus();\r\n-    _loadSplash();\r\n+    // _loadSplash();\r\n   }\r\n \r\n+  Future<void> _checkOnboardingStatus() async {\r\n+    SharedPreferences prefs = await SharedPreferences.getInstance();\r\n+    bool isFirstTime = prefs.getBool('onboard-page') ?? true;\r\n+\r\n+    await Future.delayed(const Duration(seconds: 3));\r\n+    if (isFirstTime) {\r\n+      prefs.setBool('onboard-page', false);\r\n+      Navigator.pushAndRemoveUntil(\r\n+        context,\r\n+        MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n+        (route) => false,\r\n+      );\r\n+    } else {\r\n+      // Navigate to the main screen (replace with your main page widget)\r\n+      Navigator.pushAndRemoveUntil(\r\n+        context,\r\n+        MaterialPageRoute(\r\n+            builder: (_) => const MainPage()), // Replace with your main page\r\n+        (route) => false,\r\n+      );\r\n+    }\r\n+  }\r\n+\r\n   Future<Timer> _loadSplash() async {\r\n     return Timer(\r\n       const Duration(seconds: 3),\r\n       onDoneLoading,\r\n"
+                },
+                {
+                    "date": 1732267697068,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,9 +55,8 @@\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false,\r\n       );\r\n     } else {\r\n-      // Navigate to the main screen (replace with your main page widget)\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(\r\n             builder: (_) => const MainPage()), // Replace with your main page\r\n"
+                },
+                {
+                    "date": 1732267706427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import 'dart:async';\r\n \r\n import 'package:digitalksp/constants/app_config.dart';\r\n+import 'package:digitalksp/pages/homepage/homepage.dart';\r\n import 'package:digitalksp/pages/onboard_page/onboard_page.dart';\r\n import 'package:flutter/material.dart';\r\n import 'package:shared_preferences/shared_preferences.dart';\r\n \r\n@@ -57,10 +58,9 @@\n       );\r\n     } else {\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n-        MaterialPageRoute(\r\n-            builder: (_) => const MainPage()), // Replace with your main page\r\n+        MaterialPageRoute(builder: (_) => const HomePage()),\r\n         (route) => false,\r\n       );\r\n     }\r\n   }\r\n"
+                },
+                {
+                    "date": 1732267717995,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,8 +43,14 @@\n     _checkOnboardingStatus();\r\n     // _loadSplash();\r\n   }\r\n \r\n+  @override\r\n+  void dispose() {\r\n+    _controller.dispose();\r\n+    super.dispose();\r\n+  }\r\n+\r\n   Future<void> _checkOnboardingStatus() async {\r\n     SharedPreferences prefs = await SharedPreferences.getInstance();\r\n     bool isFirstTime = prefs.getBool('onboard-page') ?? true;\r\n \r\n"
+                },
+                {
+                    "date": 1732267731848,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,21 +89,31 @@\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       body: Center(\r\n         child: Column(\r\n+          mainAxisAlignment: MainAxisAlignment.center,\r\n           children: [\r\n-            Image.asset(\r\n-              AppConfig.instance.appIcon,\r\n-              width: 144.0,\r\n-              height: 144.0,\r\n+            FadeTransition(\r\n+              opacity: _fadeAnimation,\r\n+              child: Image.asset(\r\n+                AppConfig.instance.appIcon,\r\n+                width: 144.0,\r\n+                height: 144.0,\r\n+              ),\r\n             ),\r\n-            const SizedBox(height: 0.0),\r\n-            Text(\r\n-              AppConfig.instance.appName,\r\n-              style: Theme.of(context)\r\n-                  .textTheme\r\n-                  .headlineSmall\r\n-                  ?.copyWith(fontWeight: FontWeight.w500),\r\n+            const SizedBox(height: 16.0),\r\n+            SlideTransition(\r\n+              position: _slideAnimation,\r\n+              child: FadeTransition(\r\n+                opacity: _fadeAnimation,\r\n+                child: Text(\r\n+                  AppConfig.instance.appName,\r\n+                  style: Theme.of(context)\r\n+                      .textTheme\r\n+                      .headlineSmall\r\n+                      ?.copyWith(fontWeight: FontWeight.w500),\r\n+                ),\r\n+              ),\r\n             ),\r\n           ],\r\n         ),\r\n       ),\r\n"
+                },
+                {
+                    "date": 1732267846879,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,22 +70,8 @@\n       );\r\n     }\r\n   }\r\n \r\n-  Future<Timer> _loadSplash() async {\r\n-    return Timer(\r\n-      const Duration(seconds: 3),\r\n-      onDoneLoading,\r\n-    );\r\n-  }\r\n-\r\n-  Future<dynamic> onDoneLoading() {\r\n-    return Navigator.pushAndRemoveUntil(\r\n-        context,\r\n-        MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n-        (route) => false);\r\n-  }\r\n-\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       body: Center(\r\n"
+                },
+                {
+                    "date": 1732267855625,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,8 @@\n     );\r\n \r\n     _controller.forward();\r\n     _checkOnboardingStatus();\r\n-    // _loadSplash();\r\n   }\r\n \r\n   @override\r\n   void dispose() {\r\n"
+                },
+                {
+                    "date": 1732267926045,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,107 @@\n+import 'dart:async';\r\n+\r\n+import 'package:digitalksp/constants/app_config.dart';\r\n+import 'package:digitalksp/pages/homepage/homepage.dart';\r\n+import 'package:digitalksp/pages/onboard_page/onboard_page.dart';\r\n+import 'package:flutter/material.dart';\r\n+import 'package:shared_preferences/shared_preferences.dart';\r\n+\r\n+class SplashPage extends StatefulWidget {\r\n+  const SplashPage({super.key});\r\n+\r\n+  @override\r\n+  State<SplashPage> createState() => _SplashPageState();\r\n+}\r\n+\r\n+class _SplashPageState extends State<SplashPage>\r\n+    with SingleTickerProviderStateMixin {\r\n+  late final AnimationController _controller;\r\n+  late final Animation<double> _fadeAnimation;\r\n+  late final Animation<Offset> _slideAnimation;\r\n+\r\n+  @override\r\n+  void initState() {\r\n+    super.initState();\r\n+    _controller = AnimationController(\r\n+      vsync: this,\r\n+      duration: const Duration(milliseconds: 1500),\r\n+    );\r\n+\r\n+    _fadeAnimation = CurvedAnimation(\r\n+      parent: _controller,\r\n+      curve: Curves.easeInOut,\r\n+    );\r\n+\r\n+    _slideAnimation = Tween<Offset>(\r\n+      begin: const Offset(0, 0.5),\r\n+      end: Offset.zero,\r\n+    ).animate(\r\n+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),\r\n+    );\r\n+\r\n+    _controller.forward();\r\n+    _checkOnboardingStatus();\r\n+  }\r\n+\r\n+  @override\r\n+  void dispose() {\r\n+    _controller.dispose();\r\n+    super.dispose();\r\n+  }\r\n+\r\n+  Future<void> _checkOnboardingStatus() async {\r\n+    SharedPreferences prefs = await SharedPreferences.getInstance();\r\n+    bool isFirstTime = prefs.getBool('onboard-page') ?? true;\r\n+\r\n+    await Future.delayed(const Duration(seconds: 2));\r\n+    if (isFirstTime) {\r\n+      prefs.setBool('onboard-page', false);\r\n+      Navigator.pushAndRemoveUntil(\r\n+        context,\r\n+        MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n+        (route) => false,\r\n+      );\r\n+    } else {\r\n+      Navigator.pushAndRemoveUntil(\r\n+        context,\r\n+        MaterialPageRoute(builder: (_) => const HomePage()),\r\n+        (route) => false,\r\n+      );\r\n+    }\r\n+  }\r\n+\r\n+  @override\r\n+  Widget build(BuildContext context) {\r\n+    return Scaffold(\r\n+      body: Center(\r\n+        child: Column(\r\n+          mainAxisAlignment: MainAxisAlignment.center,\r\n+          children: [\r\n+            FadeTransition(\r\n+              opacity: _fadeAnimation,\r\n+              child: Image.asset(\r\n+                AppConfig.instance.appIcon,\r\n+                width: 144.0,\r\n+                height: 144.0,\r\n+              ),\r\n+            ),\r\n+            const SizedBox(height: 16.0),\r\n+            SlideTransition(\r\n+              position: _slideAnimation,\r\n+              child: FadeTransition(\r\n+                opacity: _fadeAnimation,\r\n+                child: Text(\r\n+                  AppConfig.instance.appName,\r\n+                  style: Theme.of(context)\r\n+                      .textTheme\r\n+                      .headlineSmall\r\n+                      ?.copyWith(fontWeight: FontWeight.w500),\r\n+                ),\r\n+              ),\r\n+            ),\r\n+          ],\r\n+        ),\r\n+      ),\r\n+    );\r\n+  }\r\n+}\r\n"
+                },
+                {
+                    "date": 1732268050736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,9 @@\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false,\r\n       );\r\n     } else {\r\n+      prefs.clear();\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(builder: (_) => const HomePage()),\r\n         (route) => false,\r\n@@ -104,111 +105,4 @@\n       ),\r\n     );\r\n   }\r\n }\r\n-import 'dart:async';\r\n-\r\n-import 'package:digitalksp/constants/app_config.dart';\r\n-import 'package:digitalksp/pages/homepage/homepage.dart';\r\n-import 'package:digitalksp/pages/onboard_page/onboard_page.dart';\r\n-import 'package:flutter/material.dart';\r\n-import 'package:shared_preferences/shared_preferences.dart';\r\n-\r\n-class SplashPage extends StatefulWidget {\r\n-  const SplashPage({super.key});\r\n-\r\n-  @override\r\n-  State<SplashPage> createState() => _SplashPageState();\r\n-}\r\n-\r\n-class _SplashPageState extends State<SplashPage>\r\n-    with SingleTickerProviderStateMixin {\r\n-  late final AnimationController _controller;\r\n-  late final Animation<double> _fadeAnimation;\r\n-  late final Animation<Offset> _slideAnimation;\r\n-\r\n-  @override\r\n-  void initState() {\r\n-    super.initState();\r\n-    _controller = AnimationController(\r\n-      vsync: this,\r\n-      duration: const Duration(milliseconds: 1500),\r\n-    );\r\n-\r\n-    _fadeAnimation = CurvedAnimation(\r\n-      parent: _controller,\r\n-      curve: Curves.easeInOut,\r\n-    );\r\n-\r\n-    _slideAnimation = Tween<Offset>(\r\n-      begin: const Offset(0, 0.5),\r\n-      end: Offset.zero,\r\n-    ).animate(\r\n-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),\r\n-    );\r\n-\r\n-    _controller.forward();\r\n-    _checkOnboardingStatus();\r\n-  }\r\n-\r\n-  @override\r\n-  void dispose() {\r\n-    _controller.dispose();\r\n-    super.dispose();\r\n-  }\r\n-\r\n-  Future<void> _checkOnboardingStatus() async {\r\n-    SharedPreferences prefs = await SharedPreferences.getInstance();\r\n-    bool isFirstTime = prefs.getBool('onboard-page') ?? true;\r\n-\r\n-    await Future.delayed(const Duration(seconds: 3));\r\n-    if (isFirstTime) {\r\n-      prefs.setBool('onboard-page', false);\r\n-      Navigator.pushAndRemoveUntil(\r\n-        context,\r\n-        MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n-        (route) => false,\r\n-      );\r\n-    } else {\r\n-      Navigator.pushAndRemoveUntil(\r\n-        context,\r\n-        MaterialPageRoute(builder: (_) => const HomePage()),\r\n-        (route) => false,\r\n-      );\r\n-    }\r\n-  }\r\n-\r\n-  @override\r\n-  Widget build(BuildContext context) {\r\n-    return Scaffold(\r\n-      body: Center(\r\n-        child: Column(\r\n-          mainAxisAlignment: MainAxisAlignment.center,\r\n-          children: [\r\n-            FadeTransition(\r\n-              opacity: _fadeAnimation,\r\n-              child: Image.asset(\r\n-                AppConfig.instance.appIcon,\r\n-                width: 144.0,\r\n-                height: 144.0,\r\n-              ),\r\n-            ),\r\n-            const SizedBox(height: 16.0),\r\n-            SlideTransition(\r\n-              position: _slideAnimation,\r\n-              child: FadeTransition(\r\n-                opacity: _fadeAnimation,\r\n-                child: Text(\r\n-                  AppConfig.instance.appName,\r\n-                  style: Theme.of(context)\r\n-                      .textTheme\r\n-                      .headlineSmall\r\n-                      ?.copyWith(fontWeight: FontWeight.w500),\r\n-                ),\r\n-              ),\r\n-            ),\r\n-          ],\r\n-        ),\r\n-      ),\r\n-    );\r\n-  }\r\n-}\r\n"
+                },
+                {
+                    "date": 1732268064326,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,9 +61,8 @@\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false,\r\n       );\r\n     } else {\r\n-      prefs.clear();\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(builder: (_) => const HomePage()),\r\n         (route) => false,\r\n"
+                },
+                {
+                    "date": 1732268553778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,9 +54,9 @@\n     bool isFirstTime = prefs.getBool('onboard-page') ?? true;\r\n \r\n     await Future.delayed(const Duration(seconds: 2));\r\n     if (isFirstTime) {\r\n-      prefs.setBool('onboard-page', false);\r\n+      // prefs.setBool('onboard-page', false);\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false,\r\n"
+                },
+                {
+                    "date": 1732268562072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,9 +54,8 @@\n     bool isFirstTime = prefs.getBool('onboard-page') ?? true;\r\n \r\n     await Future.delayed(const Duration(seconds: 2));\r\n     if (isFirstTime) {\r\n-      // prefs.setBool('onboard-page', false);\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false,\r\n"
+                },
+                {
+                    "date": 1732268571649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,8 +60,9 @@\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false,\r\n       );\r\n     } else {\r\n+      prefs.clear();\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(builder: (_) => const HomePage()),\r\n         (route) => false,\r\n"
+                },
+                {
+                    "date": 1732268586051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,8 @@\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false,\r\n       );\r\n     } else {\r\n-      prefs.clear();\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(builder: (_) => const HomePage()),\r\n         (route) => false,\r\n"
+                }
+            ],
+            "date": 1732262543496,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass SplashPage extends StatelessWidget {\r\n  const SplashPage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Placeholder();\r\n  }\r\n}\r\n"
+        }
+    ]
+}

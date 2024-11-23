@@ -1,0 +1,8 @@
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/development-digital-ksp-logo.png"
+  remove_alpha_channel_ios: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#FFFFFF"
+# flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*

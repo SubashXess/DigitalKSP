@@ -19,8 +19,7 @@ class MiscellaneousProvider extends ChangeNotifier {
   }
 
   Future<void> getQuotes() async {
-    final Uri url =
-        Uri.parse('${ApiRequest.BASE_URL}${ApiRequest.API_GET_QUOTE}');
+    final Uri url = Uri.parse(ApiRequest.instance.apiGetQuote);
 
     try {
       final response = await http.get(url, headers: {

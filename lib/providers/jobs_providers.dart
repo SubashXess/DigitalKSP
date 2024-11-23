@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:digitalksp/models/jobs/jobs_models.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -14,8 +12,7 @@ class JobsProviders extends ChangeNotifier {
   JobPostModel? get jobPostModel => _jobPostModel;
 
   Future<void> getJobs({String limit = '12'}) async {
-    final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_JOBS}?limit=$limit');
+    final Uri url = Uri.parse('${ApiRequest.instance.apiGetJobs}?limit=$limit');
 
     try {
       final response = await http.get(url, headers: {
@@ -37,8 +34,8 @@ class JobsProviders extends ChangeNotifier {
 
   Future<void> getJobPost({required String id}) async {
     _jobPostModel = null;
-    final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_JOB_POST}?job_id=$id');
+    final Uri url =
+        Uri.parse('${ApiRequest.instance.apiGetJobPost}?job_id=$id');
 
     try {
       final response = await http.get(url, headers: {
@@ -49,7 +46,7 @@ class JobsProviders extends ChangeNotifier {
         final Map<String, dynamic> jsonData = json.decode(response.body);
 
         _jobPostModel = JobPostModel.fromJson(jsonData['data']);
-        log(_jobPostModel.toString());
+
         notifyListeners();
       } else {
         throw Exception('Failed to load data');
@@ -60,8 +57,7 @@ class JobsProviders extends ChangeNotifier {
   }
 
   Future<void> applyJob(context, {required JobApplyModel job}) async {
-    final Uri url =
-        Uri.parse('${ApiRequest.BASE_URL}${ApiRequest.API_POST_JOB_APPLY}');
+    final Uri url = Uri.parse(ApiRequest.instance.apiApplyJob);
 
     try {
       final request = http.MultipartRequest('POST', url)

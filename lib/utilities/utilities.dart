@@ -34,7 +34,6 @@ class Utilities {
 
         if ((minFileSize != null && fileSizeInBytes < minFileSize) ||
             (maxFileSize != null && fileSizeInBytes > maxFileSize)) {
-          print("File size is not within the allowed range.");
           return null;
         }
 
@@ -52,7 +51,6 @@ class Utilities {
         return null;
       }
     } catch (e) {
-      print("Error during file upload: $e");
       return null;
     }
   }

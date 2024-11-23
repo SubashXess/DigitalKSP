@@ -5,25 +5,25 @@ class AuthorModels {
   final String name;
   final String bio;
   final String photoUrl;
-  final String blogCount;
+  final String? blogCount;
 
   const AuthorModels({
     required this.id,
     required this.name,
     required this.bio,
     required this.photoUrl,
-    required this.blogCount,
+    this.blogCount,
   });
 
   factory AuthorModels.fromJson(Map<String, dynamic> json) {
-    String imagePath = json['profile_picture'];
+    String imagePath = json['profile_picture'] ?? '';
 
     if (imagePath.startsWith('../')) {
       imagePath = imagePath.substring(3);
     }
 
     final imageUrl = imagePath.isNotEmpty
-        ? '${ApiRequest.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'
+        ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'
         : 'assets/images/placeholder-user.png';
 
     return AuthorModels(
@@ -84,7 +84,7 @@ class BlogByAuthorModel {
     }
 
     final imageUrl = imagePath.isNotEmpty
-        ? '${ApiRequest.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'
+        ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'
         : '';
 
     return BlogByAuthorModel(
@@ -103,7 +103,3 @@ class BlogByAuthorModel {
     return blog.map((data) => BlogByAuthorModel.fromJson(data)).toList();
   }
 }
-
-
-// 60 website
-

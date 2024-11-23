@@ -1,0 +1,18 @@
+{
+  "sourceFile": "macos/Runner/Configs/AppInfo.xcconfig",
+  "activeCommit": 0,
+  "commits": [
+    {
+      "activePatchIndex": 0,
+      "patches": [
+        {
+          "date": 1732016027472,
+          "content": "Index: \n===================================================================\n--- \n+++ \n"
+        }
+      ],
+      "date": 1732016027472,
+      "name": "Commit-0",
+      "content": "// Application-level settings for the Runner target.\r\n//\r\n// This may be replaced with something auto-generated from metadata (e.g., pubspec.yaml) in the\r\n// future. If not, the values below would default to using the project name when this becomes a\r\n// 'flutter create' template.\r\n\r\n// The application's name. By default this is also the title of the Flutter window.\r\nPRODUCT_NAME = digitalksp\r\n\r\n// The application's bundle identifier\r\nPRODUCT_BUNDLE_IDENTIFIER = com.ddnenterprises.digitalksp\r\n\r\n// The copyright displayed in application information\r\nPRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.\r\n"
+    }
+  ]
+}

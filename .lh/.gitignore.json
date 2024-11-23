@@ -1,0 +1,42 @@
+{
+    "sourceFile": ".gitignore",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1732341817051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732341859809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,8 +40,17 @@\n # Android Studio will place build artifacts here\r\n /android/app/debug\r\n /android/app/profile\r\n /android/app/release\r\n+**/android/**/gradle-wrapper.jar\r\n+.gradle/\r\n+**/android/captures/\r\n+**/android/gradlew\r\n+**/android/gradlew.bat\r\n+**/android/local.properties\r\n+**/android/**/GeneratedPluginRegistrant.java\r\n+**/android/key.properties\r\n+*.jks\r\n \r\n # Exceptions to above rules.\r\n !**/ios/**/default.mode1v3\r\n !**/ios/**/default.mode2v3\r\n"
+                },
+                {
+                    "date": 1732341898624,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,5 +57,11 @@\n !**/ios/**/default.pbxuser\r\n !**/ios/**/default.perspectivev3\r\n !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages\r\n !/dev/ci/**/Gemfile.lock\r\n-!.vscode/settings.json\n\\ No newline at end of file\n+!.vscode/settings.json\r\n+\r\n+# Visual Studio Code related\r\n+.classpath\r\n+.project\r\n+.settings/\r\n+.vscode/*\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732341971696,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,9 +48,11 @@\n **/android/gradlew.bat\r\n **/android/local.properties\r\n **/android/**/GeneratedPluginRegistrant.java\r\n **/android/key.properties\r\n+# Keystore files\r\n *.jks\r\n+*.keystore\r\n \r\n # Exceptions to above rules.\r\n !**/ios/**/default.mode1v3\r\n !**/ios/**/default.mode2v3\r\n"
+                },
+                {
+                    "date": 1732341981661,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,12 +48,16 @@\n **/android/gradlew.bat\r\n **/android/local.properties\r\n **/android/**/GeneratedPluginRegistrant.java\r\n **/android/key.properties\r\n+\r\n # Keystore files\r\n *.jks\r\n *.keystore\r\n \r\n+# Google Services (e.g. APIs or Firebase)\r\n+google-services.json\r\n+\r\n # Exceptions to above rules.\r\n !**/ios/**/default.mode1v3\r\n !**/ios/**/default.mode2v3\r\n !**/ios/**/default.pbxuser\r\n"
+                },
+                {
+                    "date": 1732342157993,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,5 +69,9 @@\n # Visual Studio Code related\r\n .classpath\r\n .project\r\n .settings/\r\n-.vscode/*\n\\ No newline at end of file\n+.vscode/*\r\n+\r\n+# Code related\r\n+# Ignore urls.dart in lib/constants/\r\n+lib/constants/urls.dart\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732342313598,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,38 +40,4 @@\n # Android Studio will place build artifacts here\r\n /android/app/debug\r\n /android/app/profile\r\n /android/app/release\r\n-**/android/**/gradle-wrapper.jar\r\n-.gradle/\r\n-**/android/captures/\r\n-**/android/gradlew\r\n-**/android/gradlew.bat\r\n-**/android/local.properties\r\n-**/android/**/GeneratedPluginRegistrant.java\r\n-**/android/key.properties\r\n-\r\n-# Keystore files\r\n-*.jks\r\n-*.keystore\r\n-\r\n-# Google Services (e.g. APIs or Firebase)\r\n-google-services.json\r\n-\r\n-# Exceptions to above rules.\r\n-!**/ios/**/default.mode1v3\r\n-!**/ios/**/default.mode2v3\r\n-!**/ios/**/default.pbxuser\r\n-!**/ios/**/default.perspectivev3\r\n-!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages\r\n-!/dev/ci/**/Gemfile.lock\r\n-!.vscode/settings.json\r\n-\r\n-# Visual Studio Code related\r\n-.classpath\r\n-.project\r\n-.settings/\r\n-.vscode/*\r\n-\r\n-# Code related\r\n-# Ignore urls.dart in lib/constants/\r\n-lib/constants/urls.dart\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1732341817051,
+            "name": "Commit-0",
+            "content": "# Miscellaneous\r\n*.class\r\n*.log\r\n*.pyc\r\n*.swp\r\n.DS_Store\r\n.atom/\r\n.buildlog/\r\n.history\r\n.svn/\r\nmigrate_working_dir/\r\n\r\n# IntelliJ related\r\n*.iml\r\n*.ipr\r\n*.iws\r\n.idea/\r\n\r\n# The .vscode folder contains launch configuration and tasks you configure in\r\n# VS Code which you may wish to be included in version control, so this line\r\n# is commented out by default.\r\n#.vscode/\r\n\r\n# Flutter/Dart/Pub related\r\n**/doc/api/\r\n**/ios/Flutter/.last_build_id\r\n.dart_tool/\r\n.flutter-plugins\r\n.flutter-plugins-dependencies\r\n.pub-cache/\r\n.pub/\r\n/build/\r\n\r\n# Symbolication related\r\napp.*.symbols\r\n\r\n# Obfuscation related\r\napp.*.map.json\r\n\r\n# Android Studio will place build artifacts here\r\n/android/app/debug\r\n/android/app/profile\r\n/android/app/release\r\n\r\n# Exceptions to above rules.\r\n!**/ios/**/default.mode1v3\r\n!**/ios/**/default.mode2v3\r\n!**/ios/**/default.pbxuser\r\n!**/ios/**/default.perspectivev3\r\n!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages\r\n!/dev/ci/**/Gemfile.lock\r\n!.vscode/settings.json"
+        }
+    ]
+}

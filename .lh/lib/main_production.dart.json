@@ -1,0 +1,66 @@
+{
+    "sourceFile": "lib/main_production.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1732018399502,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732018475972,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n void main() {\r\n-  runApp(const MyApp(\r\n+  runApp(const App(\r\n     flavor: 'Production',\r\n     baseUrl: 'https://www.digitalksp.com',\r\n   ));\r\n }\r\n"
+                },
+                {
+                    "date": 1732018839265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,5 @@\n     baseUrl: 'https://www.digitalksp.com',\r\n   ));\r\n }\r\n \r\n-// run -> flutter run --target lib/main_production.dart\n\\ No newline at end of file\n+// run -> flutter run --target lib/main_production.dart --flavor development\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732019089980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,5 @@\n     baseUrl: 'https://www.digitalksp.com',\r\n   ));\r\n }\r\n \r\n-// run -> flutter run --target lib/main_production.dart --flavor development\n\\ No newline at end of file\n+// run -> flutter run --target lib/main_production.dart --flavor production\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732089338867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n void main() {\r\n   runApp(const App(\r\n     flavor: 'Production',\r\n-    baseUrl: 'https://www.digitalksp.com',\r\n+    baseUrl: 'https://www.digitalksp.com/',\r\n   ));\r\n }\r\n \r\n // run -> flutter run --target lib/main_production.dart --flavor production\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732097800909,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n void main() {\r\n   runApp(const App(\r\n     flavor: 'Production',\r\n-    baseUrl: 'https://www.digitalksp.com/',\r\n+    baseUrl: 'https://www.digitalksp.com',\r\n   ));\r\n }\r\n \r\n // run -> flutter run --target lib/main_production.dart --flavor production\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732126130489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,11 @@\n+import 'package:digitalksp/constants/app_config.dart';\r\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n void main() {\r\n   runApp(const App(\r\n-    flavor: 'Production',\r\n+    flavor: FlavorType.PRODUCTION,\r\n     baseUrl: 'https://www.digitalksp.com',\r\n   ));\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1732126300494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n \r\n void main() {\r\n   runApp(const App(\r\n     flavor: FlavorType.PRODUCTION,\r\n+    name: 'DigitalKSP',\r\n     baseUrl: 'https://www.digitalksp.com',\r\n   ));\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1732165372145,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,12 +2,13 @@\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n void main() {\r\n-  runApp(const App(\r\n-    flavor: FlavorType.PRODUCTION,\r\n-    name: 'DigitalKSP',\r\n-    baseUrl: 'https://www.digitalksp.com',\r\n-  ));\r\n+  AppConfig.initialize(\r\n+    appName: 'DigitalKSP',\r\n+    flavorType: FlavorType.STAGING,\r\n+    baseUrl: 'http://192.168.29.168',\r\n+  );\r\n+  runApp(const App());\r\n }\r\n \r\n // run -> flutter run --target lib/main_production.dart --flavor production\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732165388225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n void main() {\r\n   AppConfig.initialize(\r\n     appName: 'DigitalKSP',\r\n     flavorType: FlavorType.STAGING,\r\n-    baseUrl: 'http://192.168.29.168',\r\n+    baseUrl: 'https://www.digitalksp.com',\r\n   );\r\n   runApp(const App());\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1732165393952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n void main() {\r\n   AppConfig.initialize(\r\n     appName: 'DigitalKSP',\r\n-    flavorType: FlavorType.STAGING,\r\n+    flavorType: FlavorType.PRODUCTION,\r\n     baseUrl: 'https://www.digitalksp.com',\r\n   );\r\n   runApp(const App());\r\n }\r\n"
+                },
+                {
+                    "date": 1732165751426,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,10 @@\n     appName: 'DigitalKSP',\r\n     flavorType: FlavorType.PRODUCTION,\r\n     baseUrl: 'https://www.digitalksp.com',\r\n   );\r\n+\r\n+  ApiRequest.initialize(baseUrl: AppConfig.instance.baseUrl);\r\n   runApp(const App());\r\n }\r\n \r\n // run -> flutter run --target lib/main_production.dart --flavor production\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732267016430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,16 @@\n import 'package:digitalksp/constants/app_config.dart';\r\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n+import 'constants/urls.dart';\r\n+\r\n void main() {\r\n   AppConfig.initialize(\r\n     appName: 'DigitalKSP',\r\n     flavorType: FlavorType.PRODUCTION,\r\n     baseUrl: 'https://www.digitalksp.com',\r\n+    appIcon: 'assets/digital-ksp-logo.png',\r\n   );\r\n \r\n   ApiRequest.initialize(baseUrl: AppConfig.instance.baseUrl);\r\n   runApp(const App());\r\n"
+                }
+            ],
+            "date": 1732018399502,
+            "name": "Commit-0",
+            "content": "import 'package:digitalksp/main.dart';\r\nimport 'package:flutter/material.dart';\r\n\r\nvoid main() {\r\n  runApp(const MyApp(\r\n    flavor: 'Production',\r\n    baseUrl: 'https://www.digitalksp.com',\r\n  ));\r\n}\r\n\r\n// run -> flutter run --target lib/main_production.dart"
+        }
+    ]
+}

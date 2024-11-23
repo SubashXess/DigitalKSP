@@ -39,18 +39,16 @@ class BlogContentModel {
     ];
     final altTextKeys = ['alt_text1', 'alt_text2', 'alt_text3', 'alt_text4'];
 
-    // Populate imagePaths with URLs
     for (var key in pathKeys) {
       String path = json[key] ?? '';
       if (path.startsWith('../')) {
         path = path.substring(3);
       }
       if (path.isNotEmpty) {
-        imagePaths.add('${ApiRequest.IMAGE_URL_WITHOUT_UPLOADS}$path');
+        imagePaths.add('${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$path');
       }
     }
 
-    // Populate altTexts
     for (var key in altTextKeys) {
       altTexts.add(json[key] ?? '');
     }

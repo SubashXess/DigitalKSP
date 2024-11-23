@@ -1,27 +1,24 @@
 import 'package:digitalksp/constants/constants.dart';
+import 'package:digitalksp/pages/splash_page.dart';
 import 'package:digitalksp/providers/author_providers.dart';
 import 'package:digitalksp/providers/blog_providers.dart';
 import 'package:digitalksp/providers/categories_provider.dart';
+import 'package:digitalksp/providers/internet_provider.dart';
 import 'package:digitalksp/providers/jobs_providers.dart';
 import 'package:digitalksp/providers/miscellaneous_provider.dart';
 import 'package:digitalksp/providers/wishwall_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'pages/dashboard.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => MiscellaneousProvider()),
+        ChangeNotifierProvider(create: (context) => InternetProvider(context)),
         ChangeNotifierProvider(create: (_) => CategoriesProvider()),
         ChangeNotifierProvider(create: (_) => AuthorProviders()),
         ChangeNotifierProvider(create: (_) => BlogProviders()),
@@ -33,9 +30,21 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primaryColor: Colors.orange, scaffoldBackgroundColor: Colors.white),
-        home: const Dashboard(),
-        // home: const OrgProfileWallPage(profileId: '9'),
+        home: const SplashPage(),
       ),
     );
   }
 }
+
+// Running each flavor on DEBUG mode:
+// flutter run -t lib/main.dart --flavor prod
+// flutter run -t lib/main_dev.dart --flavor dev
+
+// Running each flavor on PROFILE mode:
+// flutter run --profile -t lib/main.dart --flavor prod
+// flutter run --profile -t lib/main_dev.dart --flavor dev
+
+// Running each flavor on RELEASE mode:
+// flutter run --release -t lib/main.dart --flavor prod
+// flutter run --release -t lib/main_dev.dart --flavor dev
+// flutter build appbundle --flavor production -t lib/main_production.dart

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "lib/main_dev.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1732017870861,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732018181838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n void main() {\r\n-  runApp(const MyApp(flavor: 'Development'));\r\n+  runApp(const MyApp(flavor: 'Development', baseUrl: 'http://192.168.29.168/',));\r\n }\r\n"
+                }
+            ],
+            "date": 1732017870861,
+            "name": "Commit-0",
+            "content": "import 'package:digitalksp/main.dart';\r\nimport 'package:flutter/material.dart';\r\n\r\nvoid main() {\r\n  runApp(const MyApp(flavor: 'Development'));\r\n}\r\n"
+        }
+    ]
+}

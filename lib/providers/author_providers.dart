@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:digitalksp/models/author/author_models.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../constants/urls.dart';
 import '../models/blogs/blog_models.dart';
@@ -22,8 +22,7 @@ class AuthorProviders extends ChangeNotifier {
   String? get selectedCategory => _selectedCategory;
 
   Future<void> getAuthors() async {
-    final Uri url =
-        Uri.parse('${ApiRequest.BASE_URL}${ApiRequest.API_GET_AUTHORS}');
+    final Uri url = Uri.parse(ApiRequest.instance.apiGetAuthor);
 
     try {
       final response = await http.get(url, headers: {
@@ -45,8 +44,7 @@ class AuthorProviders extends ChangeNotifier {
 
   Future<void> getAuthorById(String id) async {
     _authorById = [];
-    final Uri url =
-        Uri.parse('${ApiRequest.BASE_URL}${ApiRequest.API_GET_AUTHORS}?id=$id');
+    final Uri url = Uri.parse('${ApiRequest.instance.apiGetAuthor}?id=$id');
 
     try {
       final response = await http.get(url, headers: {
@@ -69,7 +67,7 @@ class AuthorProviders extends ChangeNotifier {
   Future<void> getAuthorBlogCategories(String authorId) async {
     _authorBlogCategories = null;
     final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_AUTHOR_BLOG_CATEGORIES}?author=$authorId');
+        '${ApiRequest.instance.apiGetAuthorBlogCategory}?author=$authorId');
 
     try {
       final response = await http.get(url, headers: {
@@ -91,8 +89,8 @@ class AuthorProviders extends ChangeNotifier {
 
   Future<void> getBlogByAuthor(String authorId) async {
     _blogByAuthor = [];
-    final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_BLOG_BY_AUTHOR}?author=$authorId');
+    final Uri url =
+        Uri.parse('${ApiRequest.instance.apiGetBlogByAuthor}?author=$authorId');
 
     try {
       final response = await http.get(url, headers: {
@@ -116,7 +114,7 @@ class AuthorProviders extends ChangeNotifier {
   Future<void> getBlogByCategory(String authorId, String category) async {
     _blogByAuthor = [];
     final Uri url = Uri.parse(
-        '${ApiRequest.BASE_URL}${ApiRequest.API_GET_BLOG_BY_AUTHOR}?author=$authorId&category=$category');
+        '${ApiRequest.instance.apiGetBlogByAuthor}?author=$authorId&category=$category');
 
     try {
       final response = await http.get(url, headers: {

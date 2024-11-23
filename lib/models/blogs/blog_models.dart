@@ -1,3 +1,5 @@
+import 'package:digitalksp/models/author/author_models.dart';
+
 import '../../constants/urls.dart';
 
 class BlogModels {
@@ -19,6 +21,7 @@ class BlogModels {
       type; // Normal, Front Banner, Recent, Latest, Most Popular, Featured
   final String shareCount;
   final String userId;
+  final AuthorModels authorModel;
 
   BlogModels({
     required this.id,
@@ -38,17 +41,18 @@ class BlogModels {
     required this.type,
     required this.shareCount,
     required this.userId,
+    required this.authorModel,
   });
 
   factory BlogModels.fromJson(Map<String, dynamic> json) {
-    String imagePath = json['cover_photo'];
+    String imagePath = json['cover_photo'] ?? '';
 
     if (imagePath.startsWith('../')) {
       imagePath = imagePath.substring(3);
     }
 
     final imageUrl = imagePath.isNotEmpty
-        ? '${ApiRequest.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'
+        ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'
         : '';
 
     return BlogModels(
@@ -69,11 +73,22 @@ class BlogModels {
       type: json["type"] ?? '',
       shareCount: json["share_count"].toString(),
       userId: json["user_id"].toString(),
+      authorModel: AuthorModels.fromJson(json['author_details']),
     );
   }
 
   static List<BlogModels> blogsFromJson(Map<String, dynamic> jsonData) {
     final List<dynamic> blogList = jsonData['data'] ?? [];
     return blogList.map((data) => BlogModels.fromJson(data)).toList();
+  }
+}
+
+class BlogCategoryModel {
+  final Map<String, dynamic> categories;
+
+  const BlogCategoryModel({required this.categories});
+
+  factory BlogCategoryModel.fromJson(Map<String, dynamic> json) {
+    return BlogCategoryModel(categories: json['data']);
   }
 }

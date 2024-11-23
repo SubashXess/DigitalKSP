@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:digitalksp/constants/urls.dart';
 import 'package:digitalksp/models/categories_model.dart';
 import 'package:flutter/foundation.dart';
@@ -13,8 +12,7 @@ class CategoriesProvider extends ChangeNotifier {
   int? get categorySelectedIndex => _categorySelectedIndex;
 
   Future<void> getCategory() async {
-    final Uri url =
-        Uri.parse('${ApiRequest.BASE_URL}${ApiRequest.API_GET_CATEGORIES}');
+    final Uri url = Uri.parse(ApiRequest.instance.apiGetCategories);
 
     try {
       final response = await http.get(url, headers: {

@@ -1,38 +1,53 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 class ApiRequest {
-  // static const String DOMAIN =
-  //     'http://192.168.29.168/DigitalKSP-Backend/controllers/';
-  static const String IMAGE_URL_WITH_UPLOADS =
-      'http://192.168.29.168/DigitalKSP-Backend/uploads/';
-  static const String IMAGE_URL_WITHOUT_UPLOADS =
-      'http://192.168.29.168/DigitalKSP-Backend/';
+  final String baseUrl;
 
-  static const String BASE_URL =
-      'http://192.168.29.168/DigitalKSP-Backend/controllers/';
+  ApiRequest._({required this.baseUrl});
+
+  static late final ApiRequest _instance;
+
+  factory ApiRequest.initialize({required String baseUrl}) {
+    _instance = ApiRequest._(baseUrl: baseUrl);
+    return _instance;
+  }
+
+  static ApiRequest get instance => _instance;
+
+  String get _url => '$baseUrl/controllers/v1';
 
   static const String AUTHORIZATION = 'Authorization';
   static const String CONTENT_TYPE = 'Content-Type';
   static const String CONTENT_TYPE_JSON = 'application/json';
 
-  static const String API_GET_QUOTE = 'get_quotes.php';
-  static const String API_GET_AUTHORS = 'author/get_author.php';
-  static const String API_GET_CATEGORIES = 'get_categories.php';
-  static const String API_GET_BLOG_BY_AUTHOR = 'blogs/blogs_by_author.php';
-  static const String API_GET_AUTHOR_BLOG_CATEGORIES =
-      'author/get_author_blog_categories.php';
-  static const String API_GET_BLOG_POST = 'blogs/get_blog_post.php';
-  static const String API_GET_BLOGS = 'blogs/get_blog.php';
+  String get IMAGE_URL_WITH_UPLOADS => '$baseUrl/uploads/';
+  String get IMAGE_URL_WITHOUT_UPLOADS => '$baseUrl/';
+
+  // Quotes
+  String get apiGetQuote => '$_url/quotes/get_quotes.php';
+
+  // Authors
+  String get apiGetAuthor => '$_url/author/get_author.php';
+
+  // Blog Categories
+  String get apiGetCategories => '$_url/category/get_categories.php';
+  String get apiGetAuthorBlogCategory =>
+      '$_url/category/get_author_blog_categories.php'; // author
+
+  // Blogs
+  String get apiGetBlogByCategory => '$_url/blogs/get_blog_post.php';
+  String get apiGetBlogByIndCategory =>
+      '$_url/blogs/get_ind_blogs_by_category.php';
+  String get apiGetBlogByAuthor => '$_url/blogs/blogs_by_author.php';
+  String get apiGetBlogs => '$_url/blogs/get_blog.php';
+  String get apiGetBlogPost => '$_url/blogs/get_blog_post.php'; // blog_id
 
   // Jobs
-  static const String API_GET_JOBS = 'jobs/get_jobs.php';
-  static const String API_GET_JOB_POST =
-      'jobs/get_job_post.php'; // PARAMETERS: job_id = ?
-  static const String API_POST_JOB_APPLY = 'jobs/apply_job.php';
+  String get apiApplyJob => '$_url/jobs/apply_job.php';
+  String get apiGetJobPost => '$_url/jobs/get_job_post.php'; // job_id
+  String get apiGetJobs => '$_url/jobs/get_jobs.php';
 
-  // Wish-Wall Profiles
-  static const String API_GET_IND_PROFILE =
-      'wishwall/get_wishwall_profile.php'; // PARAMETERS: id = ? (optional)
-  static const String API_GET_ORG_PROFILE =
-      'wishwall/get_org_profile.php'; // PARAMETERS: id = ? (optional)
+  // Wishwall profiles
+  String get apiGetOrgProfile => '$_url/wishwall/get_org_profile.php';
+  String get apiGetIndProfile => '$_url/wishwall/get_ind_profile.php';
 }

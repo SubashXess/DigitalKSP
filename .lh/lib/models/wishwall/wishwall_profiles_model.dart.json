@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1731932224662,
@@ -20,6 +20,14 @@
                 {
                     "date": 1731932444052,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -148,9 +148,9 @@\n       achievements: json[\"achievements\"] ?? '',\r\n       otherQualification: json[\"other_qualification\"] ?? '',\r\n       university: json[\"university\"] ?? '',\r\n       passingYear: json[\"passing_year\"].toString(),\r\n-      experienceYears: json[\"experience_years\"].toString(),\r\n+      experienceYears: '${json[\"experience_years\"]} years'.toString(),\r\n       currentCompany: json[\"current_company\"] ?? '',\r\n       designation: json[\"designation\"] ?? '',\r\n       bio: json[\"bio\"] ?? '',\r\n       profilePhoto: imageUrl,\r\n"
+                },
+                {
+                    "date": 1732172995252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,9 +44,9 @@\n     //   imagePath = imagePath.substring(3);\r\n     // }\r\n \r\n     final imageUrl = imagePath.isNotEmpty\r\n-        ? '${ApiRequest.IMAGE_URL_WITH_UPLOADS}$imagePath'\r\n+        ? '${ApiRequest.instance.IMAGE_URL_WITH_UPLOADS}$imagePath'\r\n         : 'assets/images/placeholder-user.png';\r\n \r\n     return OrgProfileModel(\r\n       id: json[\"id\"].toString(),\r\n"
+                },
+                {
+                    "date": 1732173004933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,9 +131,9 @@\n     //   imagePath = imagePath.substring(3);\r\n     // }\r\n \r\n     final imageUrl = imagePath.isNotEmpty\r\n-        ? '${ApiRequest.IMAGE_URL_WITH_UPLOADS}$imagePath'\r\n+        ? '${ApiRequest.instance.IMAGE_URL_WITH_UPLOADS}$imagePath'\r\n         : 'assets/images/placeholder-user.png';\r\n \r\n     return IndProfileModel(\r\n       id: json[\"id\"].toString(),\r\n"
                 }
             ],
             "date": 1731932224662,

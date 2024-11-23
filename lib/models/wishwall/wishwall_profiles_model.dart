@@ -45,7 +45,7 @@ class OrgProfileModel {
     // }
 
     final imageUrl = imagePath.isNotEmpty
-        ? '${ApiRequest.IMAGE_URL_WITH_UPLOADS}$imagePath'
+        ? '${ApiRequest.instance.IMAGE_URL_WITH_UPLOADS}$imagePath'
         : 'assets/images/placeholder-user.png';
 
     return OrgProfileModel(
@@ -132,7 +132,7 @@ class IndProfileModel {
     // }
 
     final imageUrl = imagePath.isNotEmpty
-        ? '${ApiRequest.IMAGE_URL_WITH_UPLOADS}$imagePath'
+        ? '${ApiRequest.instance.IMAGE_URL_WITH_UPLOADS}$imagePath'
         : 'assets/images/placeholder-user.png';
 
     return IndProfileModel(

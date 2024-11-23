@@ -1,0 +1,18 @@
+{
+    "sourceFile": "flutter_launcher_icons-development-2.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1732026683847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1732026683847,
+            "name": "Commit-0",
+            "content": "# flutter pub run flutter_launcher_icons\nflutter_launcher_icons:\n  image_path: \"assets/icon/icon.png\"\n\n  android: \"launcher_icon\"\n  # image_path_android: \"assets/icon/icon.png\"\n  min_sdk_android: 21 # android min sdk min:16, default 21\n  # adaptive_icon_background: \"assets/icon/background.png\"\n  # adaptive_icon_foreground: \"assets/icon/foreground.png\"\n  # adaptive_icon_monochrome: \"assets/icon/monochrome.png\"\n\n  ios: true\n  # image_path_ios: \"assets/icon/icon.png\"\n  remove_alpha_channel_ios: true\n  # image_path_ios_dark_transparent: \"assets/icon/icon_dark.png\"\n  # image_path_ios_tinted_grayscale: \"assets/icon/icon_tinted.png\"\n  # desaturate_tinted_to_grayscale_ios: true\n\n  web:\n    generate: true\n    image_path: \"path/to/image.png\"\n    background_color: \"#hexcode\"\n    theme_color: \"#hexcode\"\n\n  windows:\n    generate: true\n    image_path: \"path/to/image.png\"\n    icon_size: 48 # min:48, max:256, default: 48\n\n  macos:\n    generate: true\n    image_path: \"path/to/image.png\"\n"
+        }
+    ]
+}

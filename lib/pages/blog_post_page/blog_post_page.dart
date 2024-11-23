@@ -356,17 +356,20 @@ class _BlogPostPageState extends State<BlogPostPage> {
                                                     provider.blogContent.first
                                                         .blogId
                                                 ? null
-                                                : () => Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (_) =>
-                                                            BlogPostPage(
-                                                                blogId:
-                                                                    latest.id,
-                                                                authorId: latest
-                                                                    .author,
-                                                                headerSection:
-                                                                    latest))),
+                                                : () {
+                                                    Navigator.pushReplacement(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (_) =>
+                                                                BlogPostPage(
+                                                                    blogId:
+                                                                        latest
+                                                                            .id,
+                                                                    authorId: latest
+                                                                        .author,
+                                                                    headerSection:
+                                                                        latest)));
+                                                  },
                                             child: Container(
                                               width: size.width * 0.5,
                                               margin: EdgeInsets.only(

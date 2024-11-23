@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/constants/app_config.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1732110167912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732110240262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,5 @@\n-class AppConfig {}\r\n+enum FlavorType {DEVELOPMENT, STAGING, PRODUCTION}\r\n+\r\n+class AppConfig {\r\n+  static FlavorType appFlavor = FlavorType.DEVELOPMENT;\r\n+}\r\n"
+                },
+                {
+                    "date": 1732110296772,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,5 +3,8 @@\n enum FlavorType { DEVELOPMENT, STAGING, PRODUCTION }\r\n \r\n class AppConfig {\r\n   static FlavorType appFlavor = FlavorType.DEVELOPMENT;\r\n+  static String get appName => appFlavor.name;\r\n+\r\n+  static String get title {}\r\n }\r\n"
+                },
+                {
+                    "date": 1732110488688,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,17 @@\n // ignore_for_file: constant_identifier_names\r\n \r\n-enum FlavorType { DEVELOPMENT, STAGING, PRODUCTION }\r\n+enum FlavorType { development, staging, production }\r\n \r\n class AppConfig {\r\n   static FlavorType appFlavor = FlavorType.DEVELOPMENT;\r\n   static String get appName => appFlavor.name;\r\n \r\n-  static String get title {}\r\n+  static String get title {\r\n+    switch (expression) {\r\n+      case value:\r\n+        \r\n+        break;\r\n+      default:\r\n+    }\r\n+  }\r\n }\r\n"
+                }
+            ],
+            "date": 1732110167912,
+            "name": "Commit-0",
+            "content": "class AppConfig {}"
+        }
+    ]
+}

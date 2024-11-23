@@ -1,0 +1,38 @@
+{
+    "sourceFile": "lib/pages/onboard_page/onboard_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1732194539596,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732194545101,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n   const OnboardPage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Placeholder();\r\n+    return Scaffold();\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732194557759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+import 'package:flutter/material.dart';\r\n+\r\n+class OnboardPage extends StatelessWidget {\r\n+  const OnboardPage({super.key});\r\n+\r\n+  @override\r\n+  Widget build(BuildContext context) {\r\n+    final Size size = MediaQuery.of(context).size;\r\n+    return Scaffold();\r\n+  }\r\n+}\r\n"
+                },
+                {
+                    "date": 1732194566386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+import 'package:flutter/material.dart';\r\n+\r\n+class OnboardPage extends StatelessWidget {\r\n+  const OnboardPage({super.key});\r\n+\r\n+  @override\r\n+  Widget build(BuildContext context) {\r\n+    final Size size = MediaQuery.of(context).size;\r\n+    return Scaffold(\r\n+      body: Column(),\r\n+    );\r\n+  }\r\n+}\r\n"
+                },
+                {
+                    "date": 1732194591442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,11 @@\n   Widget build(BuildContext context) {\r\n     final Size size = MediaQuery.of(context).size;\r\n     return Scaffold(\r\n       body: Column(\r\n-        children: [],\r\n+        children: [\r\n+          \r\n+        ],\r\n       ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732194989857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,4 +12,30 @@\n       ),\r\n     );\r\n   }\r\n }\r\n+\r\n+\r\n+class DotIndicator extends StatelessWidget {\r\n+  const DotIndicator({\r\n+    this.isActive = false,\r\n+    super.key,\r\n+  });\r\n+\r\n+  final bool isActive;\r\n+\r\n+  @override\r\n+  Widget build(BuildContext context) {\r\n+    return AnimatedContainer(\r\n+      duration: const Duration(milliseconds: 300),\r\n+      height: 8,\r\n+      width: isActive ? 24 : 8,\r\n+      decoration: BoxDecoration(\r\n+        color: isActive ? Theme.of(context).primaryColor : Colors.white,\r\n+        border: isActive ? null : Border.all(color: Theme.of(context).primaryColor),\r\n+        borderRadius: const BorderRadius.all(\r\n+          Radius.circular(12),\r\n+        ),\r\n+      ),\r\n+    );\r\n+  }\r\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1732194539596,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass OnboardPage extends StatelessWidget {\r\n  const OnboardPage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Placeholder();\r\n  }\r\n}"
+        }
+    ]
+}

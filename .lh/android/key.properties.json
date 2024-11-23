@@ -1,0 +1,30 @@
+{
+    "sourceFile": "android/key.properties",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1732271640536,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732271698262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n-storePassword=<password-from-previous-step>\r\n-keyPassword=<password-from-previous-step>\r\n+storePassword=Digitalksp@2024\r\n+keyPassword=Digitalksp@2024\r\n\\ No newline at end of file\n keyAlias=upload\r\n-storeFile=<keystore-file-location>\n+storeFile=C:\\Users\\subux\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732271706098,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n storePassword=Digitalksp@2024\r\n keyPassword=Digitalksp@2024\r\n-keyAlias=upload\r\n+keyAlias=digitalksp\r\n storeFile=C:\\Users\\subux\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732271837514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n storePassword=Digitalksp@2024\r\n keyPassword=Digitalksp@2024\r\n keyAlias=digitalksp\r\n-storeFile=C:\\Users\\subux\n\\ No newline at end of file\n+storeFile=C:\\\\Users\\\\subux\\\\digitalksp-keystore.jks\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1732271640535,
+            "name": "Commit-0",
+            "content": "storePassword=<password-from-previous-step>\r\nkeyPassword=<password-from-previous-step>\r\nkeyAlias=upload\r\nstoreFile=<keystore-file-location>"
+        }
+    ]
+}
