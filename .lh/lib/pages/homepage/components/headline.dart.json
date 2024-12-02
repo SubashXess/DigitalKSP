@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/pages/homepage/components/headline.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1732361466220,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732364487690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n           Expanded(\r\n             child: Text(headline,\r\n                 style: Theme.of(context)\r\n                     .textTheme\r\n-                    .headlineSmall\r\n+                    .headlineMedium\r\n                     ?.copyWith(fontWeight: FontWeight.w600)),\r\n           ),\r\n           SizedBox(width: showMore ? 10.0 : 0.0),\r\n           showMore\r\n"
+                },
+                {
+                    "date": 1732364521686,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n             child: Text(headline,\r\n                 style: Theme.of(context)\r\n                     .textTheme\r\n                     .headlineMedium\r\n-                    ?.copyWith(fontWeight: FontWeight.w600)),\r\n+                    ?.copyWith(fontWeight: FontWeight.w600, fontSize: 16.0)),\r\n           ),\r\n           SizedBox(width: showMore ? 10.0 : 0.0),\r\n           showMore\r\n               ? SmallTextButton(\r\n"
+                }
+            ],
+            "date": 1732361466220,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nimport '../../../widgets/buttons_widget.dart';\r\n\r\nclass HeadlineSection extends StatelessWidget {\r\n  const HeadlineSection(\r\n      {super.key, required this.headline, this.showMore = false, this.onTap});\r\n\r\n  final String headline;\r\n  final bool showMore;\r\n  final VoidCallback? onTap;\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Padding(\r\n      padding: const EdgeInsets.symmetric(horizontal: 16.0),\r\n      child: Row(\r\n        children: [\r\n          Expanded(\r\n            child: Text(headline,\r\n                style: Theme.of(context)\r\n                    .textTheme\r\n                    .headlineSmall\r\n                    ?.copyWith(fontWeight: FontWeight.w600)),\r\n          ),\r\n          SizedBox(width: showMore ? 10.0 : 0.0),\r\n          showMore\r\n              ? SmallTextButton(\r\n                  label: 'View all',\r\n                  onTap: onTap,\r\n                )\r\n              : const SizedBox(),\r\n        ],\r\n      ),\r\n    );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

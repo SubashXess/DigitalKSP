@@ -1,4 +1,5 @@
 import 'package:digitalksp/constants/constants.dart';
+import 'package:digitalksp/constants/styles.dart';
 import 'package:digitalksp/pages/splash_page.dart';
 import 'package:digitalksp/providers/author_providers.dart';
 import 'package:digitalksp/providers/blog_providers.dart';
@@ -6,6 +7,7 @@ import 'package:digitalksp/providers/categories_provider.dart';
 import 'package:digitalksp/providers/internet_provider.dart';
 import 'package:digitalksp/providers/jobs_providers.dart';
 import 'package:digitalksp/providers/miscellaneous_provider.dart';
+import 'package:digitalksp/providers/search_providers.dart';
 import 'package:digitalksp/providers/wishwall_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,13 +26,14 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => BlogProviders()),
         ChangeNotifierProvider(create: (_) => WishWallProviders()),
         ChangeNotifierProvider(create: (_) => JobsProviders()),
+        ChangeNotifierProvider(create: (_) => SearchProviders()),
       ],
       builder: (context, child) => MaterialApp(
         title: APP_NAME,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            primaryColor: Colors.orange, scaffoldBackgroundColor: Colors.white),
+        theme: AppThemes.instance.lightTheme,
         home: const SplashPage(),
+        // home: const LazyLoading(),
       ),
     );
   }

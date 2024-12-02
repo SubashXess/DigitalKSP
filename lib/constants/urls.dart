@@ -50,4 +50,7 @@ class ApiRequest {
   // Wishwall profiles
   String get apiGetOrgProfile => '$_url/wishwall/get_org_profile.php';
   String get apiGetIndProfile => '$_url/wishwall/get_ind_profile.php';
+
+  // Search
+  String get apiSearch => '$_url/search/search.php';
 }

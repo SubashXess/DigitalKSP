@@ -30,16 +30,6 @@ class _AuthorListPageState extends State<AuthorListPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              //   child: Text(
-              //     'Our Authors',
-              //     style: Theme.of(context)
-              //         .textTheme
-              //         .headlineMedium
-              //         ?.copyWith(fontWeight: FontWeight.w600),
-              //   ),
-              // ),
               const SizedBox(height: 20.0),
               Consumer<AuthorProviders>(builder: (context, provider, _) {
                 return ListView.separated(
@@ -58,40 +48,47 @@ class _AuthorListPageState extends State<AuthorListPage> {
                                 builder: (_) =>
                                     AuthorPage(authorId: author.id)));
                       },
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 60.0,
-                            height: 80.0,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.borderRadius),
-                                color: Colors.grey.shade200,
-                                image: DecorationImage(
-                                    image: CachedNetworkImageProvider(
-                                        author.photoUrl),
-                                    fit: BoxFit.cover)),
-                          ),
-                          const SizedBox(width: 10.0),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                author.blogCount == '0'
-                                    ? const SizedBox()
-                                    : Text('${author.blogCount} Blogs',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium
-                                            ?.copyWith(color: Colors.grey)),
-                                const SizedBox(height: 4.0),
-                                Text(author.name,
-                                    style:
-                                        Theme.of(context).textTheme.titleSmall),
-                              ],
+                      child: Container(
+                        color: Colors.transparent,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 80.0,
+                              height: 100.0,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.borderRadius),
+                                  color: Colors.grey.shade200,
+                                  image: DecorationImage(
+                                      image: CachedNetworkImageProvider(
+                                          author.photoUrl),
+                                      fit: BoxFit.cover)),
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 10.0),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  author.blogCount == '0'
+                                      ? const SizedBox()
+                                      : Text(
+                                          author.blogCount == '1'
+                                              ? '${author.blogCount} Blog'
+                                              : '${author.blogCount} Blogs',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall
+                                              ?.copyWith(color: Colors.grey)),
+                                  const SizedBox(height: 4.0),
+                                  Text(author.name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

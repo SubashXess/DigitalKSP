@@ -1,0 +1,38 @@
+{
+    "sourceFile": "lib/models/drawer_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1732885316612,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732885334131,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,4 @@\n-class DrawerModel {}\r\n+class DrawerModel {\r\n+  final String title;\r\n+  final String icon;\r\n+}\r\n"
+                },
+                {
+                    "date": 1732885364487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,8 @@\n class DrawerModel {\r\n   final String title;\r\n   final String icon;\r\n+\r\n+  const DrawerModel({required this.title, required this.icon});\r\n+\r\n+  static List<DrawerModel> generatedItem = [];\r\n }\r\n"
+                },
+                {
+                    "date": 1732885437066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,10 @@\n   final String icon;\r\n \r\n   const DrawerModel({required this.title, required this.icon});\r\n \r\n-  static List<DrawerModel> generatedItem = [];\r\n+  static List<DrawerModel> generatedItem = [\r\n+    const DrawerModel(title: 'Job Posted', icon: 'assets/icons/job.svg'),\r\n+    const DrawerModel(title: 'Individual Profile', icon: 'assets/icons/user.svg'),\r\n+    const DrawerModel(title: 'Organization Profile', icon: 'assets/icons/office.svg'),\r\n+  ];\r\n }\r\n"
+                },
+                {
+                    "date": 1732885445178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,6 +9,8 @@\n     const DrawerModel(\r\n         title: 'Individual Profile', icon: 'assets/icons/user.svg'),\r\n     const DrawerModel(\r\n         title: 'Organization Profile', icon: 'assets/icons/office.svg'),\r\n+        const DrawerModel(\r\n+        title: 'Organization Profile', icon: 'assets/icons/office.svg'),\r\n   ];\r\n }\r\n"
+                },
+                {
+                    "date": 1732885453030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n         title: 'Individual Profile', icon: 'assets/icons/user.svg'),\r\n     const DrawerModel(\r\n         title: 'Organization Profile', icon: 'assets/icons/office.svg'),\r\n     const DrawerModel(\r\n-        title: 'Organization Profile', icon: 'assets/icons/office.svg'),\r\n+        title: 'About us', icon: 'assets/icons/office.svg'),\r\n   ];\r\n }\r\n"
+                }
+            ],
+            "date": 1732885316612,
+            "name": "Commit-0",
+            "content": "class DrawerModel {}"
+        }
+    ]
+}

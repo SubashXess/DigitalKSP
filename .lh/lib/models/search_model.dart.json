@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/models/search_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1732768455616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732768488887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -98,12 +98,12 @@\n     final imageUrl = imagePath.isNotEmpty\r\n         ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'\r\n         : '';\r\n \r\n-    // return SearchBlogModel(\r\n-    //   id: json['id'].toString(),\r\n-    //   name: json['name'] ?? '',\r\n-    //   bio: json['address'] ?? '',\r\n-    //   profile: imageUrl,\r\n-    // );\r\n+    return SearchBlogModel(\r\n+      id: json['id'].toString(),\r\n+      title: json['title'] ?? '',\r\n+      category: json['category'] ?? '',\r\n+      profile: imageUrl,\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732770710044,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,13 +75,16 @@\n   }\r\n }\r\n \r\n class SearchBlogModel {\r\n-  final String id;\r\n-  final String title;\r\n-  final String category;\r\n-  final String publishDate;\r\n+ final int id;\r\n+    final String title;\r\n+    final String category;\r\n+    final String coverPhoto;\r\n+    final DateTime publishedDate;\r\n+    final AuthorDetails authorDetails;\r\n \r\n+\r\n   const SearchBlogModel({\r\n     required this.id,\r\n     required this.title,\r\n     required this.category,\r\n"
+                },
+                {
+                    "date": 1732770801899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,20 +75,21 @@\n   }\r\n }\r\n \r\n class SearchBlogModel {\r\n-  final int id;\r\n+  final String id;\r\n   final String title;\r\n   final String category;\r\n   final String coverPhoto;\r\n-  final DateTime publishedDate;\r\n-  final AuthorDetails authorDetails;\r\n+  final String publishedDate;\r\n+  final AuthorModels authorDetails;\r\n \r\n   const SearchBlogModel({\r\n     required this.id,\r\n     required this.title,\r\n     required this.category,\r\n-    required this.publishDate,\r\n+    required this.publishedDate,\r\n+    required this.authorDetails,\r\n   });\r\n \r\n   factory SearchBlogModel.fromJson(Map<String, dynamic> json) {\r\n     String imagePath = json['profile_picture'] ?? '';\r\n"
+                },
+                {
+                    "date": 1732770848677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -102,11 +102,13 @@\n         ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'\r\n         : '';\r\n \r\n     return SearchBlogModel(\r\n-      id: json['id'].toString(),\r\n-      title: json['title'] ?? '',\r\n-      category: json['category'] ?? '',\r\n-      profile: imageUrl,\r\n+     id: json[\"id\"],\r\n+        title: json[\"title\"],\r\n+        category: json[\"category\"],\r\n+        coverPhoto: json[\"cover_photo\"],\r\n+        publishedDate: DateTime.parse(json[\"published_date\"]),\r\n+        authorDetails: AuthorDetails.fromJson(json[\"author_details\"]),\r\n     );\r\n   }\r\n }\r\n"
+                }
+            ],
+            "date": 1732768455616,
+            "name": "Commit-0",
+            "content": "import 'package:digitalksp/models/author/author_models.dart';\r\nimport 'package:digitalksp/models/blogs/blog_models.dart';\r\nimport 'package:digitalksp/models/categories_model.dart';\r\nimport 'package:digitalksp/models/jobs/jobs_models.dart';\r\n\r\nimport '../constants/urls.dart';\r\n\r\nclass SearchModel {\r\n  final List<CategoriesModel> category;\r\n  final List<AuthorModels> author;\r\n  final List<BlogModels> blog;\r\n  final List<JobModels> job;\r\n\r\n  const SearchModel(\r\n      {required this.category,\r\n      required this.author,\r\n      required this.blog,\r\n      required this.job});\r\n\r\n  factory SearchModel.fromJson(Map<String, dynamic> json) {\r\n    return SearchModel(\r\n      category: List<CategoriesModel>.from(\r\n          json['data']['category'].map((data) => data)),\r\n      author:\r\n          List<AuthorModels>.from(json['data']['author'].map((data) => data)),\r\n      blog: List<BlogModels>.from(json['data']['blogs'].map((data) => data)),\r\n      job: List<JobModels>.from(json['data']['jobs'].map((data) => data)),\r\n    );\r\n  }\r\n}\r\n\r\nclass SearchCategoryModel {\r\n  final String id;\r\n  final String name;\r\n  const SearchCategoryModel({required this.id, required this.name});\r\n\r\n  factory SearchCategoryModel.fromJson(Map<String, dynamic> json) {\r\n    return SearchCategoryModel(\r\n      id: json['id'].toString(),\r\n      name: json['name'] ?? '',\r\n    );\r\n  }\r\n}\r\n\r\nclass SearchAuthorModel {\r\n  final String id;\r\n  final String name;\r\n  final String bio;\r\n  final String profile;\r\n\r\n  const SearchAuthorModel({\r\n    required this.id,\r\n    required this.name,\r\n    required this.bio,\r\n    required this.profile,\r\n  });\r\n\r\n  factory SearchAuthorModel.fromJson(Map<String, dynamic> json) {\r\n    String imagePath = json['profile_picture'] ?? '';\r\n\r\n    if (imagePath.startsWith('../')) {\r\n      imagePath = imagePath.substring(3);\r\n    }\r\n\r\n    final imageUrl = imagePath.isNotEmpty\r\n        ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'\r\n        : '';\r\n\r\n    return SearchAuthorModel(\r\n      id: json['id'].toString(),\r\n      name: json['name'] ?? '',\r\n      bio: json['address'] ?? '',\r\n      profile: imageUrl,\r\n    );\r\n  }\r\n}\r\n\r\nclass SearchBlogModel {\r\n  final String id;\r\n  final String title;\r\n  final String category;\r\n  final String publishDate;\r\n\r\n  const SearchBlogModel({\r\n    required this.id,\r\n    required this.title,\r\n    required this.category,\r\n    required this.publishDate,\r\n  });\r\n\r\n  factory SearchBlogModel.fromJson(Map<String, dynamic> json) {\r\n    String imagePath = json['profile_picture'] ?? '';\r\n\r\n    if (imagePath.startsWith('../')) {\r\n      imagePath = imagePath.substring(3);\r\n    }\r\n\r\n    final imageUrl = imagePath.isNotEmpty\r\n        ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'\r\n        : '';\r\n\r\n    // return SearchBlogModel(\r\n    //   id: json['id'].toString(),\r\n    //   name: json['name'] ?? '',\r\n    //   bio: json['address'] ?? '',\r\n    //   profile: imageUrl,\r\n    // );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

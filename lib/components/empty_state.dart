@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:digitalksp/widgets/buttons_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,8 +11,6 @@ Future showEmptyState(
   required VoidCallback onPressed,
   VoidCallback? onCancelled,
 }) {
-  log('Now im here');
-
   return showModalBottomSheet(
     context: context,
     enableDrag: false,

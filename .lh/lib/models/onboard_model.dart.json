@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1732194847724,
@@ -52,6 +52,14 @@
                 {
                     "date": 1732261407910,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,21 +7,21 @@\n       {required this.image, required this.title, required this.description});\r\n \r\n   static List<OnboardModel> generatedItem = [\r\n     const OnboardModel(\r\n-      image: \"assets/images/on-boarding/onboarding1.png\",\r\n+      image: \"assets/images/onboard-1.jpg\",\r\n       title: \"Find Inspiring Reads\",\r\n       description:\r\n           \"Explore blogs that spark ideas, knowledge, and inspiration—anytime, anywhere.\",\r\n     ),\r\n     const OnboardModel(\r\n-      image: \"assets/images/on-boarding/onboarding2.png\",\r\n+      image: \"assets/images/onboard-2.jpg\",\r\n       title: \"Browse Your Interests\",\r\n       description:\r\n           \"Find blogs tailored to your favorite topics and discover new ideas that captivate you.\",\r\n     ),\r\n     const OnboardModel(\r\n-      image: \"assets/images/on-boarding/onboarding3.png\",\r\n+      image: \"assets/images/onboard-3.jpg\",\r\n       title: \"Share What You Love\",\r\n       description:\r\n           \"Easily share inspiring blogs with your friends and community.\",\r\n     ),\r\n"
+                },
+                {
+                    "date": 1732965642346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       {required this.image, required this.title, required this.description});\r\n \r\n   static List<OnboardModel> generatedItem = [\r\n     const OnboardModel(\r\n-      image: \"assets/images/onboard-1.jpg\",\r\n+      image: \"assets/images/onboard-1.png\",\r\n       title: \"Find Inspiring Reads\",\r\n       description:\r\n           \"Explore blogs that spark ideas, knowledge, and inspiration—anytime, anywhere.\",\r\n     ),\r\n"
+                },
+                {
+                    "date": 1732966334434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n       {required this.image, required this.title, required this.description});\r\n \r\n   static List<OnboardModel> generatedItem = [\r\n     const OnboardModel(\r\n-      image: \"assets/images/onboard-1.png\",\r\n+      image: \"assets/images/onboard-1.jpg\",\r\n       title: \"Find Inspiring Reads\",\r\n       description:\r\n           \"Explore blogs that spark ideas, knowledge, and inspiration—anytime, anywhere.\",\r\n     ),\r\n"
                 }
             ],
             "date": 1732194847724,

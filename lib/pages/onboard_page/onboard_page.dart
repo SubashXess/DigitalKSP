@@ -35,7 +35,7 @@ class _OnboardPageState extends State<OnboardPage> {
       _pageController.animateToPage(
         _pageIndex,
         duration: const Duration(milliseconds: 350),
-        curve: Curves.easeIn,
+        curve: Curves.fastEaseInToSlowEaseOut,
       );
     });
   }
@@ -96,16 +96,20 @@ class _OnboardPageState extends State<OnboardPage> {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
                     prefs.setBool('onboard-page', false);
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (_) => const HomePage()),
-                      (route) => false,
-                    );
+                    _onNavigate();
                   }),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  void _onNavigate() {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (_) => const HomePage()),
+      (route) => false,
     );
   }
 }
@@ -129,32 +133,36 @@ class OnBoardContent extends StatelessWidget {
     return Column(
       children: [
         Expanded(
+          flex: 3,
           child: Image.asset(
             image,
             width: size.width,
             fit: BoxFit.cover,
+            alignment: Alignment.topCenter,
           ),
         ),
         const SizedBox(height: 16),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              Text(title,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Text(title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge
+                        ?.copyWith(fontWeight: FontWeight.w700)),
+                const SizedBox(height: 14),
+                Text(
+                  description,
+                  textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
-                      .headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.w700)),
-              const SizedBox(height: 14),
-              Text(
-                description,
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: Colors.black54),
-              ),
-            ],
+                      .bodyMedium
+                      ?.copyWith(color: Colors.black54),
+                ),
+              ],
+            ),
           ),
         ),
       ],

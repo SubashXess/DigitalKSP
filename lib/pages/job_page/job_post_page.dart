@@ -1,5 +1,6 @@
 import 'package:digitalksp/constants/styles.dart';
 import 'package:digitalksp/pages/job_page/apply_job_page.dart';
+import 'package:digitalksp/widgets/buttons_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
@@ -47,34 +48,14 @@ class _JobPostPageState extends State<JobPostPage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => ApplyJobPage(
-                                    jobDetails: provider.jobPostModel)));
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: 56.0,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(AppDimensions.borderRadius),
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        child: Text(
-                          'Apply for this job',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge
-                              ?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ),
+                    RoundedButton(
+                      label: 'Apply for this job',
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => ApplyJobPage(
+                                  jobDetails: provider.jobPostModel))),
+                    )
                   ],
                 ),
               ),
@@ -208,6 +189,7 @@ class _JobPostPageState extends State<JobPostPage> {
                                   const SizedBox(height: 4.0),
                                   Text(
                                     provider.jobPostModel!.salary,
+                                    textAlign: TextAlign.center,
                                     style:
                                         Theme.of(context).textTheme.bodyMedium,
                                   ),

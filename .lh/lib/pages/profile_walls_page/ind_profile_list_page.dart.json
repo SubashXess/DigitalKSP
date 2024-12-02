@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/pages/profile_walls_page/ind_profile_list_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1732945651980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732945695926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,9 @@\n \r\n class _IndProfileListPageState extends State<IndProfileListPage> {\r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold();\r\n+    return Scaffold(\r\n+      appBar: AppBar(title: Text('Professional Profile'),),\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732945742460,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,17 @@\n class _IndProfileListPageState extends State<IndProfileListPage> {\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n-      appBar: AppBar(title: Text('Professional Profile')),\r\n+      appBar: AppBar(title: const Text('Professional Profile')),\r\n+      body: ListView.builder(\r\n+         itemCount: 10,\r\n+          shrinkWrap: true,\r\n+          padding: const EdgeInsets.all(16.0),\r\n+          clipBehavior: Clip.none,\r\n+        itemBuilder: (context, index) {\r\n+          return Container();\r\n+        },\r\n+      ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732945810664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,10 +17,24 @@\n         shrinkWrap: true,\r\n         padding: const EdgeInsets.all(16.0),\r\n         clipBehavior: Clip.none,\r\n         itemBuilder: (context, index) {\r\n-          return Container();\r\n+          return Padding(\r\n+            padding:  EdgeInsets.only(bottom: index == 10 - 1 ? 0.0 : 10.0),\r\n+            child: ListIndProfileItem(),\r\n+          );\r\n         },\r\n       ),\r\n     );\r\n   }\r\n }\r\n+\r\n+class ListIndProfileItem extends StatelessWidget {\r\n+  const ListIndProfileItem({\r\n+    super.key,\r\n+  });\r\n+\r\n+  @override\r\n+  Widget build(BuildContext context) {\r\n+    return Container();\r\n+  }\r\n+}\r\n"
+                }
+            ],
+            "date": 1732945651980,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass IndProfileListPage extends StatefulWidget {\r\n  const IndProfileListPage({super.key});\r\n\r\n  @override\r\n  State<IndProfileListPage> createState() => _IndProfileListPageState();\r\n}\r\n\r\nclass _IndProfileListPageState extends State<IndProfileListPage> {\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold();\r\n  }\r\n}"
+        }
+    ]
+}

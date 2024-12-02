@@ -79,11 +79,8 @@ class _ExploreByTopicState extends State<ExploreByTopic> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (_) => BlogPostPage(
-                                            blogId: item.id,
-                                            authorId: item.author,
-                                            headerSection: item,
-                                          ),
+                                          builder: (_) =>
+                                              BlogPostPage(blogId: item.id),
                                         ),
                                       );
                                     },

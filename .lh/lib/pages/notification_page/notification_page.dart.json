@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/pages/notification_page/notification_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1732771488549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1732771488549,
+            "name": "Commit-0",
+            "content": "import 'package:digitalksp/models/notification_models.dart';\r\nimport 'package:flutter/material.dart';\r\nimport 'components/notification_item.dart';\r\n\r\nclass NotificationPage extends StatefulWidget {\r\n  const NotificationPage({super.key});\r\n\r\n  @override\r\n  State<NotificationPage> createState() => _NotificationPageState();\r\n}\r\n\r\nclass _NotificationPageState extends State<NotificationPage> {\r\n  late final List<NotificationModels> _notifications;\r\n\r\n  @override\r\n  void initState() {\r\n    super.initState();\r\n    _notifications = NotificationModels.generatedItem;\r\n  }\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold(\r\n      appBar: AppBar(title: const Text('Notification Page')),\r\n      body: _notifications.isEmpty\r\n          ? Container(\r\n              padding: const EdgeInsets.all(24.0),\r\n              alignment: Alignment.center,\r\n              child: Column(\r\n                crossAxisAlignment: CrossAxisAlignment.center,\r\n                mainAxisAlignment: MainAxisAlignment.center,\r\n                children: [\r\n                  Text('No notifications',\r\n                      style: Theme.of(context)\r\n                          .textTheme\r\n                          .headlineLarge\r\n                          ?.copyWith(fontWeight: FontWeight.w600)),\r\n                  const SizedBox(height: 10.0),\r\n                  Text('You don\\'t have any notification\\nat this time',\r\n                      textAlign: TextAlign.center,\r\n                      style: Theme.of(context)\r\n                          .textTheme\r\n                          .bodyMedium\r\n                          ?.copyWith(color: Colors.black54)),\r\n                ],\r\n              ),\r\n            )\r\n          : ListView.builder(\r\n              itemCount: _notifications.length,\r\n              shrinkWrap: true,\r\n              padding: const EdgeInsets.all(16.0),\r\n              clipBehavior: Clip.none,\r\n              itemBuilder: (context, index) {\r\n                final item = _notifications[index];\r\n                return Padding(\r\n                  padding: EdgeInsets.only(\r\n                      bottom: index == _notifications.length - 1 ? 0.0 : 10.0),\r\n                  child: NotificationItem(item: item),\r\n                );\r\n              },\r\n            ),\r\n    );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

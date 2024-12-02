@@ -121,7 +121,7 @@ class _AuthorPageState extends State<AuthorPage> {
                                   readLessText: 'Read less',
                                   readMoreTextStyle: Theme.of(context)
                                       .textTheme
-                                      .labelLarge
+                                      .bodyMedium
                                       ?.copyWith(
                                           color:
                                               Theme.of(context).primaryColor),
@@ -178,7 +178,7 @@ class _AuthorPageState extends State<AuthorPage> {
                                                               .length -
                                                           1
                                                   ? 0.0
-                                                  : 4.0),
+                                                  : 6.0),
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 14.0),
                                           alignment: Alignment.center,
@@ -201,7 +201,7 @@ class _AuthorPageState extends State<AuthorPage> {
                                             category ?? '',
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .labelMedium
+                                                .bodyMedium
                                                 ?.copyWith(
                                                     fontWeight: FontWeight.w400,
                                                     color:
@@ -237,10 +237,7 @@ class _AuthorPageState extends State<AuthorPage> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (_) => BlogPostPage(
-                                                blogId: blogs.id,
-                                                headerSection: blogs,
-                                                authorId: blogs.author,
-                                              ),
+                                                  blogId: blogs.id),
                                             ),
                                           ),
                                           child: Container(
@@ -267,7 +264,10 @@ class _AuthorPageState extends State<AuthorPage> {
                                                               ?.copyWith(
                                                                   color: Theme.of(
                                                                           context)
-                                                                      .primaryColor)),
+                                                                      .primaryColor,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500)),
                                                       const SizedBox(
                                                           height: 8.0),
                                                       Text(blogs.title,
@@ -326,13 +326,16 @@ class _AuthorPageState extends State<AuthorPage> {
                                                 const SizedBox(width: 10.0),
                                                 Container(
                                                   width: 80.0,
-                                                  height: 80.0,
+                                                  height: 100.0,
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             AppDimensions
                                                                 .borderRadius),
                                                     color: Colors.grey.shade200,
+                                                    border: Border.all(
+                                                        color: Colors
+                                                            .grey.shade100),
                                                     image: DecorationImage(
                                                         image:
                                                             CachedNetworkImageProvider(

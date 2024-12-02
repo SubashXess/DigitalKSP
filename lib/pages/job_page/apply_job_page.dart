@@ -365,7 +365,7 @@ class _ApplyJobPageState extends State<ApplyJobPage> {
                                       'Browse File',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .labelMedium,
+                                          .labelSmall,
                                     ),
                                   ],
                                 ),
@@ -385,46 +385,48 @@ class _ApplyJobPageState extends State<ApplyJobPage> {
                   ? () {}
                   : () {
                       if (_formKey.currentState!.validate()) {
-                        // Success
-                        setState(() {
-                          _loading = true;
-                        });
-                        showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (context) => const Center(
-                            child: CircularProgressIndicator.adaptive(),
-                          ),
-                        );
-                        final provider = context.read<JobsProviders>();
-                        provider
-                            .applyJob(
-                          context,
-                          job: JobApplyModel(
-                            jobId: widget.jobDetails!.id,
-                            name: _nameController.text.trim(),
-                            phone: _mobileController.text.trim(),
-                            email: _emailController.text.trim(),
-                            ctc: _ctcController.text.trim(),
-                            company: _currentCompanyController.text.trim(),
-                            resume: File(_selectedResume?['filePath']),
-                          ),
-                        )
-                            .then(
-                          (_) {
-                            _nameController.clear();
-                            _mobileController.clear();
-                            _emailController.clear();
-                            _ctcController.clear();
-                            _currentCompanyController.clear();
-                            _selectedResume = null;
+                        if (_selectedResume != null) {
+                          // Success
+                          setState(() {
+                            _loading = true;
+                          });
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) => const Center(
+                              child: CircularProgressIndicator.adaptive(),
+                            ),
+                          );
+                          final provider = context.read<JobsProviders>();
+                          provider
+                              .applyJob(
+                            context,
+                            job: JobApplyModel(
+                              jobId: widget.jobDetails!.id,
+                              name: _nameController.text.trim(),
+                              phone: _mobileController.text.trim(),
+                              email: _emailController.text.trim(),
+                              ctc: _ctcController.text.trim(),
+                              company: _currentCompanyController.text.trim(),
+                              resume: File(_selectedResume?['filePath']),
+                            ),
+                          )
+                              .then(
+                            (_) {
+                              _nameController.clear();
+                              _mobileController.clear();
+                              _emailController.clear();
+                              _ctcController.clear();
+                              _currentCompanyController.clear();
+                              _selectedResume = null;
 
-                            setState(() {
-                              _loading = false;
-                            });
-                          },
-                        );
-                        _loading ? null : Navigator.pop(context);
+                              setState(() {
+                                _loading = false;
+                              });
+                            },
+                          );
+                          _loading ? null : Navigator.pop(context);
+                        }
                       } else {
                         // Error
                       }

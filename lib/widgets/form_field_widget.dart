@@ -64,7 +64,7 @@ class RoundedFormField extends StatelessWidget {
       children: [
         label == null
             ? const SizedBox()
-            : Text(label ?? '', style: Theme.of(context).textTheme.labelMedium),
+            : Text(label ?? '', style: Theme.of(context).textTheme.labelSmall),
         SizedBox(height: label == null ? 0.0 : 8.0),
         TextFormField(
           controller: controller,
@@ -104,7 +104,7 @@ class RoundedFormField extends StatelessWidget {
                     BorderRadius.circular(AppDimensions.borderRadius)),
             hintStyle: Theme.of(context)
                 .textTheme
-                .labelMedium
+                .labelSmall
                 ?.copyWith(color: Colors.grey.shade500),
           ),
           validator: validator,
@@ -117,8 +117,8 @@ class RoundedFormField extends StatelessWidget {
           inputFormatters: inputFormatters,
           style: Theme.of(context)
               .textTheme
-              .bodyMedium
-              ?.copyWith(fontWeight: FontWeight.w600),
+              .labelSmall
+              ?.copyWith(fontWeight: FontWeight.w500),
         ),
       ],
     );

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 12,
+            "activePatchIndex": 15,
             "patches": [
                 {
                     "date": 1732018399502,
@@ -56,6 +56,18 @@
                 {
                     "date": 1732267016430,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,16 @@\n import 'package:digitalksp/constants/app_config.dart';\r\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n+import 'constants/urls.dart';\r\n+\r\n void main() {\r\n   AppConfig.initialize(\r\n     appName: 'DigitalKSP',\r\n     flavorType: FlavorType.PRODUCTION,\r\n     baseUrl: 'https://www.digitalksp.com',\r\n+    appIcon: 'assets/digital-ksp-logo.png',\r\n   );\r\n \r\n   ApiRequest.initialize(baseUrl: AppConfig.instance.baseUrl);\r\n   runApp(const App());\r\n"
+                },
+                {
+                    "date": 1732962381595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import 'package:digitalksp/constants/app_config.dart';\r\n import 'package:digitalksp/main.dart';\r\n import 'package:flutter/material.dart';\r\n+import 'package:flutter/services.dart';\r\n \r\n import 'constants/urls.dart';\r\n \r\n void main() {\r\n@@ -12,8 +13,9 @@\n     appIcon: 'assets/digital-ksp-logo.png',\r\n   );\r\n \r\n   ApiRequest.initialize(baseUrl: AppConfig.instance.baseUrl);\r\n-  runApp(const App());\r\n+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])\r\n+      .then((value) => runApp(const App()));\r\n }\r\n \r\n // run -> flutter run --target lib/main_production.dart --flavor production\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732962410311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n \r\n import 'constants/urls.dart';\r\n \r\n void main() {\r\n+  WidgetsFlutterBinding.ensureInitialized();\r\n   AppConfig.initialize(\r\n     appName: 'DigitalKSP',\r\n     flavorType: FlavorType.PRODUCTION,\r\n     baseUrl: 'https://www.digitalksp.com',\r\n"
+                },
+                {
+                    "date": 1732962539198,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     appIcon: 'assets/digital-ksp-logo.png',\r\n   );\r\n \r\n   ApiRequest.initialize(baseUrl: AppConfig.instance.baseUrl);\r\n-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])\r\n-      .then((value) => runApp(const App()));\r\n+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);\r\n+  runApp(const App());\r\n }\r\n \r\n // run -> flutter run --target lib/main_production.dart --flavor production\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1732018399502,

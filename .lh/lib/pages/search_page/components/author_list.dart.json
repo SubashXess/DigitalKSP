@@ -1,0 +1,38 @@
+{
+    "sourceFile": "lib/pages/search_page/components/author_list.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1732779263247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732779368615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,17 @@\n import 'package:cached_network_image/cached_network_image.dart';\r\n import 'package:flutter/material.dart';\r\n import '../../../constants/styles.dart';\r\n \r\n+class SearchAuthorSection extends StatelessWidget {\r\n+  const SearchAuthorSection({super.key});\r\n+\r\n+  @override\r\n+  Widget build(BuildContext context) {\r\n+    return const Placeholder();\r\n+  }\r\n+}\r\n+\r\n class AuthorList extends StatelessWidget {\r\n   const AuthorList({super.key});\r\n \r\n   @override\r\n"
+                },
+                {
+                    "date": 1732779400144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,44 @@\n   const SearchAuthorSection({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Placeholder();\r\n+    return Column(\r\n+                  crossAxisAlignment: CrossAxisAlignment.start,\r\n+                  children: [\r\n+                    Row(\r\n+                      children: [\r\n+                        Expanded(\r\n+                          child: Text('AUTHORS',\r\n+                              style: Theme.of(context)\r\n+                                  .textTheme\r\n+                                  .labelSmall\r\n+                                  ?.copyWith(fontWeight: FontWeight.w600)),\r\n+                        ),\r\n+                        const SizedBox(width: 10.0),\r\n+                        SmallTextButton(\r\n+                          label: 'View all',\r\n+                          onTap: () {},\r\n+                        )\r\n+                      ],\r\n+                    ),\r\n+                    const SizedBox(height: 20.0),\r\n+                    ListView.builder(\r\n+                      itemCount: 5,\r\n+                      shrinkWrap: true,\r\n+                      padding: EdgeInsets.zero,\r\n+                      clipBehavior: Clip.none,\r\n+                      physics: const NeverScrollableScrollPhysics(),\r\n+                      itemBuilder: (context, index) {\r\n+                        return Padding(\r\n+                          padding: EdgeInsets.only(\r\n+                              bottom: index == 5 - 1 ? 0.0 : 10.0),\r\n+                          child: const AuthorList(),\r\n+                        );\r\n+                      },\r\n+                    ),\r\n+                  ],\r\n+                );\r\n   }\r\n }\r\n \r\n class AuthorList extends StatelessWidget {\r\n"
+                },
+                {
+                    "date": 1732779405882,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import 'package:cached_network_image/cached_network_image.dart';\r\n import 'package:flutter/material.dart';\r\n import '../../../constants/styles.dart';\r\n+import '../../../widgets/buttons_widget.dart';\r\n \r\n class SearchAuthorSection extends StatelessWidget {\r\n   const SearchAuthorSection({super.key});\r\n \r\n"
+                },
+                {
+                    "date": 1732779531826,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,15 @@\n import 'package:cached_network_image/cached_network_image.dart';\r\n+import 'package:digitalksp/models/search_model.dart';\r\n import 'package:flutter/material.dart';\r\n import '../../../constants/styles.dart';\r\n import '../../../widgets/buttons_widget.dart';\r\n \r\n class SearchAuthorSection extends StatelessWidget {\r\n-  const SearchAuthorSection({super.key});\r\n+  const SearchAuthorSection({super.key, required this.items});\r\n \r\n+  final List<SearchAuthorModel> items;\r\n+\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Column(\r\n       crossAxisAlignment: CrossAxisAlignment.start,\r\n"
+                },
+                {
+                    "date": 1732779601529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,8 +43,9 @@\n               child: const AuthorList(),\r\n             );\r\n           },\r\n         ),\r\n+        const SizedBox(height: 20.0),\r\n       ],\r\n     );\r\n   }\r\n }\r\n"
+                }
+            ],
+            "date": 1732779263247,
+            "name": "Commit-0",
+            "content": "import 'package:cached_network_image/cached_network_image.dart';\r\nimport 'package:flutter/material.dart';\r\nimport '../../../constants/styles.dart';\r\n\r\nclass AuthorList extends StatelessWidget {\r\n  const AuthorList({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return SizedBox(\r\n      width: double.infinity,\r\n      child: Row(\r\n        children: [\r\n          Container(\r\n            width: 50.0,\r\n            height: 50.0,\r\n            alignment: Alignment.bottomRight,\r\n            decoration: BoxDecoration(\r\n              shape: BoxShape.circle,\r\n              color: AppThemes.defaultTheme,\r\n              image: DecorationImage(\r\n                image: const CachedNetworkImageProvider(\r\n                    'https://images.pexels.com/photos/7665779/pexels-photo-7665779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),\r\n                fit: BoxFit.cover,\r\n                onError: (exception, stackTrace) => Container(),\r\n              ),\r\n            ),\r\n            child: Icon(Icons.check_circle_rounded,\r\n                color: Theme.of(context).primaryColor, size: 14.0),\r\n          ),\r\n          const SizedBox(width: 10.0),\r\n          Expanded(\r\n            child: Column(\r\n              crossAxisAlignment: CrossAxisAlignment.start,\r\n              children: [\r\n                Text(\r\n                  'Heitor Verdi',\r\n                  maxLines: 1,\r\n                  overflow: TextOverflow.ellipsis,\r\n                  style: Theme.of(context).textTheme.titleMedium?.copyWith(\r\n                      color: Colors.black, fontWeight: FontWeight.w500),\r\n                ),\r\n                const SizedBox(height: 2.0),\r\n                Text(\r\n                  'If your data does not change often, you can cache search results to reduce the load on the database.',\r\n                  maxLines: 1,\r\n                  overflow: TextOverflow.ellipsis,\r\n                  style: Theme.of(context).textTheme.bodySmall?.copyWith(\r\n                        color: Colors.black54,\r\n                      ),\r\n                ),\r\n              ],\r\n            ),\r\n          ),\r\n          const SizedBox(width: 10.0),\r\n        ],\r\n      ),\r\n    );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

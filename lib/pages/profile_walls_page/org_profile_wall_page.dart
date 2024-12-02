@@ -5,6 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:read_more_text/read_more_text.dart';
 
+import '../../constants/styles.dart';
+
 class OrgProfileWallPage extends StatefulWidget {
   const OrgProfileWallPage({super.key, required this.profileId});
 
@@ -92,61 +94,87 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                         ),
                       ),
                       const SizedBox(height: 20.0),
-                      Container(
-                        width: double.infinity,
-                        color: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Information',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(fontWeight: FontWeight.w700),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(16.0),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.borderRadius),
+                                  boxShadow: [
+                                    AppStyles.boxShadow(
+                                      color: Colors.black.withOpacity(0.036),
+                                    ),
+                                  ]),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Information',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(height: 10.0),
+                                  _buildInfoItem(context,
+                                      label: 'Established Date',
+                                      value: DateFormat('d MMM, yyyy').format(
+                                          DateTime.parse(provider
+                                              .orgDetailProfile
+                                              .first
+                                              .estDate))),
+                                  _buildInfoItem(context,
+                                      label: 'Years of Services',
+                                      value: provider
+                                          .orgDetailProfile.first.serviceYears),
+                                  _buildInfoItem(context,
+                                      label: 'Address',
+                                      value: provider
+                                          .orgDetailProfile.first.orgAddress),
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 10.0),
-                            _buildInfoItem(context,
-                                label: 'Established Date',
-                                value: DateFormat('d MMM, yyyy').format(
-                                    DateTime.parse(provider
-                                        .orgDetailProfile.first.estDate))),
-                            _buildInfoItem(context,
-                                label: 'Years of Services',
-                                value: provider
-                                    .orgDetailProfile.first.serviceYears),
-                            _buildInfoItem(context,
-                                label: 'Address',
-                                value:
-                                    provider.orgDetailProfile.first.orgAddress),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20.0),
-                      Container(
-                        width: double.infinity,
-                        color: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Contact Information',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(fontWeight: FontWeight.w700),
+                            const SizedBox(height: 20.0),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(16.0),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.borderRadius),
+                                  boxShadow: [
+                                    AppStyles.boxShadow(
+                                      color: Colors.black.withOpacity(0.036),
+                                    ),
+                                  ]),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Contact Information',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(height: 10.0),
+                                  _buildInfoItem(context,
+                                      label: 'Phone Number',
+                                      value: provider
+                                          .orgDetailProfile.first.orgMobile),
+                                  _buildInfoItem(context,
+                                      label: 'Email Address',
+                                      value: provider
+                                          .orgDetailProfile.first.orgEmail),
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 10.0),
-                            _buildInfoItem(context,
-                                label: 'Phone Number',
-                                value:
-                                    provider.orgDetailProfile.first.orgMobile),
-                            _buildInfoItem(context,
-                                label: 'Email Address',
-                                value:
-                                    provider.orgDetailProfile.first.orgEmail),
                           ],
                         ),
                       ),
@@ -172,7 +200,7 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                               readLessText: 'Read less',
                               readMoreTextStyle: Theme.of(context)
                                   .textTheme
-                                  .labelLarge
+                                  .bodyMedium
                                   ?.copyWith(
                                       color: Theme.of(context).primaryColor),
                               readMoreIconColor: Theme.of(context).primaryColor,
@@ -242,7 +270,7 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                               readLessText: 'Read less',
                               readMoreTextStyle: Theme.of(context)
                                   .textTheme
-                                  .labelLarge
+                                  .bodyMedium
                                   ?.copyWith(
                                       color: Theme.of(context).primaryColor),
                               readMoreIconColor: Theme.of(context).primaryColor,
@@ -276,8 +304,8 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
               child: Text(label,
                   style: Theme.of(context)
                       .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: Colors.black45)),
+                      .bodySmall
+                      ?.copyWith(color: Colors.black45, fontSize: 13.0)),
             ),
             const SizedBox(width: 10.0),
             Expanded(
@@ -286,8 +314,8 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                   textAlign: TextAlign.end,
                   style: Theme.of(context)
                       .textTheme
-                      .bodyMedium
-                      ?.copyWith(fontWeight: FontWeight.w500)),
+                      .bodySmall
+                      ?.copyWith(fontWeight: FontWeight.w500, fontSize: 13.0)),
             ),
           ],
         ),

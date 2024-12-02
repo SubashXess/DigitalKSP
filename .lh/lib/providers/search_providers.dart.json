@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/providers/search_providers.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1732773500472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732775267894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,10 +20,11 @@\n       });\r\n \r\n       if (response.statusCode == 200) {\r\n         final Map<String, dynamic> jsonData = json.decode(response.body);\r\n-        log(jsonData.toString());\r\n+        \r\n         _searchModel = SearchModel.fromJson(jsonData);\r\n+        log(_searchModel.toString());\r\n         notifyListeners();\r\n       } else {\r\n         throw Exception('Failed to load data');\r\n       }\r\n"
+                },
+                {
+                    "date": 1732775275025,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n \r\n       if (response.statusCode == 200) {\r\n         final Map<String, dynamic> jsonData = json.decode(response.body);\r\n \r\n-        _searchModel = SearchModel.fromJson(jsonData);\r\n+        _searchModel = SearchModel.fromJson(jsonData['data']);\r\n         log(_searchModel.toString());\r\n         notifyListeners();\r\n       } else {\r\n         throw Exception('Failed to load data');\r\n"
+                },
+                {
+                    "date": 1732777519282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,11 +20,11 @@\n       });\r\n \r\n       if (response.statusCode == 200) {\r\n         final Map<String, dynamic> jsonData = json.decode(response.body);\r\n-\r\n+log(_searchModel.toString());\r\n         _searchModel = SearchModel.fromJson(jsonData['data']);\r\n-        log(_searchModel.toString());\r\n+        \r\n         notifyListeners();\r\n       } else {\r\n         throw Exception('Failed to load data');\r\n       }\r\n"
+                }
+            ],
+            "date": 1732773500472,
+            "name": "Commit-0",
+            "content": "import 'dart:convert';\r\nimport 'dart:developer';\r\n\r\nimport 'package:digitalksp/models/search_model.dart';\r\nimport 'package:flutter/foundation.dart';\r\nimport 'package:http/http.dart' as http;\r\nimport '../constants/urls.dart';\r\n\r\nclass SearchProviders extends ChangeNotifier {\r\n  SearchModel? _searchModel;\r\n  SearchModel? get searchModel => _searchModel;\r\n\r\n  Future<void> getSearchResult({required String query}) async {\r\n    _searchModel = null;\r\n    final Uri url = Uri.parse('${ApiRequest.instance.apiSearch}?query=$query');\r\n\r\n    try {\r\n      final response = await http.get(url, headers: {\r\n        ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n      });\r\n\r\n      if (response.statusCode == 200) {\r\n        final Map<String, dynamic> jsonData = json.decode(response.body);\r\n        log(jsonData.toString());\r\n        _searchModel = SearchModel.fromJson(jsonData);\r\n        notifyListeners();\r\n      } else {\r\n        throw Exception('Failed to load data');\r\n      }\r\n    } catch (err, stacktrace) {\r\n      print('Stacktrace: $stacktrace');\r\n      throw Exception('Unexpected error occured $err');\r\n    }\r\n  }\r\n}\r\n"
+        }
+    ]
+}

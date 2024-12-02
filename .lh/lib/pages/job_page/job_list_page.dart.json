@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/pages/job_page/job_list_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1732943599654,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732944036209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,18 @@\n   const JobListPage({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold();\r\n+    return Scaffold(\r\n+      body: ListView.builder(\r\n+        itemCount: 10,\r\n+        shrinkWrap: true,\r\n+        padding: EdgeInsets.zero,\r\n+        clipBehavior: Clip.none,\r\n+        \r\n+        itemBuilder: (context, index) {\r\n+          return Container();\r\n+        },\r\n+      ),\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732944046738,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,12 @@\n         shrinkWrap: true,\r\n         padding: EdgeInsets.zero,\r\n         clipBehavior: Clip.none,\r\n         itemBuilder: (context, index) {\r\n-          return Container();\r\n+          return Container(\r\n+            width: double.infinity,\r\n+            \r\n+          );\r\n         },\r\n       ),\r\n     );\r\n   }\r\n"
+                },
+                {
+                    "date": 1732944055829,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,12 +11,23 @@\n         shrinkWrap: true,\r\n         padding: EdgeInsets.zero,\r\n         clipBehavior: Clip.none,\r\n         itemBuilder: (context, index) {\r\n-          return Container(\r\n-            width: double.infinity,\r\n-          );\r\n+          return JobItem();\r\n         },\r\n       ),\r\n     );\r\n   }\r\n }\r\n+\r\n+class JobItem extends StatelessWidget {\r\n+  const JobItem({\r\n+    super.key,]\r\n+  });\r\n+\r\n+  @override\r\n+  Widget build(BuildContext context) {\r\n+    return Container(\r\n+      width: double.infinity,\r\n+    );\r\n+  }\r\n+}\r\n"
+                }
+            ],
+            "date": 1732943599653,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass JobListPage extends StatelessWidget {\r\n  const JobListPage({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold();\r\n  }\r\n}"
+        }
+    ]
+}

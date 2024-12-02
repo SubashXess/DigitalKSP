@@ -24,12 +24,12 @@ class AuthorModels {
 
     final imageUrl = imagePath.isNotEmpty
         ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'
-        : 'assets/images/placeholder-user.png';
+        : '';
 
     return AuthorModels(
       id: json['id'].toString(),
-      name: json['name'],
-      bio: json['address'],
+      name: json['name'] ?? '',
+      bio: json['address'] ?? '',
       photoUrl: imageUrl,
       blogCount: json['total_blogs'].toString(),
     );

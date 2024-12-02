@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 39,
+            "activePatchIndex": 41,
             "patches": [
                 {
                     "date": 1732262543496,
@@ -164,6 +164,14 @@
                 {
                     "date": 1732268586051,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,8 @@\n         MaterialPageRoute(builder: (_) => const OnboardPage()),\r\n         (route) => false,\r\n       );\r\n     } else {\r\n-      prefs.clear();\r\n       Navigator.pushAndRemoveUntil(\r\n         context,\r\n         MaterialPageRoute(builder: (_) => const HomePage()),\r\n         (route) => false,\r\n"
+                },
+                {
+                    "date": 1732958240497,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,8 +85,9 @@\n                 AppConfig.instance.appIcon,\r\n                 width: MediaQuery.of(context).size.width * 0.60,\r\n               ),\r\n             ),\r\n+            const SizedBox(height: 20.0),\r\n             SlideTransition(\r\n               position: _slideAnimation,\r\n               child: FadeTransition(\r\n                 opacity: _fadeAnimation,\r\n"
+                },
+                {
+                    "date": 1732958343166,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,9 +85,9 @@\n                 AppConfig.instance.appIcon,\r\n                 width: MediaQuery.of(context).size.width * 0.60,\r\n               ),\r\n             ),\r\n-            const SizedBox(height: 20.0),\r\n+            const SizedBox(height: 16.0),\r\n             SlideTransition(\r\n               position: _slideAnimation,\r\n               child: FadeTransition(\r\n                 opacity: _fadeAnimation,\r\n"
                 }
             ],
             "date": 1732262543496,

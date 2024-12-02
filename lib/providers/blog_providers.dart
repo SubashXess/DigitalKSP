@@ -13,6 +13,9 @@ class BlogProviders extends ChangeNotifier {
   List<BlogContentModel> _blogContent = [];
   List<BlogContentModel> get blogContent => _blogContent;
 
+  BlogPostModel? _blogPostModel;
+  BlogPostModel? get blogPostModel => _blogPostModel;
+
   // Normal, Front Banner, Recent, Latest, Most Popular, Featured
 
   List<BlogModels> _normalBlogModel = [];
@@ -39,6 +42,9 @@ class BlogProviders extends ChangeNotifier {
   List<Map<String, dynamic>> _blogCategoryModel = [];
   List<Map<String, dynamic>> get blogCategoryModel => _blogCategoryModel;
 
+  List<BlogModels> _blogByTypeModel = [];
+  List<BlogModels> get blogByTypeModel => _blogByTypeModel;
+
   final Map<String, List<BlogModels>> _blogTypeMap = {
     'Normal': [],
     'Front Banner': [],
@@ -48,9 +54,10 @@ class BlogProviders extends ChangeNotifier {
     'Featured': []
   };
 
-  Future<void> getBlogs({required String type, required int limit}) async {
-    final Uri url =
-        Uri.parse('${ApiRequest.instance.apiGetBlogs}?type=$type&limit=$limit');
+  Future<void> getBlogs(
+      {required String type, int limit = 10, int page = 1}) async {
+    final Uri url = Uri.parse(
+        '${ApiRequest.instance.apiGetBlogs}?type=$type&limit=$limit&page=$page');
 
     try {
       final response = await http.get(url, headers: {
@@ -85,6 +92,7 @@ class BlogProviders extends ChangeNotifier {
 
   Future<void> getBlogContent(String blogId) async {
     _blogContent = [];
+    _blogPostModel = null;
 
     final Uri url =
         Uri.parse('${ApiRequest.instance.apiGetBlogPost}?blog_id=$blogId');
@@ -97,10 +105,16 @@ class BlogProviders extends ChangeNotifier {
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonData = json.decode(response.body);
 
-        List<dynamic> content = jsonData['data']['blog_content'];
+        // List<BlogContentModel> blogContent = jsonData['data']['blog_content'];
+        // BlogModels blog = jsonData['data']['blog_data'];
+        // AuthorModels author = jsonData['data']['author_details'];
 
-        _blogContent =
-            content.map((data) => BlogContentModel.fromJson(data)).toList();
+        final content = jsonData['data'];
+
+        _blogPostModel = BlogPostModel.fromJson(content);
+
+        // _blogContent =
+        //     content.map((data) => BlogContentModel.fromJson(data)).toList();
 
         notifyListeners();
       } else {
@@ -149,7 +163,7 @@ class BlogProviders extends ChangeNotifier {
   }
 
   Future<void> getBlogByIndCategory(
-      {String? category, String limit = '10'}) async {
+      {String? category, String limit = '10', String page = '1'}) async {
     _blogByIndCategory = [];
 
     final Uri url = Uri.parse(
@@ -164,6 +178,32 @@ class BlogProviders extends ChangeNotifier {
         final Map<String, dynamic> jsonData = json.decode(response.body);
 
         _blogByIndCategory = BlogModels.blogsFromJson(jsonData);
+
+        notifyListeners();
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } catch (err) {
+      throw Exception('Unexpected error occured $err');
+    }
+  }
+
+  Future<void> getBlogByType(
+      {required String type, String limit = '10', String page = '1'}) async {
+    _blogByTypeModel = [];
+
+    final Uri url =
+        Uri.parse('${ApiRequest.instance.apiGetBlogs}?type=$type&limit=$limit');
+
+    try {
+      final response = await http.get(url, headers: {
+        ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,
+      });
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> jsonData = json.decode(response.body);
+
+        _blogByTypeModel = BlogModels.blogsFromJson(jsonData);
 
         notifyListeners();
       } else {

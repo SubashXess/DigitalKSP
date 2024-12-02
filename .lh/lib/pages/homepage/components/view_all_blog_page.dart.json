@@ -1,0 +1,38 @@
+{
+    "sourceFile": "lib/pages/homepage/components/view_all_blog_page.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1732863892819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732863940621,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n import 'package:flutter/material.dart';\r\n+import 'package:provider/provider.dart';\r\n \r\n class ViewAllBlogPage extends StatefulWidget {\r\n-  const ViewAllBlogPage({super.key, required this.category});\r\n-  final String category;\r\n+  const ViewAllBlogPage({super.key, required this.type});\r\n+  final String type;\r\n \r\n   @override\r\n   State<ViewAllBlogPage> createState() => _ViewAllBlogPageState();\r\n }\r\n@@ -20,9 +21,9 @@\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Scaffold(\r\n       appBar: AppBar(\r\n-        title: Text(widget.category),\r\n+        title: Text('${widget.type} blogs'),\r\n       ),\r\n       body: Consumer<BlogProviders>(builder: (context, provider, _) {\r\n         return provider.blogByIndCategory.isEmpty\r\n             ? const Center(child: CircularProgressIndicator.adaptive())\r\n"
+                },
+                {
+                    "date": 1732864127179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n import 'package:flutter/material.dart';\r\n import 'package:provider/provider.dart';\r\n \r\n+import '../../../providers/blog_providers.dart';\r\n+import '../../category_page/components/blog_item.dart';\r\n+\r\n class ViewAllBlogPage extends StatefulWidget {\r\n   const ViewAllBlogPage({super.key, required this.type});\r\n   final String type;\r\n \r\n@@ -12,11 +15,10 @@\n class _ViewAllBlogPageState extends State<ViewAllBlogPage> {\r\n   @override\r\n   void initState() {\r\n     super.initState();\r\n-    // context\r\n-    //     .read<BlogProviders>()\r\n-    //     .getBlogByIndCategory(category: widget.category);\r\n+    context.read<BlogProviders>().getBlogs(type: widget.type, limit: 12);\r\n+   \r\n   }\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n"
+                },
+                {
+                    "date": 1732864162820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,17 +25,17 @@\n       appBar: AppBar(\r\n         title: Text('${widget.type} blogs'),\r\n       ),\r\n       body: Consumer<BlogProviders>(builder: (context, provider, _) {\r\n-        return provider.blogByIndCategory.isEmpty\r\n+        return provider.latestBlogModel.isEmpty\r\n             ? const Center(child: CircularProgressIndicator.adaptive())\r\n             : ListView.separated(\r\n-                itemCount: provider.blogByIndCategory.length,\r\n+                itemCount: provider.latestBlogModel.length,\r\n                 shrinkWrap: true,\r\n                 padding: const EdgeInsets.all(16.0),\r\n                 clipBehavior: Clip.none,\r\n                 itemBuilder: (context, index) {\r\n-                  final blogs = provider.blogByIndCategory[index];\r\n+                  final blogs = provider.latestBlogModel[index];\r\n                   return BlogItem(item: blogs);\r\n                 },\r\n                 separatorBuilder: (context, index) => Padding(\r\n                   padding: const EdgeInsets.symmetric(vertical: 16.0),\r\n"
+                },
+                {
+                    "date": 1732864358752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n class _ViewAllBlogPageState extends State<ViewAllBlogPage> {\r\n   @override\r\n   void initState() {\r\n     super.initState();\r\n-    context.read<BlogProviders>().getBlogs(type: widget.type, limit: 12);\r\n+    context.read<BlogProviders>().getBlogByType(type: widget.type, limit: '12');\r\n   }\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n"
+                },
+                {
+                    "date": 1732864364672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n class _ViewAllBlogPageState extends State<ViewAllBlogPage> {\r\n   @override\r\n   void initState() {\r\n     super.initState();\r\n-    context.read<BlogProviders>().getBlogByType(type: widget.type, limit: '12');\r\n+    context.read<BlogProviders>().getBlogByType(type: widget.type);\r\n   }\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n"
+                }
+            ],
+            "date": 1732863892819,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass ViewAllBlogPage extends StatefulWidget {\r\n  const ViewAllBlogPage({super.key, required this.category});\r\n  final String category;\r\n\r\n  @override\r\n  State<ViewAllBlogPage> createState() => _ViewAllBlogPageState();\r\n}\r\n\r\nclass _ViewAllBlogPageState extends State<ViewAllBlogPage> {\r\n  @override\r\n  void initState() {\r\n    super.initState();\r\n    // context\r\n    //     .read<BlogProviders>()\r\n    //     .getBlogByIndCategory(category: widget.category);\r\n  }\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold(\r\n      appBar: AppBar(\r\n        title: Text(widget.category),\r\n      ),\r\n      body: Consumer<BlogProviders>(builder: (context, provider, _) {\r\n        return provider.blogByIndCategory.isEmpty\r\n            ? const Center(child: CircularProgressIndicator.adaptive())\r\n            : ListView.separated(\r\n                itemCount: provider.blogByIndCategory.length,\r\n                shrinkWrap: true,\r\n                padding: const EdgeInsets.all(16.0),\r\n                clipBehavior: Clip.none,\r\n                itemBuilder: (context, index) {\r\n                  final blogs = provider.blogByIndCategory[index];\r\n                  return BlogItem(item: blogs);\r\n                },\r\n                separatorBuilder: (context, index) => Padding(\r\n                  padding: const EdgeInsets.symmetric(vertical: 16.0),\r\n                  child: Divider(height: 0.0, color: Colors.grey.shade200),\r\n                ),\r\n              );\r\n      }),\r\n    );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

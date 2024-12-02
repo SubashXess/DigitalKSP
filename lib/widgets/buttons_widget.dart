@@ -75,8 +75,35 @@ class RoundedButton extends StatelessWidget {
           label,
           style: Theme.of(context)
               .textTheme
-              .labelLarge
-              ?.copyWith(color: Colors.white),
+              .labelSmall
+              ?.copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+        ),
+      ),
+    );
+  }
+}
+
+class SmallTextButton extends StatelessWidget {
+  const SmallTextButton(
+      {super.key, required this.label, this.labelColor, this.onTap});
+
+  final String label;
+  final Color? labelColor;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        color: Colors.transparent,
+        child: Text(
+          label,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontSize: 12.0,
+                color: labelColor ?? Theme.of(context).primaryColor,
+                fontWeight: FontWeight.w500,
+              ),
         ),
       ),
     );

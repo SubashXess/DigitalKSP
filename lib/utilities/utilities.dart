@@ -1,13 +1,29 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path;
 import 'package:file_picker/file_picker.dart';
 import 'package:share_plus/share_plus.dart';
 
 class Utilities {
-  static shareIt({required String url, required String? text}) {
-    final content = text != null || text!.isNotEmpty ? '$text\n$url' : url;
+  static void shareIt(
+    BuildContext context, {
+    required String url,
+    required String subject,
+    String? text,
+  }) {
+    final content = (text?.isNotEmpty ?? false) ? '$text\n$url' : url;
+    final box = context.findRenderObject() as RenderBox?;
 
-    Share.share(content);
+    if (box != null) {
+      Share.share(
+        content,
+        subject: subject,
+        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+      );
+    } else {
+      debugPrint('RenderBox is null, unable to determine share position.');
+      Share.share(content, subject: subject);
+    }
   }
 
   static Future<Map<String, dynamic>?> pickFile(

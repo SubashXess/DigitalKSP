@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/utilities/debouncer.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1732772065251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732772156496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,13 @@\n-class Debouncer {}\r\n+import 'dart:async';\r\n+\r\n+class Debouncer {\r\n+  final int milliseconds;\r\n+  Timer? _timer;\r\n+\r\n+  Debouncer({required this.milliseconds});\r\n+\r\n+  void run(Function() action) {\r\n+    _timer?.cancel();\r\n+    _timer = Timer(Duration(milliseconds: milliseconds), action);\r\n+  }\r\n+}\r\n"
+                },
+                {
+                    "date": 1732772169576,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,9 @@\n   void run(Function() action) {\r\n     _timer?.cancel();\r\n     _timer = Timer(Duration(milliseconds: milliseconds), action);\r\n   }\r\n+\r\n+  void cancel() {\r\n+    _timer?.cancel();\r\n+  }\r\n }\r\n"
+                },
+                {
+                    "date": 1732857169396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,5 @@\n \r\n   void cancel() {\r\n     _timer?.cancel();\r\n   }\r\n-}\n\\ No newline at end of file\n+}\r\n"
+                }
+            ],
+            "date": 1732772065250,
+            "name": "Commit-0",
+            "content": "class Debouncer {}"
+        }
+    ]
+}

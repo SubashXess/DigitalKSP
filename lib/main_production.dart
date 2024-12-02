@@ -1,10 +1,12 @@
 import 'package:digitalksp/constants/app_config.dart';
 import 'package:digitalksp/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'constants/urls.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   AppConfig.initialize(
     appName: 'DigitalKSP',
     flavorType: FlavorType.PRODUCTION,
@@ -13,6 +15,7 @@ void main() {
   );
 
   ApiRequest.initialize(baseUrl: AppConfig.instance.baseUrl);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const App());
 }
 

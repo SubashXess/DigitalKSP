@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:digitalksp/constants/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -73,17 +74,19 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                           const SizedBox(height: 20.0),
                           Text(
                             provider.indDetailProfile.first.fullName,
+                            textAlign: TextAlign.center,
                             style: Theme.of(context)
                                 .textTheme
-                                .titleLarge
+                                .headlineMedium
                                 ?.copyWith(fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(height: 4.0),
                           Text(
                             provider.indDetailProfile.first.designation,
+                            textAlign: TextAlign.center,
                             style: Theme.of(context)
                                 .textTheme
-                                .titleSmall
+                                .titleMedium
                                 ?.copyWith(
                                     color: Colors.black54,
                                     fontWeight: FontWeight.w400),
@@ -92,80 +95,108 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                       ),
                     ),
                     const SizedBox(height: 20.0),
-                    Container(
-                      width: double.infinity,
-                      color: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Information',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w700),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(16.0),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.borderRadius),
+                                boxShadow: [
+                                  AppStyles.boxShadow(
+                                    color: Colors.black.withOpacity(0.036),
+                                  ),
+                                ]),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Information',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.w700),
+                                ),
+                                const SizedBox(height: 10.0),
+                                _buildInfoItem(context,
+                                    label: 'Designation',
+                                    value: provider
+                                        .indDetailProfile.first.designation),
+                                _buildInfoItem(context,
+                                    label: 'Current Company',
+                                    value: provider
+                                        .indDetailProfile.first.currentCompany),
+                                _buildInfoItem(context,
+                                    label: 'Highest Qualification',
+                                    value: provider
+                                        .indDetailProfile.first.qualification),
+                                _buildInfoItem(context,
+                                    label: 'Other Qualification',
+                                    value: provider.indDetailProfile.first
+                                        .otherQualification),
+                                _buildInfoItem(context,
+                                    label: 'Address',
+                                    value: provider
+                                        .indDetailProfile.first.address),
+                                _buildInfoItem(context,
+                                    label: 'Industry Type',
+                                    value: provider
+                                        .indDetailProfile.first.industry),
+                                _buildInfoItem(context,
+                                    label: 'Date of Birth',
+                                    value: DateFormat('d MMM, yyyy').format(
+                                        DateTime.parse(provider
+                                            .indDetailProfile.first.dob))),
+                                _buildInfoItem(context,
+                                    label: 'Years of Experience',
+                                    value: provider.indDetailProfile.first
+                                        .experienceYears),
+                                _buildInfoItem(context,
+                                    label: 'Website',
+                                    value: provider.indDetailProfile.first.url),
+                              ],
+                            ),
                           ),
-                          const SizedBox(height: 10.0),
-                          _buildInfoItem(context,
-                              label: 'Designation',
-                              value:
-                                  provider.indDetailProfile.first.designation),
-                          _buildInfoItem(context,
-                              label: 'Current Company',
-                              value: provider
-                                  .indDetailProfile.first.currentCompany),
-                          _buildInfoItem(context,
-                              label: 'Highest Qualification',
-                              value: provider
-                                  .indDetailProfile.first.qualification),
-                          _buildInfoItem(context,
-                              label: 'Other Qualification',
-                              value: provider
-                                  .indDetailProfile.first.otherQualification),
-                          _buildInfoItem(context,
-                              label: 'Address',
-                              value: provider.indDetailProfile.first.address),
-                          _buildInfoItem(context,
-                              label: 'Industry Type',
-                              value: provider.indDetailProfile.first.industry),
-                          _buildInfoItem(context,
-                              label: 'Date of Birth',
-                              value: DateFormat('d MMM, yyyy').format(
-                                  DateTime.parse(
-                                      provider.indDetailProfile.first.dob))),
-                          _buildInfoItem(context,
-                              label: 'Years of Experience',
-                              value: provider
-                                  .indDetailProfile.first.experienceYears),
-                          _buildInfoItem(context,
-                              label: 'Website',
-                              value: provider.indDetailProfile.first.url),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20.0),
-                    Container(
-                      width: double.infinity,
-                      color: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Contact Information',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w700),
+                          const SizedBox(height: 20.0),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(16.0),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.borderRadius),
+                                boxShadow: [
+                                  AppStyles.boxShadow(
+                                    color: Colors.black.withOpacity(0.036),
+                                  ),
+                                ]),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Contact Information',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.w700),
+                                ),
+                                const SizedBox(height: 10.0),
+                                _buildInfoItem(context,
+                                    label: 'Mobile Number',
+                                    value:
+                                        provider.indDetailProfile.first.mobile),
+                                _buildInfoItem(context,
+                                    label: 'Email Address',
+                                    value:
+                                        provider.indDetailProfile.first.email),
+                              ],
+                            ),
                           ),
-                          const SizedBox(height: 10.0),
-                          _buildInfoItem(context,
-                              label: 'Mobile Number',
-                              value: provider.indDetailProfile.first.mobile),
-                          _buildInfoItem(context,
-                              label: 'Email Address',
-                              value: provider.indDetailProfile.first.email),
                         ],
                       ),
                     ),
@@ -191,7 +222,7 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                             readLessText: 'Read less',
                             readMoreTextStyle: Theme.of(context)
                                 .textTheme
-                                .labelLarge
+                                .bodyMedium
                                 ?.copyWith(
                                     color: Theme.of(context).primaryColor),
                             readMoreIconColor: Theme.of(context).primaryColor,
@@ -226,7 +257,7 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                             readLessText: 'Read less',
                             readMoreTextStyle: Theme.of(context)
                                 .textTheme
-                                .labelLarge
+                                .bodyMedium
                                 ?.copyWith(
                                     color: Theme.of(context).primaryColor),
                             readMoreIconColor: Theme.of(context).primaryColor,
@@ -259,8 +290,8 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
               child: Text(label,
                   style: Theme.of(context)
                       .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: Colors.black45)),
+                      .bodySmall
+                      ?.copyWith(color: Colors.black45, fontSize: 13.0)),
             ),
             const SizedBox(width: 10.0),
             Expanded(
@@ -269,8 +300,8 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                   textAlign: TextAlign.end,
                   style: Theme.of(context)
                       .textTheme
-                      .bodyMedium
-                      ?.copyWith(fontWeight: FontWeight.w500)),
+                      .bodySmall
+                      ?.copyWith(fontWeight: FontWeight.w500, fontSize: 13.0)),
             ),
           ],
         ),

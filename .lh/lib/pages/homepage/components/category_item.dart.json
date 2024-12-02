@@ -1,0 +1,110 @@
+{
+    "sourceFile": "lib/pages/homepage/components/category_item.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 23,
+            "patches": [
+                {
+                    "date": 1732359254189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732359260909,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,7 +22,7 @@\n   const CategoryItem({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Placeholder();\r\n+    return Container('');\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359623986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,7 +22,9 @@\n   const CategoryItem({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Container('');\r\n+    return GestureDetector(\r\n+      child: Container(),\r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359643827,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,10 +18,12 @@\n   }\r\n }\r\n \r\n class CategoryItem extends StatelessWidget {\r\n-  const CategoryItem({super.key});\r\n+  const CategoryItem({super.key, required this.onTap});\r\n \r\n+  final VoidCallback onTap;\r\n+\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return GestureDetector(\r\n       child: Container(),\r\n"
+                },
+                {
+                    "date": 1732359663047,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,15 +18,16 @@\n   }\r\n }\r\n \r\n class CategoryItem extends StatelessWidget {\r\n-  const CategoryItem({super.key, required this.onTap});\r\n+  const CategoryItem({super.key});\r\n \r\n   final VoidCallback onTap;\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return GestureDetector(\r\n+      onTap: onTap,\r\n       child: Container(),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359683447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,14 +20,13 @@\n \r\n class CategoryItem extends StatelessWidget {\r\n   const CategoryItem({super.key});\r\n \r\n-  final VoidCallback onTap;\r\n-\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return GestureDetector(\r\n-      onTap: onTap,\r\n+      onTap: () => Navigator.push(context,\r\n+          MaterialPageRoute(builder: (_) => CategoryPage(category: item.name))),\r\n       child: Container(),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359707440,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n import 'package:flutter/material.dart';\r\n \r\n+import '../../category_page/category_page.dart';\r\n+\r\n class CategoryItemList extends StatelessWidget {\r\n   const CategoryItemList({super.key});\r\n \r\n   @override\r\n@@ -18,10 +20,12 @@\n   }\r\n }\r\n \r\n class CategoryItem extends StatelessWidget {\r\n-  const CategoryItem({super.key});\r\n+  const CategoryItem({super.key, required this.item});\r\n \r\n+  final String item;\r\n+\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return GestureDetector(\r\n       onTap: () => Navigator.push(context,\r\n"
+                },
+                {
+                    "date": 1732359735928,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,13 @@\n import 'package:flutter/material.dart';\r\n \r\n+import '../../../models/categories_model.dart';\r\n import '../../category_page/category_page.dart';\r\n \r\n class CategoryItemList extends StatelessWidget {\r\n   const CategoryItemList({super.key});\r\n+  \r\n+  final List<CategoriesModel> items;\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return ListView.builder(\r\n@@ -13,9 +16,9 @@\n       scrollDirection: Axis.horizontal,\r\n       clipBehavior: Clip.none,\r\n       padding: EdgeInsets.zero,\r\n       itemBuilder: (context, index) {\r\n-        return CategoryItem();\r\n+        return CategoryItem(item: ,);\r\n       },\r\n     );\r\n   }\r\n }\r\n@@ -28,9 +31,9 @@\n   @override\r\n   Widget build(BuildContext context) {\r\n     return GestureDetector(\r\n       onTap: () => Navigator.push(context,\r\n-          MaterialPageRoute(builder: (_) => CategoryPage(category: item.name))),\r\n+          MaterialPageRoute(builder: (_) => CategoryPage(category: item))),\r\n       child: Container(),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359763697,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n import '../../../models/categories_model.dart';\r\n import '../../category_page/category_page.dart';\r\n \r\n class CategoryItemList extends StatelessWidget {\r\n-  const CategoryItemList({super.key});\r\n-  \r\n+  const CategoryItemList({super.key, required this.items});\r\n+\r\n   final List<CategoriesModel> items;\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n@@ -16,24 +16,24 @@\n       scrollDirection: Axis.horizontal,\r\n       clipBehavior: Clip.none,\r\n       padding: EdgeInsets.zero,\r\n       itemBuilder: (context, index) {\r\n-        return CategoryItem(item: ,);\r\n+        return CategoryItem(item: items[index]);\r\n       },\r\n     );\r\n   }\r\n }\r\n \r\n class CategoryItem extends StatelessWidget {\r\n   const CategoryItem({super.key, required this.item});\r\n \r\n-  final String item;\r\n+  final CategoriesModel item;\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return GestureDetector(\r\n       onTap: () => Navigator.push(context,\r\n-          MaterialPageRoute(builder: (_) => CategoryPage(category: item))),\r\n+          MaterialPageRoute(builder: (_) => CategoryPage(category: item.name))),\r\n       child: Container(),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359865478,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,17 +9,20 @@\n   final List<CategoriesModel> items;\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return ListView.builder(\r\n-      itemCount: 5,\r\n-      shrinkWrap: true,\r\n-      scrollDirection: Axis.horizontal,\r\n-      clipBehavior: Clip.none,\r\n-      padding: EdgeInsets.zero,\r\n-      itemBuilder: (context, index) {\r\n-        return CategoryItem(item: items[index]);\r\n-      },\r\n+    return SizedBox(\r\n+      height: 44.0,\r\n+      child: ListView.builder(\r\n+        itemCount: 5,\r\n+        shrinkWrap: true,\r\n+        scrollDirection: Axis.horizontal,\r\n+        clipBehavior: Clip.none,\r\n+        padding: EdgeInsets.zero,\r\n+        itemBuilder: (context, index) {\r\n+          return CategoryItem(item: items[index]);\r\n+        },\r\n+      ),\r\n     );\r\n   }\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1732359911183,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import 'package:digitalksp/constants/styles.dart';\r\n import 'package:flutter/material.dart';\r\n \r\n import '../../../models/categories_model.dart';\r\n import '../../category_page/category_page.dart';\r\n@@ -35,8 +36,13 @@\n   Widget build(BuildContext context) {\r\n     return GestureDetector(\r\n       onTap: () => Navigator.push(context,\r\n           MaterialPageRoute(builder: (_) => CategoryPage(category: item.name))),\r\n-      child: Container(),\r\n+      child: Container(\r\n+        decoration: BoxDecoration(\r\n+          borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n+          color: AppThemes.defaultTheme,\r\n+        ),\r\n+      ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359941500,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,8 +41,16 @@\n         decoration: BoxDecoration(\r\n           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n           color: AppThemes.defaultTheme,\r\n         ),\r\n+        child: Text(item.name,\r\n+            maxLines: 1,\r\n+            overflow: TextOverflow.ellipsis,\r\n+            textAlign: TextAlign.center,\r\n+            style: Theme.of(context)\r\n+                .textTheme\r\n+                .bodyMedium\r\n+                ?.copyWith(color: Colors.black)),\r\n       ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359951417,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,9 @@\n             overflow: TextOverflow.ellipsis,\r\n             textAlign: TextAlign.center,\r\n             style: Theme.of(context)\r\n                 .textTheme\r\n-                .bodyMedium\r\n+                .labelMedium\r\n                 ?.copyWith(color: Colors.black)),\r\n       ),\r\n     );\r\n   }\r\n"
+                },
+                {
+                    "date": 1732359968990,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,10 +47,10 @@\n             overflow: TextOverflow.ellipsis,\r\n             textAlign: TextAlign.center,\r\n             style: Theme.of(context)\r\n                 .textTheme\r\n-                .labelMedium\r\n-                ?.copyWith(color: Colors.black)),\r\n+                .labelSmall\r\n+                ?.copyWith(color: Colors.black54)),\r\n       ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359975104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,9 +48,9 @@\n             textAlign: TextAlign.center,\r\n             style: Theme.of(context)\r\n                 .textTheme\r\n                 .labelSmall\r\n-                ?.copyWith(color: Colors.black54)),\r\n+                ?.copyWith(color: Colors.black87)),\r\n       ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1732359991364,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,8 +37,9 @@\n     return GestureDetector(\r\n       onTap: () => Navigator.push(context,\r\n           MaterialPageRoute(builder: (_) => CategoryPage(category: item.name))),\r\n       child: Container(\r\n+        padding: const EdgeInsets.symmetric(horizontal: 14.0),\r\n         decoration: BoxDecoration(\r\n           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n           color: AppThemes.defaultTheme,\r\n         ),\r\n"
+                },
+                {
+                    "date": 1732360001323,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,8 +38,9 @@\n       onTap: () => Navigator.push(context,\r\n           MaterialPageRoute(builder: (_) => CategoryPage(category: item.name))),\r\n       child: Container(\r\n         padding: const EdgeInsets.symmetric(horizontal: 14.0),\r\n+        alignment: Alignment.center,\r\n         decoration: BoxDecoration(\r\n           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n           color: AppThemes.defaultTheme,\r\n         ),\r\n"
+                },
+                {
+                    "date": 1732360053916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,13 @@\n         scrollDirection: Axis.horizontal,\r\n         clipBehavior: Clip.none,\r\n         padding: EdgeInsets.zero,\r\n         itemBuilder: (context, index) {\r\n-          return CategoryItem(item: items[index]);\r\n+          return Padding(\r\n+            padding:\r\n+                EdgeInsets.only(right: index == items.length - 1 ? 0.0 : 10.0),\r\n+            child: CategoryItem(item: items[index]),\r\n+          );\r\n         },\r\n       ),\r\n     );\r\n   }\r\n"
+                },
+                {
+                    "date": 1732360111171,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         itemCount: 5,\r\n         shrinkWrap: true,\r\n         scrollDirection: Axis.horizontal,\r\n         clipBehavior: Clip.none,\r\n-        padding: EdgeInsets.zero,\r\n+        padding: const EdgeInsets.symmetric(horizontal: 16.0),\r\n         itemBuilder: (context, index) {\r\n           return Padding(\r\n             padding:\r\n                 EdgeInsets.only(right: index == items.length - 1 ? 0.0 : 10.0),\r\n"
+                },
+                {
+                    "date": 1732360150123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   Widget build(BuildContext context) {\r\n     return SizedBox(\r\n       height: 44.0,\r\n       child: ListView.builder(\r\n-        itemCount: 5,\r\n+        itemCount: items.length,\r\n         shrinkWrap: true,\r\n         scrollDirection: Axis.horizontal,\r\n         clipBehavior: Clip.none,\r\n         padding: const EdgeInsets.symmetric(horizontal: 16.0),\r\n"
+                },
+                {
+                    "date": 1732360212558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,9 +45,9 @@\n         padding: const EdgeInsets.symmetric(horizontal: 14.0),\r\n         alignment: Alignment.center,\r\n         decoration: BoxDecoration(\r\n           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n-          color: AppThemes.defaultTheme,\r\n+          color: Colors.white,\r\n         ),\r\n         child: Text(item.name,\r\n             maxLines: 1,\r\n             overflow: TextOverflow.ellipsis,\r\n"
+                },
+                {
+                    "date": 1732360230902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,8 +46,9 @@\n         alignment: Alignment.center,\r\n         decoration: BoxDecoration(\r\n           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n           color: Colors.white,\r\n+          border: Border.all(),\r\n         ),\r\n         child: Text(item.name,\r\n             maxLines: 1,\r\n             overflow: TextOverflow.ellipsis,\r\n"
+                },
+                {
+                    "date": 1732360271755,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,9 +46,9 @@\n         alignment: Alignment.center,\r\n         decoration: BoxDecoration(\r\n           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n           color: Colors.white,\r\n-          border: Border.all(),\r\n+          border: Border.all(color: AppThemes.borderTheme),\r\n         ),\r\n         child: Text(item.name,\r\n             maxLines: 1,\r\n             overflow: TextOverflow.ellipsis,\r\n"
+                },
+                {
+                    "date": 1732360495062,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n import 'package:digitalksp/constants/styles.dart';\r\n import 'package:flutter/material.dart';\r\n-\r\n import '../../../models/categories_model.dart';\r\n import '../../category_page/category_page.dart';\r\n \r\n class CategoryItemList extends StatelessWidget {\r\n"
+                }
+            ],
+            "date": 1732359254189,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass CategoryItemList extends StatelessWidget {\r\n  const CategoryItemList({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return ListView.builder(\r\n      itemCount: 5,\r\n      shrinkWrap: true,\r\n      scrollDirection: Axis.horizontal,\r\n      clipBehavior: Clip.none,\r\n      padding: EdgeInsets.zero,\r\n      itemBuilder: (context, index) {\r\n        return CategoryItem();\r\n      },\r\n    );\r\n  }\r\n}\r\n\r\nclass CategoryItem extends StatelessWidget {\r\n  const CategoryItem({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Placeholder();\r\n  }\r\n}\r\n"
+        }
+    ]
+}

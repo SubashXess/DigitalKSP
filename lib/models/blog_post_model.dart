@@ -1,3 +1,4 @@
+import 'package:digitalksp/models/blogs/blog_models.dart';
 import '../constants/urls.dart';
 
 class BlogContentModel {
@@ -64,6 +65,24 @@ class BlogContentModel {
       imageCategory: json["image_category"] ?? '',
       imagePaths: imagePaths,
       altTexts: altTexts,
+    );
+  }
+}
+
+class BlogPostModel {
+  final BlogModels blog;
+  final List<BlogContentModel> content;
+
+  const BlogPostModel({
+    required this.blog,
+    required this.content,
+  });
+
+  factory BlogPostModel.fromJson(Map<String, dynamic> json) {
+    return BlogPostModel(
+      blog: BlogModels.fromJson(json["blog_data"]),
+      content: List<BlogContentModel>.from(
+          json['blog_content'].map((data) => BlogContentModel.fromJson(data))),
     );
   }
 }

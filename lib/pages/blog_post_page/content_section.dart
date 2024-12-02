@@ -20,7 +20,7 @@ class ContentSection extends StatelessWidget {
           content.heading.isEmpty
               ? const SizedBox(height: 0.0, width: 0.0)
               : Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
+                  padding: const EdgeInsets.only(bottom: 12.0),
                   child: Text(
                     content.heading,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -40,11 +40,11 @@ class ContentSection extends StatelessWidget {
           content.subHeading.isEmpty
               ? const SizedBox(height: 0.0, width: 0.0)
               : Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
+                  padding: const EdgeInsets.only(bottom: 16.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      content.subHeadingType == ""
+                      content.subHeadingType.isEmpty
                           ? const SizedBox(height: 0.0, width: 0.0)
                           : Container(
                               width: 6.0,
@@ -61,8 +61,8 @@ class ContentSection extends StatelessWidget {
                           content.subHeading,
                           style: Theme.of(context)
                               .textTheme
-                              .titleSmall
-                              ?.copyWith(fontSize: 16.0),
+                              .headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.w500),
                         ),
                       ),
                     ],
@@ -72,7 +72,10 @@ class ContentSection extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 24.0),
             child: HtmlWidget(
               content.content,
-              textStyle: Theme.of(context).textTheme.bodyMedium,
+              textStyle: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: Colors.black.withOpacity(0.65)),
             ),
           ),
           content.imagePaths.isEmpty

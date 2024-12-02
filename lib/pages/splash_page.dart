@@ -52,9 +52,12 @@ class _SplashPageState extends State<SplashPage>
   Future<void> _checkOnboardingStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isFirstTime = prefs.getBool('onboard-page') ?? true;
-
     await Future.delayed(const Duration(seconds: 2));
-    if (isFirstTime) {
+    _onNavigate(isFirstTime);
+  }
+
+  void _onNavigate(bool value) {
+    if (value) {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (_) => const OnboardPage()),
@@ -72,29 +75,44 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      extendBody: true,
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: Text(
+          'Powered by DDN Enterprise',
+          textAlign: TextAlign.center,
+          style: Theme.of(context)
+              .textTheme
+              .labelSmall
+              ?.copyWith(fontWeight: FontWeight.w400, color: Colors.black45),
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(24.0),
+        alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             FadeTransition(
               opacity: _fadeAnimation,
               child: Image.asset(
                 AppConfig.instance.appIcon,
-                width: 144.0,
-                height: 144.0,
+                width: MediaQuery.of(context).size.width * 0.50,
               ),
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 12.0),
             SlideTransition(
               position: _slideAnimation,
               child: FadeTransition(
                 opacity: _fadeAnimation,
                 child: Text(
                   AppConfig.instance.appName,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 24.0,
+                      color: const Color(0xFF3C2870)),
                 ),
               ),
             ),
