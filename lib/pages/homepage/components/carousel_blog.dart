@@ -103,10 +103,8 @@ class CarouselBlogItem extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16.0,
-                          color: Colors.white)),
-                  const SizedBox(height: 14.0),
+                          fontWeight: FontWeight.w600, color: Colors.white)),
+                  const SizedBox(height: 10.0),
                   AuthorCard(
                     author: item.authorModel,
                     publishedDate: item.publishedDate,

@@ -35,11 +35,12 @@ class _BlogPostPageState extends State<BlogPostPage> {
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              // https://www.pcmag.com/reviews/apple-macos-monterey
               child: IconButton(
                 onPressed: () => Utilities.shareIt(context,
-                    url: 'https://www.digitalksp.com/blog_details.php?id=158',
-                    subject: 'Blog Share',
-                    text: 'Sharing files, text, and images between apps'),
+                    url: 'https://digitalksp.com/blogs/id=${widget.blogId}',
+                    subject: provider.blogPostModel!.blog.coverTitle,
+                    text: provider.blogPostModel?.blog.title),
                 icon: SvgPicture.asset(
                   'assets/icons/share-outlined.svg',
                   width: 20.0,
@@ -49,6 +50,7 @@ class _BlogPostPageState extends State<BlogPostPage> {
             ),
           ],
         ),
+        // floatingActionButton: const CircularFabMenu(),
         body: provider.blogPostModel == null
             ? const Center(child: CircularProgressIndicator.adaptive())
             : SingleChildScrollView(

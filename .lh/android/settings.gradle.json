@@ -1,0 +1,30 @@
+{
+    "sourceFile": "android/settings.gradle",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1737452634915,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1737452746399,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n }\r\n \r\n plugins {\r\n     id \"dev.flutter.flutter-plugin-loader\" version \"1.0.0\"\r\n-    id \"com.android.application\" version \"7.3.0\" apply false\r\n-    id \"org.jetbrains.kotlin.android\" version \"2.1.0\" apply false\r\n+    id \"com.android.application\" version \"7.3.1\" apply false\r\n+    id \"org.jetbrains.kotlin.android\" version \"1.7.10\" apply false\r\n }\r\n \r\n include \":app\"\r\n"
+                },
+                {
+                    "date": 1737452755667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n }\r\n \r\n plugins {\r\n     id \"dev.flutter.flutter-plugin-loader\" version \"1.0.0\"\r\n-    id \"com.android.application\" version \"7.3.1\" apply false\r\n+    id \"com.android.application\" version \"7.3.0\" apply false\r\n     id \"org.jetbrains.kotlin.android\" version \"1.7.10\" apply false\r\n }\r\n \r\n include \":app\"\r\n"
+                },
+                {
+                    "date": 1737452771982,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n }\r\n \r\n plugins {\r\n     id \"dev.flutter.flutter-plugin-loader\" version \"1.0.0\"\r\n-    id \"com.android.application\" version \"7.3.0\" apply false\r\n-    id \"org.jetbrains.kotlin.android\" version \"1.7.10\" apply false\r\n+    id \"com.android.application\" version \"7.3.1\" apply false\r\n+    id \"org.jetbrains.kotlin.android\" version \"2.1.0\" apply false\r\n }\r\n \r\n include \":app\"\r\n"
+                }
+            ],
+            "date": 1737452634915,
+            "name": "Commit-0",
+            "content": "pluginManagement {\r\n    def flutterSdkPath = {\r\n        def properties = new Properties()\r\n        file(\"local.properties\").withInputStream { properties.load(it) }\r\n        def flutterSdkPath = properties.getProperty(\"flutter.sdk\")\r\n        assert flutterSdkPath != null, \"flutter.sdk not set in local.properties\"\r\n        return flutterSdkPath\r\n    }()\r\n\r\n    includeBuild(\"$flutterSdkPath/packages/flutter_tools/gradle\")\r\n\r\n    repositories {\r\n        google()\r\n        mavenCentral()\r\n        gradlePluginPortal()\r\n    }\r\n}\r\n\r\nplugins {\r\n    id \"dev.flutter.flutter-plugin-loader\" version \"1.0.0\"\r\n    id \"com.android.application\" version \"7.3.0\" apply false\r\n    id \"org.jetbrains.kotlin.android\" version \"2.1.0\" apply false\r\n}\r\n\r\ninclude \":app\"\r\n"
+        }
+    ]
+}

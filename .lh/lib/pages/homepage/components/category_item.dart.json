@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 23,
+            "activePatchIndex": 27,
             "patches": [
                 {
                     "date": 1732359254189,
@@ -100,6 +100,22 @@
                 {
                     "date": 1732360495062,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n import 'package:digitalksp/constants/styles.dart';\r\n import 'package:flutter/material.dart';\r\n-\r\n import '../../../models/categories_model.dart';\r\n import '../../category_page/category_page.dart';\r\n \r\n class CategoryItemList extends StatelessWidget {\r\n"
+                },
+                {
+                    "date": 1737453390373,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,8 +40,9 @@\n     return GestureDetector(\r\n       onTap: () => Navigator.push(context,\r\n           MaterialPageRoute(builder: (_) => CategoryPage(category: item.name))),\r\n       child: Container(\r\n+        height: 54.0,\r\n         padding: const EdgeInsets.symmetric(horizontal: 14.0),\r\n         alignment: Alignment.center,\r\n         decoration: BoxDecoration(\r\n           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n"
+                },
+                {
+                    "date": 1737453401516,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n     return GestureDetector(\r\n       onTap: () => Navigator.push(context,\r\n           MaterialPageRoute(builder: (_) => CategoryPage(category: item.name))),\r\n       child: Container(\r\n-        height: 54.0,\r\n+      \r\n         padding: const EdgeInsets.symmetric(horizontal: 14.0),\r\n         alignment: Alignment.center,\r\n         decoration: BoxDecoration(\r\n           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),\r\n"
+                },
+                {
+                    "date": 1737453424142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return SizedBox(\r\n-      height: 54.0,\r\n+      height: 80.0,\r\n       child: ListView.builder(\r\n         itemCount: items.length,\r\n         shrinkWrap: true,\r\n         scrollDirection: Axis.horizontal,\r\n"
+                },
+                {
+                    "date": 1737453433867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return SizedBox(\r\n-      height: 80.0,\r\n+      height: 44.0,\r\n       child: ListView.builder(\r\n         itemCount: items.length,\r\n         shrinkWrap: true,\r\n         scrollDirection: Axis.horizontal,\r\n"
                 }
             ],
             "date": 1732359254189,

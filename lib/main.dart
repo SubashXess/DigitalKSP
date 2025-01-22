@@ -33,7 +33,7 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppThemes.instance.lightTheme,
         home: const SplashPage(),
-        // home: const LazyLoading(),
+        // home: const DemoPage(),
       ),
     );
   }

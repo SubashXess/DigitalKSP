@@ -1,3 +1,4 @@
+import 'package:digitalksp/pages/homepage/homepage.dart';
 import 'package:digitalksp/widgets/buttons_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -65,4 +66,62 @@ Future showEmptyState(
       ],
     ),
   );
+}
+
+class PageNotFound extends StatelessWidget {
+  const PageNotFound({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      // backgroundColor: Theme.of(context).primaryColorLight,
+
+      extendBody: true,
+      body: Container(
+        width: size.width,
+        height: size.height,
+        padding: const EdgeInsets.all(24.0),
+        alignment: Alignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              'assets/404-error-state.svg',
+              height: 240.0,
+            ),
+            const SizedBox(height: 24.0),
+            Text(
+              'Oops! Page Not Found.',
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge
+                  ?.copyWith(fontWeight: FontWeight.w700, fontSize: 28.0),
+            ),
+            const SizedBox(height: 14.0),
+            Text(
+              'The page you\'re looking for doesn\'t exist or has been moved.',
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: Colors.black45),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        width: size.width,
+        padding: const EdgeInsets.all(24.0),
+        child: RoundedButton(
+            label: 'Back to Home',
+            onTap: () => Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+                (route) => false)),
+      ),
+    );
+  }
 }

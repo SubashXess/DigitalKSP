@@ -27,46 +27,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  late final ScrollController _scrollController;
-
   bool _hasLoading = true;
-  bool _isFetchingMore = false; // To handle pagination
-  late final List<DrawerModel> _drawerItem;
 
-  // Pagination variables
-  int currentPage = 1;
-  final int perPage = 12; // Number of blogs per page
+  late final List<DrawerModel> _drawerItem;
 
   @override
   void initState() {
     super.initState();
     _drawerItem = DrawerModel.generatedItem;
-    _scrollController = ScrollController()
-      ..addListener(_onScroll); // Use _onScroll here
-    _loadInitialData();
+    _loadAllData();
   }
 
-  @override
-  void dispose() {
-    _scrollController
-        .removeListener(_onScroll); // Also remove the listener here
-    super.dispose();
-  }
-
-  void _onScroll() {
-    if (_scrollController.position.pixels ==
-            _scrollController.position.maxScrollExtent &&
-        !_isFetchingMore) {
-      // If we reach the bottom and we're not already fetching more data
-      _fetchMoreBlogs();
-    }
-  }
-
-  Future<void> _loadInitialData() async {
+  Future<void> _loadAllData() async {
     setState(() {
       _hasLoading = true;
     });
-
     await Future.wait([
       context.read<BlogProviders>().getBlogs(type: 'Front Banner', limit: 12),
       context.read<BlogProviders>().getBlogs(type: 'Latest', limit: 12),
@@ -82,27 +57,6 @@ class _HomePageState extends State<HomePage> {
 
     setState(() {
       _hasLoading = false;
-    });
-  }
-
-  Future<void> _fetchMoreBlogs() async {
-    if (_isFetchingMore) return; // Prevent multiple fetches
-
-    setState(() {
-      _isFetchingMore = true;
-    });
-
-    // Increment the current page
-    currentPage++;
-
-    // Fetch more data for 'Normal' blogs with pagination
-    // await Future.delayed(const Duration(milliseconds: 2000));
-    await context
-        .read<BlogProviders>()
-        .getBlogs(type: 'Normal', limit: perPage, page: currentPage);
-
-    setState(() {
-      _isFetchingMore = false;
     });
   }
 
@@ -138,6 +92,16 @@ class _HomePageState extends State<HomePage> {
                     }),
                     Row(
                       children: [
+                        // ActionButton(
+                        //   icon: 'assets/icons/notification-bell.svg',
+                        //   border: true,
+                        //   count: '2',
+                        //   onTap: () => Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (_) => const NotificationPage())),
+                        // ),
+                        // const SizedBox(width: 8.0),
                         ActionButton(
                           icon: 'assets/icons/search.svg',
                           border: true,
@@ -156,7 +120,6 @@ class _HomePageState extends State<HomePage> {
           ? const Center(child: CircularProgressIndicator.adaptive())
           : SafeArea(
               child: SingleChildScrollView(
-                controller: _scrollController,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -205,9 +168,6 @@ class _HomePageState extends State<HomePage> {
                     Consumer<BlogProviders>(builder: (_, provider, __) {
                       return BlogList(items: provider.normalBlogModel);
                     }),
-                    _isFetchingMore
-                        ? const Center(child: CircularProgressIndicator())
-                        : const SizedBox(),
                     const SizedBox(height: 16.0),
                   ],
                 ),

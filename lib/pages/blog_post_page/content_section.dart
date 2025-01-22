@@ -1,6 +1,8 @@
+import 'dart:async';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../../constants/styles.dart';
 import '../../models/blog_post_model.dart';
 
@@ -76,39 +78,123 @@ class ContentSection extends StatelessWidget {
                   .textTheme
                   .bodyMedium
                   ?.copyWith(color: Colors.black.withOpacity(0.65)),
+              onTapUrl: (url) async {
+                if (await canLaunchUrl(Uri.parse(url))) {
+                  return await launchUrl(Uri.parse(url));
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
             ),
           ),
           content.imagePaths.isEmpty
               ? const SizedBox(height: 0.0, width: 0.0)
               : SizedBox(
                   width: size.width,
-                  child: Wrap(
-                    children: List.generate(
-                      content.imagePaths.length,
-                      (index) {
-                        return content.imagePaths[index].isNotEmpty
-                            ? Container(
-                                width: size.width,
-                                height: 200.0,
-                                margin: const EdgeInsets.only(bottom: 20.0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.borderRadius),
-                                  color: Colors.grey.shade200,
-                                  image: DecorationImage(
-                                    image:
-                                        NetworkImage(content.imagePaths[index]),
-                                    fit: BoxFit.cover,
-                                    onError: (_, __) => Container(),
-                                  ),
-                                ),
-                              )
-                            : const SizedBox.shrink();
-                      },
-                    ),
-                  ),
+                  child: DynamicImageWidget(
+                      imagePaths: content.imagePaths, size: size),
+                  // child: Wrap(
+                  //   children: List.generate(
+                  //     content.imagePaths.length,
+                  //     (index) {
+                  //       return content.imagePaths[index].isNotEmpty
+                  //           ? GestureDetector(
+                  //               child: Container(
+                  //                 width: size.width,
+                  //                 height: size.width * 9 / 16,
+                  //                 margin: const EdgeInsets.only(bottom: 20.0),
+                  //                 decoration: BoxDecoration(
+                  //                   borderRadius: BorderRadius.circular(
+                  //                       AppDimensions.borderRadius),
+                  //                   color: Colors.grey.shade200,
+                  //                   image: DecorationImage(
+                  //                     image: CachedNetworkImageProvider(
+                  //                         content.imagePaths[index]),
+                  //                     fit: BoxFit.contain,
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             )
+                  //           : const SizedBox.shrink();
+                  //     },
+                  //   ),
+                  // ),
                 ),
         ],
+      ),
+    );
+  }
+}
+
+class DynamicImageWidget extends StatelessWidget {
+  final List<String> imagePaths;
+  final Size size;
+
+  const DynamicImageWidget(
+      {super.key, required this.imagePaths, required this.size});
+
+  Future<Size> _getImageSize(String imageUrl) async {
+    final completer = Completer<Size>();
+    final image = Image.network(imageUrl);
+    image.image.resolve(const ImageConfiguration()).addListener(
+      ImageStreamListener((info, _) {
+        final myImage = info.image;
+        completer.complete(
+            Size(myImage.width.toDouble(), myImage.height.toDouble()));
+      }),
+    );
+    return completer.future;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      children: List.generate(
+        imagePaths.length,
+        (index) {
+          return imagePaths[index].isNotEmpty
+              ? FutureBuilder<Size>(
+                  future: _getImageSize(imagePaths[index]),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Container(
+                        width: size.width,
+                        height: 200.0,
+                        color: Colors.grey.shade200,
+                        child: const Center(child: CircularProgressIndicator()),
+                      );
+                    }
+
+                    if (snapshot.hasData) {
+                      final imageSize = snapshot.data!;
+                      final aspectRatio = imageSize.width / imageSize.height;
+                      final dynamicHeight = size.width / aspectRatio;
+
+                      return GestureDetector(
+                        child: Container(
+                          width: size.width,
+                          height: dynamicHeight,
+                          margin: const EdgeInsets.only(bottom: 20.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.borderRadius),
+                            color: Colors.grey.shade200,
+                            image: DecorationImage(
+                              image:
+                                  CachedNetworkImageProvider(imagePaths[index]),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+
+                    return const SizedBox
+                        .shrink(); // Fallback if no size is available
+                  },
+                )
+              : const SizedBox.shrink();
+        },
       ),
     );
   }

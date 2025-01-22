@@ -3,7 +3,6 @@ import 'package:digitalksp/constants/styles.dart';
 import 'package:digitalksp/pages/author_page/author_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import '../../../models/blogs/blog_models.dart';
 import '../../blog_post_page/blog_post_page.dart';
 import 'headline.dart';
@@ -62,14 +61,19 @@ class BlogItem extends StatelessWidget {
               width: 80.0,
               height: 100.0,
               decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.borderRadius),
-                  color: AppThemes.defaultTheme,
-                  image: DecorationImage(
-                    image: CachedNetworkImageProvider(item.coverPhoto),
-                    fit: BoxFit.cover,
-                    onError: (exception, stackTrace) => Container(),
-                  )),
+                borderRadius: BorderRadius.circular(AppDimensions.borderRadius),
+                color: AppThemes.defaultTheme,
+                image: DecorationImage(
+                  image: CachedNetworkImageProvider(item.coverPhoto,
+                      maxHeight: 100, maxWidth: 80),
+
+                  fit: BoxFit.cover,
+
+                  // image: CachedNetworkImageProvider(item.coverPhoto),
+                  // fit: BoxFit.cover,
+                  // onError: (exception, stackTrace) => Container(),
+                ),
+              ),
             ),
             const SizedBox(width: 10.0),
             Expanded(
@@ -122,9 +126,10 @@ class BlogItem extends StatelessWidget {
                       child: Row(
                         children: [
                           CircleAvatar(
-                              radius: 10.0,
-                              backgroundImage: CachedNetworkImageProvider(
-                                  item.authorModel.photoUrl)),
+                            radius: 10.0,
+                            backgroundImage:
+                                NetworkImage(item.authorModel.photoUrl),
+                          ),
                           const SizedBox(width: 8.0),
                           Text(item.authorModel.name,
                               maxLines: 1,

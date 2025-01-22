@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_links/app_links.dart';
 import 'package:digitalksp/constants/app_config.dart';
 import 'package:digitalksp/pages/homepage/homepage.dart';
 import 'package:digitalksp/pages/onboard_page/onboard_page.dart';
@@ -19,9 +20,19 @@ class _SplashPageState extends State<SplashPage>
   late final Animation<double> _fadeAnimation;
   late final Animation<Offset> _slideAnimation;
 
+  final AppLinks _appLinks = AppLinks();
+
+  // adb shell 'am start -a android.intent.action.VIEW \
+  //   -c android.intent.category.BROWSABLE \
+  //   -d "http://www.digitalksp.com/blogs"' \
+  //   com.ddnenterprises.digitalksp
+
   @override
   void initState() {
     super.initState();
+    _appLinks.uriLinkStream.listen((uri) {
+      print('URL Listener: $uri');
+    });
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -78,13 +89,23 @@ class _SplashPageState extends State<SplashPage>
       extendBody: true,
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: Text(
-          'Powered by DDN Enterprise',
+        child: Text.rich(
           textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .labelSmall
-              ?.copyWith(fontWeight: FontWeight.w400, color: Colors.black45),
+          TextSpan(
+            children: [
+              TextSpan(
+                  text: 'Powered by ',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: Colors.black54)),
+              TextSpan(
+                  text: 'DDN Enterprise',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).primaryColor)),
+            ],
+          ),
         ),
       ),
       body: Container(

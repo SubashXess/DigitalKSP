@@ -8,6 +8,8 @@ class AppThemes {
   ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: const Color(0xFFF66435),
+    primaryColorDark: const Color(0xFF130601),
+    primaryColorLight: const Color(0xFFFEF1EC),
     fontFamily: 'Poppins',
     scaffoldBackgroundColor: Colors.grey.shade50,
     appBarTheme: const AppBarTheme(
@@ -41,6 +43,7 @@ class AppThemes {
 class AppDimensions {
   static const double buttonHeight = 56.0;
   static const double borderRadius = 16.0;
+  static const double borderWidth = 1.0;
 }
 
 class AppStyles {

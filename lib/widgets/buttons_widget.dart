@@ -9,12 +9,18 @@ class ActionButton extends StatelessWidget {
     required this.onTap,
     this.count,
     this.iconSize = 24.0,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.border,
   });
 
   final String icon;
   final VoidCallback onTap;
   final String? count;
   final double iconSize;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final bool? border;
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +32,24 @@ class ActionButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppDimensions.borderRadius),
-          border: Border.all(color: Colors.grey.shade200),
-          color: Colors.transparent,
+          border:
+              border == null ? null : Border.all(color: Colors.grey.shade200),
+          color: backgroundColor ?? Colors.transparent,
         ),
         child: Badge.count(
           isLabelVisible: count == null ? false : true,
           count: int.parse(count ?? '0'),
+          textStyle: Theme.of(context).textTheme.bodySmall,
+          offset: const Offset(14.0, -14.0),
           child: SvgPicture.asset(
             icon,
             width: iconSize,
             height: iconSize,
             alignment: Alignment.center,
             fit: BoxFit.scaleDown,
+            colorFilter: foregroundColor == null
+                ? null
+                : ColorFilter.mode(foregroundColor!, BlendMode.srcIn),
           ),
         ),
       ),

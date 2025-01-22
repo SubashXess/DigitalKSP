@@ -13,6 +13,7 @@ class LatestBlogList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,11 +35,20 @@ class LatestBlogList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.only(
+              return Container(
+                height: size.height,
+                width: items.length == 2 ? size.width / 2.0 - 22.0 : null,
+                margin: EdgeInsets.only(
                     right: index == items.length - 1 ? 0.0 : 10.0),
                 child: LatestBlogItem(item: items[index]),
               );
+              // return Expanded(
+              //   child: Padding(
+              //     padding: EdgeInsets.only(
+              //         right: index == items.length - 1 ? 0.0 : 10.0),
+              //     child: LatestBlogItem(item: items[index]),
+              //   ),
+              // );
             },
           ),
         ),
@@ -105,11 +115,39 @@ class LatestBlogItem extends StatelessWidget {
                           ?.copyWith(fontWeight: FontWeight.w500)),
                 ),
               ),
-              Text(item.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.w500)),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(item.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 8.0),
+                  Container(
+                    color: Colors.transparent,
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                            radius: 10.0,
+                            backgroundImage: CachedNetworkImageProvider(
+                                item.authorModel.photoUrl)),
+                        const SizedBox(width: 8.0),
+                        Expanded(
+                          child: Text(item.authorModel.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(color: Colors.white70)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

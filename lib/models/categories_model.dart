@@ -1,14 +1,34 @@
+import '../constants/urls.dart';
+
 class CategoriesModel {
   final String name;
-  final int count;
+  final String desc;
+  final String image;
+  // final int count;
 
-  const CategoriesModel({required this.name, required this.count});
+  const CategoriesModel({
+    required this.name,
+    required this.desc,
+    required this.image,
+  });
 
-  factory CategoriesModel.fromJson(Map<String, dynamic> json) =>
-      CategoriesModel(
-        name: json['category_name'],
-        count: int.tryParse(json['blog_count'].toString()) ?? 0,
-      );
+  factory CategoriesModel.fromJson(Map<String, dynamic> json) {
+    String imagePath = json['image'] ?? '';
+
+    if (imagePath.startsWith('../')) {
+      imagePath = imagePath.substring(3);
+    }
+
+    final imageUrl = imagePath.isNotEmpty
+        ? '${ApiRequest.instance.IMAGE_URL_WITHOUT_UPLOADS}$imagePath'
+        : '';
+    return CategoriesModel(
+      name: json['name'],
+      desc: json['about'],
+      image: imageUrl,
+      // count: int.tryParse(json['blog_count'].toString()) ?? 0,
+    );
+  }
 
   static List<CategoriesModel> categoriesFromJson(
       Map<String, dynamic> jsonData) {

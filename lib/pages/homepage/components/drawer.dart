@@ -22,86 +22,102 @@ class DrawerWidget extends StatelessWidget {
     return Drawer(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       clipBehavior: Clip.none,
-      child: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: size.width,
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      AppConfig.instance.appIcon,
-                      height: 80.0,
-                    ),
-                    const SizedBox(height: 12.0),
-                    Text(
-                      'Digital KSP',
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineLarge
-                          ?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20.0,
-                              color: const Color(0xFF3C2870)),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(height: 40.0, color: Colors.grey.shade200),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: size.width,
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  DrawerItem(
-                    size: size,
-                    title: items[0].title,
-                    icon: items[0].icon,
-                    onTap: () => _onItemPressed(context, 0),
+                  Image.asset(
+                    AppConfig.instance.appIcon,
+                    height: 80.0,
                   ),
-                  DrawerItem(
-                    size: size,
-                    title: items[1].title,
-                    icon: items[1].icon,
-                    onTap: () => _onItemPressed(context, 1),
-                  ),
-                  DrawerItem(
-                    size: size,
-                    title: items[2].title,
-                    icon: items[2].icon,
-                    onTap: () => _onItemPressed(context, 2),
-                  ),
-                  DrawerItem(
-                    size: size,
-                    title: items[3].title,
-                    icon: items[3].icon,
-                    onTap: () => _onItemPressed(context, 3),
-                  ),
-                  DrawerItem(
-                    size: size,
-                    title: items[4].title,
-                    icon: items[4].icon,
-                    onTap: () => _onItemPressed(context, 4),
-                  ),
-                  DrawerItem(
-                    size: size,
-                    title: items[5].title,
-                    icon: items[5].icon,
-                    onTap: () => _onItemPressed(context, 5),
-                  ),
-                  DrawerItem(
-                    size: size,
-                    title: items[6].title,
-                    icon: items[6].icon,
-                    onTap: () => _onItemPressed(context, 6),
+                  const SizedBox(height: 12.0),
+                  Text(
+                    'Digital KSP',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20.0,
+                        color: const Color(0xFF3C2870)),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+            Divider(height: 40.0, color: Colors.grey.shade200),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DrawerItem(
+                  size: size,
+                  title: items[0].title,
+                  icon: items[0].icon,
+                  onTap: () => _onItemPressed(context, 0),
+                ),
+                DrawerItem(
+                  size: size,
+                  title: items[1].title,
+                  icon: items[1].icon,
+                  onTap: () => _onItemPressed(context, 1),
+                ),
+                DrawerItem(
+                  size: size,
+                  title: items[2].title,
+                  icon: items[2].icon,
+                  onTap: () => _onItemPressed(context, 2),
+                ),
+                DrawerItem(
+                  size: size,
+                  title: items[3].title,
+                  icon: items[3].icon,
+                  onTap: () => _onItemPressed(context, 3),
+                ),
+                DrawerItem(
+                  size: size,
+                  title: items[4].title,
+                  icon: items[4].icon,
+                  onTap: () => _onItemPressed(context, 4),
+                ),
+                DrawerItem(
+                  size: size,
+                  title: items[5].title,
+                  icon: items[5].icon,
+                  onTap: () => _onItemPressed(context, 5),
+                ),
+                DrawerItem(
+                  size: size,
+                  title: items[6].title,
+                  icon: items[6].icon,
+                  onTap: () => _onItemPressed(context, 6),
+                ),
+              ],
+            ),
+            const Spacer(),
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                        text: 'Powered by ',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium
+                            ?.copyWith(color: Colors.black54)),
+                    TextSpan(
+                        text: 'DDN Enterprise',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).primaryColor)),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -243,7 +259,7 @@ class DrawerItem extends StatelessWidget {
       child: Container(
         width: size.width,
         color: Colors.transparent,
-        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -266,11 +282,7 @@ class DrawerItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 10.0),
-            Text(title,
-                style: Theme.of(context)
-                    .textTheme
-                    .labelMedium
-                    ?.copyWith(fontSize: 15.0)),
+            Text(title, style: Theme.of(context).textTheme.labelSmall),
           ],
         ),
       ),

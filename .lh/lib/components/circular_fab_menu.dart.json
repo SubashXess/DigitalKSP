@@ -1,0 +1,54 @@
+{
+    "sourceFile": "lib/components/circular_fab_menu.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1737443983780,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1737444025130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,9 @@\n     return Flow(delegate: ,  children: <IconData>[\r\n       Icons.call, Icons.sms, Icons.video_call, Icons.share,\r\n     ].map<Widget>(toElement).toList(),);\r\n   }\r\n+\r\n+  _buildFab() => FloatingActionButton(onPressed: () {\r\n+    \r\n+  },);\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737444031000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,8 @@\n       Icons.call, Icons.sms, Icons.video_call, Icons.share,\r\n     ].map<Widget>(toElement).toList(),);\r\n   }\r\n \r\n-  _buildFab() => FloatingActionButton(onPressed: () {\r\n+Widget  _buildFab() => FloatingActionButton(onPressed: () {\r\n     \r\n   },);\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737444046210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,11 +11,11 @@\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Flow(delegate: ,  children: <IconData>[\r\n       Icons.call, Icons.sms, Icons.video_call, Icons.share,\r\n-    ].map<Widget>(toElement).toList(),);\r\n+    ].map<Widget>(_buildFab).toList(),);\r\n   }\r\n \r\n-Widget  _buildFab() => FloatingActionButton(onPressed: () {\r\n+Widget  _buildFab(IconData icon) => FloatingActionButton(onPressed: () {\r\n     \r\n   },);\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737444094857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,6 +16,6 @@\n   }\r\n \r\n Widget  _buildFab(IconData icon) => FloatingActionButton(onPressed: () {\r\n     \r\n-  },);\r\n+  }, elevation: 0.0, splashColor: Colors.black, child: Icon(icon, size: 45.0, color:  Colors.white),);\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737444149649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,12 @@\n       Icons.call, Icons.sms, Icons.video_call, Icons.share,\r\n     ].map<Widget>(_buildFab).toList(),);\r\n   }\r\n \r\n-Widget  _buildFab(IconData icon) => FloatingActionButton(onPressed: () {\r\n-    \r\n-  }, elevation: 0.0, splashColor: Colors.black, child: Icon(icon, size: 45.0, color:  Colors.white),);\r\n+Widget  _buildFab(IconData icon) => SizedBox(\r\n+  width: _buttonSize,\r\n+  height: _buttonSize,\r\n+  child: FloatingActionButton(onPressed: () {\r\n+      \r\n+    }, elevation: 0.0, splashColor: Colors.black, child: Icon(icon, size: 45.0, color:  Colors.white),),\r\n+);\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737444170221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,11 @@\n   State<CircularFabMenu> createState() => _CircularFabMenuState();\r\n }\r\n \r\n class _CircularFabMenuState extends State<CircularFabMenu> {\r\n+\r\n+  final double _buttonSize = 80.0;\r\n+\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Flow(delegate: ,  children: <IconData>[\r\n       Icons.call, Icons.sms, Icons.video_call, Icons.share,\r\n"
+                },
+                {
+                    "date": 1737444196182,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   final double _buttonSize = 80.0;\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Flow(delegate: ,  children: <IconData>[\r\n+    return Flow(delegate: FlowMenuDelegate,  children: <IconData>[\r\n       Icons.call, Icons.sms, Icons.video_call, Icons.share,\r\n     ].map<Widget>(_buildFab).toList(),);\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1737444231732,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,4 +33,19 @@\n           child: Icon(icon, size: 45.0, color: Colors.white),\r\n         ),\r\n       );\r\n }\r\n+\r\n+\r\n+class FlowMenuDelegate extends FlowDelegate {\r\n+  @override\r\n+  void paintChildren(FlowPaintingContext \r\n+  ) {\r\n+    // TODO: implement paintChildren\r\n+  }\r\n+\r\n+  @override\r\n+  bool shouldRepaint(covariant FlowDelegate oldDelegate) {\r\n+    // TODO: implement shouldRepaint\r\n+    throw UnimplementedError();\r\n+  }\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737444244385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,6 @@\n     // TODO: implement paintChildren\r\n   }\r\n \r\n   @override\r\n-  bool shouldRepaint(covariant FlowDelegate oldDelegate) {\r\n-    // TODO: implement shouldRepaint\r\n-    throw UnimplementedError();\r\n-  }\r\n+  bool shouldRepaint(covariant FlowDelegate oldDelegate) => false;\r\n }\r\n"
+                }
+            ],
+            "date": 1737443983780,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass CircularFabMenu extends StatefulWidget {\r\n  const CircularFabMenu({super.key});\r\n\r\n  @override\r\n  State<CircularFabMenu> createState() => _CircularFabMenuState();\r\n}\r\n\r\nclass _CircularFabMenuState extends State<CircularFabMenu> {\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Flow(delegate: ,  children: <IconData>[\r\n      Icons.call, Icons.sms, Icons.video_call, Icons.share,\r\n    ].map<Widget>(toElement).toList(),);\r\n  }\r\n}"
+        }
+    ]
+}

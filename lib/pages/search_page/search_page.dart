@@ -30,7 +30,7 @@ class _SearchPageState extends State<SearchPage> {
   void initState() {
     super.initState();
     _searchController = TextEditingController()..addListener(_onListen);
-    _searchNode = FocusNode();
+    _searchNode = FocusNode()..requestFocus();
   }
 
   @override
@@ -91,7 +91,7 @@ class _SearchPageState extends State<SearchPage> {
     if (_debouncer?.isActive ?? false) _debouncer?.cancel();
 
     _debouncer = Timer(
-      const Duration(milliseconds: 600),
+      const Duration(milliseconds: 1000),
       () {
         if (query.isEmpty) {
           // If query is empty, reset state and stop loading
@@ -130,7 +130,7 @@ class _SearchPageState extends State<SearchPage> {
       _isLoading = false;
       _searchController.clear();
     });
-    context.read<SearchProviders>().getSearchResult(query: "");
+    context.read<SearchProviders>().getSearchResult(query: '');
   }
 
   @override
