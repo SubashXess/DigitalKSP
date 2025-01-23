@@ -199,13 +199,10 @@ class BlogProviders extends ChangeNotifier {
     }
   }
 
-  String? _currentType;
-
   Future<void> getBlogByType(
       {required String type, String limit = '10', String page = '1'}) async {
-    if (_currentType != type) {
-      _blogByTypeModel.clear();
-      _currentType = type;
+    if (page == '1') {
+      _blogByTypeModel = [];
     }
 
     final Uri url = Uri.parse(
@@ -220,7 +217,14 @@ class BlogProviders extends ChangeNotifier {
         final Map<String, dynamic> jsonData = json.decode(response.body);
 
         final List<BlogModels> newBlogs = BlogModels.blogsFromJson(jsonData);
-        _blogByTypeModel.addAll(newBlogs);
+
+        // _blogByTypeModel.addAll(newBlogs);
+
+        if (page == '1') {
+          _blogByTypeModel = newBlogs;
+        } else {
+          _blogByTypeModel.addAll(newBlogs);
+        }
 
         notifyListeners();
       } else {

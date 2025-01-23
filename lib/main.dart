@@ -34,8 +34,9 @@ class App extends StatelessWidget {
         title: APP_NAME,
         debugShowCheckedModeBanner: false,
         theme: AppThemes.instance.lightTheme,
-        // home: const SplashPage(),
-        home: const DemoPage(),
+
+        home: const SplashPage(),
+        // home: const DemoPage(),
       ),
     );
   }
