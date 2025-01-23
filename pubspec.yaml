@@ -1,8 +1,8 @@
 name: digitalksp
-description: "A new Flutter project."
+description: "DigitalKSP, founded in 2022, is a platform where bloggers, writers, and professionals can share their ideas, stories, and insights with a global audience. We provide a space for both experts and curious learners to express their thoughts, with posts approved by our admin team before being published. Join DigitalKSP today to connect with a vibrant community and share your knowledge with the world!"
 publish_to: "none"
 
-version: 1.0.1+2
+version: 1.0.2+2
 
 environment:
   sdk: ^3.5.0

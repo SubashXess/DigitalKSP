@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 16,
             "patches": [
                 {
                     "date": 1732348373563,
@@ -60,6 +60,18 @@
                 {
                     "date": 1732349004644,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import 'package:http/http.dart' as http;\r\n \r\n import '../models/blogs/blog_models.dart';\r\n \r\n-class PostRespository {\r\n+class PostRepository {\r\n   Future<List<BlogModels>> getIndividualCategoryBlog(\r\n       {required String category, int limit = 10, int page = 1}) async {\r\n     try {\r\n       final response = await http.get(Uri.parse(\r\n"
+                },
+                {
+                    "date": 1737635445727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,11 @@\n \r\n import '../models/blogs/blog_models.dart';\r\n \r\n class PostRepository {\r\n+\r\n+  // Fetch Blogs\r\n+  \r\n   Future<List<BlogModels>> getIndividualCategoryBlog(\r\n       {required String category, int limit = 10, int page = 1}) async {\r\n     try {\r\n       final response = await http.get(Uri.parse(\r\n"
+                },
+                {
+                    "date": 1737635456149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,12 @@\n \r\n import '../models/blogs/blog_models.dart';\r\n \r\n class PostRepository {\r\n+\r\n+\r\n+  \r\n+\r\n   // Fetch Blogs\r\n   Future<List<BlogModels>> getIndividualCategoryBlog(\r\n       {required String category, int limit = 10, int page = 1}) async {\r\n     try {\r\n"
+                },
+                {
+                    "date": 1737635477727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,13 @@\n \r\n import '../models/blogs/blog_models.dart';\r\n \r\n class PostRepository {\r\n+\r\n+AppThemes._();\r\n+  static final AppThemes _instance = AppThemes._();\r\n+  static AppThemes get instance => _instance;\r\n+\r\n   // Fetch Blogs\r\n   Future<List<BlogModels>> getIndividualCategoryBlog(\r\n       {required String category, int limit = 10, int page = 1}) async {\r\n     try {\r\n"
                 }
             ],
             "date": 1732348373563,

@@ -1,3 +1,4 @@
+import 'package:digitalksp/pages/job_page/job_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -17,7 +18,11 @@ class JobSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        HeadlineSection(headline: 'Jobs vacancy', showMore: true, onTap: () {}),
+        HeadlineSection(
+            headline: 'Jobs vacancy',
+            showMore: true,
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const JobListPage()))),
         const SizedBox(height: 10.0),
         SizedBox(
           width: double.infinity,

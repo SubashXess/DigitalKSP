@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/services/http_requests.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1737635851450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1737636020477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,21 +9,21 @@\n   static final HttpRequest _instance = HttpRequest._();\r\n   static HttpRequest get instance => _instance;\r\n \r\n   // Get Categories\r\n-  // Future<List<CategoriesModel>> getCategory() async {\r\n-  //   final Uri url = Uri.parse(ApiRequest.instance.apiGetCategories);\r\n+  Future<List<CategoriesModel>> getCategory() async {\r\n+    final Uri url = Uri.parse(ApiRequest.instance.apiGetCategories);\r\n \r\n-  //   try {\r\n-  //     final response = await http.get(url, headers: <String, String>{\r\n-  //       ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n-  //     });\r\n+    try {\r\n+      final response = await http.get(url, headers: <String, String>{\r\n+        ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n+      });\r\n \r\n-  //     if(response.statusCode == 200)\r\n-  //   } catch (err) {\r\n-  //     throw Exception('Unexpected error occured $err');\r\n-  //   }\r\n-  // }\r\n+      if(response.statusCode == 200)\r\n+    } catch (err) {\r\n+      throw Exception('Unexpected error occured $err');\r\n+    }\r\n+  }\r\n \r\n   // Fetch Blogs\r\n \r\n   Future<List<BlogModels>> getIndividualCategoryBlog(\r\n"
+                },
+                {
+                    "date": 1737636072668,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,21 +9,21 @@\n   static final HttpRequest _instance = HttpRequest._();\r\n   static HttpRequest get instance => _instance;\r\n \r\n   // Get Categories\r\n-  // Future<List<CategoriesModel>> getCategory() async {\r\n-  //   final Uri url = Uri.parse(ApiRequest.instance.apiGetCategories);\r\n+  Future<List<CategoriesModel>> getCategory() async {\r\n+    final Uri url = Uri.parse(ApiRequest.instance.apiGetCategories);\r\n \r\n-  //   try {\r\n-  //     final response = await http.get(url, headers: <String, String>{\r\n-  //       ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n-  //     });\r\n+    try {\r\n+      final response = await http.get(url, headers: <String, String>{\r\n+        ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n+      });\r\n \r\n-  //     if(response.statusCode == 200)\r\n-  //   } catch (err) {\r\n-  //     throw Exception('Unexpected error occured $err');\r\n-  //   }\r\n-  // }\r\n+      if(response.statusCode == 200 ) {}\r\n+    } catch (err) {\r\n+      throw Exception('Unexpected error occured $err');\r\n+    }\r\n+  }\r\n \r\n   // Fetch Blogs\r\n \r\n   Future<List<BlogModels>> getIndividualCategoryBlog(\r\n"
+                },
+                {
+                    "date": 1737636089676,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,14 @@\n       final response = await http.get(url, headers: <String, String>{\r\n         ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n       });\r\n \r\n-      if (response.statusCode == 200) {}\r\n+      if (response.statusCode == 200) {\r\n+        final Map<String, dynamic> jsonData = json.decode(response.body);\r\n+        return CategoriesModel.categoriesFromJson(jsonData).toList();\r\n+      } else {\r\n+        throw Exception('Failed to load data');\r\n+      }\r\n     } catch (err) {\r\n       throw Exception('Unexpected error occured $err');\r\n     }\r\n   }\r\n"
+                }
+            ],
+            "date": 1737635851450,
+            "name": "Commit-0",
+            "content": "import 'dart:convert';\r\nimport 'package:digitalksp/constants/urls.dart';\r\nimport 'package:http/http.dart' as http;\r\nimport '../models/blogs/blog_models.dart';\r\nimport '../models/categories_model.dart';\r\n\r\nclass HttpRequest {\r\n  HttpRequest._();\r\n  static final HttpRequest _instance = HttpRequest._();\r\n  static HttpRequest get instance => _instance;\r\n\r\n  // Get Categories\r\n  // Future<List<CategoriesModel>> getCategory() async {\r\n  //   final Uri url = Uri.parse(ApiRequest.instance.apiGetCategories);\r\n\r\n  //   try {\r\n  //     final response = await http.get(url, headers: <String, String>{\r\n  //       ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,\r\n  //     });\r\n\r\n  //     if(response.statusCode == 200)\r\n  //   } catch (err) {\r\n  //     throw Exception('Unexpected error occured $err');\r\n  //   }\r\n  // }\r\n\r\n  // Fetch Blogs\r\n\r\n  Future<List<BlogModels>> getIndividualCategoryBlog(\r\n      {required String category, int limit = 10, int page = 1}) async {\r\n    try {\r\n      final response = await http.get(Uri.parse(\r\n          '${ApiRequest.instance.apiGetBlogByIndCategory}?category=$category&limit=$limit&page=$page'));\r\n\r\n      if (response.statusCode == 200) {\r\n        final Map<String, dynamic> jsonResponse = json.decode(response.body);\r\n        return BlogModels.blogsFromJson(jsonResponse);\r\n      } else {\r\n        throw Exception('Failed to load data');\r\n      }\r\n    } catch (err) {\r\n      throw Exception('Unexpected error occured $err');\r\n    }\r\n  }\r\n}\r\n"
+        }
+    ]
+}

@@ -48,8 +48,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    _scrollController
-        .removeListener(_onScroll); // Also remove the listener here
+    _scrollController.removeListener(_onScroll);
     super.dispose();
   }
 
@@ -86,17 +85,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _fetchMoreBlogs() async {
-    if (_isFetchingMore) return; // Prevent multiple fetches
+    if (_isFetchingMore) return;
 
     setState(() {
       _isFetchingMore = true;
     });
 
-    // Increment the current page
     currentPage++;
-
-    // Fetch more data for 'Normal' blogs with pagination
-    // await Future.delayed(const Duration(milliseconds: 2000));
     await context
         .read<BlogProviders>()
         .getBlogs(type: 'Normal', limit: perPage, page: currentPage);

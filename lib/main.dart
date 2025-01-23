@@ -12,6 +12,8 @@ import 'package:digitalksp/providers/wishwall_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'pages/demo_page.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -32,8 +34,8 @@ class App extends StatelessWidget {
         title: APP_NAME,
         debugShowCheckedModeBanner: false,
         theme: AppThemes.instance.lightTheme,
-        home: const SplashPage(),
-        // home: const DemoPage(),
+        // home: const SplashPage(),
+        home: const DemoPage(),
       ),
     );
   }

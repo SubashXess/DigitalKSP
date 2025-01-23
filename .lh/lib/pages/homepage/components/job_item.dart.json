@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 51,
+            "activePatchIndex": 55,
             "patches": [
                 {
                     "date": 1732363979904,
@@ -212,6 +212,22 @@
                 {
                     "date": 1732365994721,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n import 'package:intl/intl.dart';\r\n \r\n import '../../../constants/styles.dart';\r\n import '../../../models/jobs/jobs_models.dart';\r\n+import '../../job_page/job_post_page.dart';\r\n import 'headline.dart';\r\n \r\n class JobSection extends StatelessWidget {\r\n   const JobSection({super.key, required this.items});\r\n@@ -49,9 +50,9 @@\n   @override\r\n   Widget build(BuildContext context) {\r\n     return GestureDetector(\r\n       onTap: () => Navigator.push(context,\r\n-          MaterialPageRoute(builder: (_) => JobPostPage(jobId: job.id))),\r\n+          MaterialPageRoute(builder: (_) => JobPostPage(jobId: item.id))),\r\n       child: Container(\r\n         width: 200.0,\r\n         padding: const EdgeInsets.all(16.0),\r\n         decoration: BoxDecoration(\r\n"
+                },
+                {
+                    "date": 1737616574967,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import 'package:digitalksp/pages/job_page/job_list_page.dart';\r\n import 'package:flutter/material.dart';\r\n import 'package:flutter_svg/flutter_svg.dart';\r\n import 'package:intl/intl.dart';\r\n \r\n@@ -16,9 +17,9 @@\n   Widget build(BuildContext context) {\r\n     return Column(\r\n       crossAxisAlignment: CrossAxisAlignment.start,\r\n       children: [\r\n-        HeadlineSection(headline: 'Jobs vacancy', showMore: true, onTap: () {}),\r\n+        HeadlineSection(headline: 'Jobs vacancy', showMore: true, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const JobListPage()))),\r\n         const SizedBox(height: 10.0),\r\n         SizedBox(\r\n           width: double.infinity,\r\n           height: 168.0,\r\n"
+                },
+                {
+                    "date": 1737616636752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,13 @@\n   Widget build(BuildContext context) {\r\n     return Column(\r\n       crossAxisAlignment: CrossAxisAlignment.start,\r\n       children: [\r\n-        HeadlineSection(headline: 'Jobs vacancy', showMore: true, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const JobListPage()))),\r\n+        HeadlineSection(\r\n+            headline: 'Jobs vacancy',\r\n+            showMore: true,\r\n+            onTap: () => Navigator.push(context,\r\n+                MaterialPageRoute(builder: (_) => const JobListPage()))),\r\n         const SizedBox(height: 10.0),\r\n         SizedBox(\r\n           width: double.infinity,\r\n           height: 168.0,\r\n"
+                },
+                {
+                    "date": 1737618740382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n         SizedBox(\r\n           width: double.infinity,\r\n           height: 168.0,\r\n           child: ListView.builder(\r\n-            itemCount: items.length,\r\n+            itemCount: items.take(12).toList().length,\r\n             shrinkWrap: true,\r\n             padding: const EdgeInsets.symmetric(horizontal: 16.0),\r\n             scrollDirection: Axis.horizontal,\r\n             clipBehavior: Clip.none,\r\n"
+                },
+                {
+                    "date": 1737619093634,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n         SizedBox(\r\n           width: double.infinity,\r\n           height: 168.0,\r\n           child: ListView.builder(\r\n-            itemCount: items.take(12).toList().length,\r\n+            itemCount: items.length,\r\n             shrinkWrap: true,\r\n             padding: const EdgeInsets.symmetric(horizontal: 16.0),\r\n             scrollDirection: Axis.horizontal,\r\n             clipBehavior: Clip.none,\r\n"
                 }
             ],
             "date": 1732363979904,

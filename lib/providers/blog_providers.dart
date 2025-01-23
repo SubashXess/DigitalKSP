@@ -69,7 +69,13 @@ class BlogProviders extends ChangeNotifier {
 
         // Normal, Front Banner, Recent, Latest, Most Popular, Featured
         final List<BlogModels> blogs = BlogModels.blogsFromJson(jsonData);
-        _blogTypeMap[type] = blogs;
+
+        if (_blogTypeMap.containsKey(type)) {
+          _blogTypeMap[type]?.addAll(blogs);
+        } else {
+          throw Exception('Unexpected blog type: $type');
+        }
+
         _assignBlogsToType();
 
         notifyListeners();
@@ -77,7 +83,7 @@ class BlogProviders extends ChangeNotifier {
         throw Exception('Failed to load data');
       }
     } catch (err) {
-      throw Exception('Unexpected error occured $err');
+      throw Exception('Unexpected error occurred: $err');
     }
   }
 
@@ -162,12 +168,17 @@ class BlogProviders extends ChangeNotifier {
     }
   }
 
+  String? _currentCategory;
+
   Future<void> getBlogByIndCategory(
       {String? category, String limit = '10', String page = '1'}) async {
-    _blogByIndCategory = [];
+    if (_currentCategory != category) {
+      _blogByIndCategory.clear();
+      _currentCategory = category;
+    }
 
     final Uri url = Uri.parse(
-        '${ApiRequest.instance.apiGetBlogByIndCategory}?category=$category&limit=$limit');
+        '${ApiRequest.instance.apiGetBlogByIndCategory}?category=$category&limit=$limit&page=$page');
 
     try {
       final response = await http.get(url, headers: {
@@ -176,24 +187,29 @@ class BlogProviders extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonData = json.decode(response.body);
-
-        _blogByIndCategory = BlogModels.blogsFromJson(jsonData);
+        final List<BlogModels> newBlogs = BlogModels.blogsFromJson(jsonData);
+        _blogByIndCategory.addAll(newBlogs);
 
         notifyListeners();
       } else {
         throw Exception('Failed to load data');
       }
     } catch (err) {
-      throw Exception('Unexpected error occured $err');
+      throw Exception('Unexpected error occurred $err');
     }
   }
 
+  String? _currentType;
+
   Future<void> getBlogByType(
       {required String type, String limit = '10', String page = '1'}) async {
-    _blogByTypeModel = [];
+    if (_currentType != type) {
+      _blogByTypeModel.clear();
+      _currentType = type;
+    }
 
-    final Uri url =
-        Uri.parse('${ApiRequest.instance.apiGetBlogs}?type=$type&limit=$limit');
+    final Uri url = Uri.parse(
+        '${ApiRequest.instance.apiGetBlogs}?type=$type&limit=$limit&page=$page');
 
     try {
       final response = await http.get(url, headers: {
@@ -203,14 +219,15 @@ class BlogProviders extends ChangeNotifier {
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonData = json.decode(response.body);
 
-        _blogByTypeModel = BlogModels.blogsFromJson(jsonData);
+        final List<BlogModels> newBlogs = BlogModels.blogsFromJson(jsonData);
+        _blogByTypeModel.addAll(newBlogs);
 
         notifyListeners();
       } else {
         throw Exception('Failed to load data');
       }
     } catch (err) {
-      throw Exception('Unexpected error occured $err');
+      throw Exception('Unexpected error occurred $err');
     }
   }
 

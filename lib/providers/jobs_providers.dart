@@ -5,14 +5,15 @@ import 'package:http/http.dart' as http;
 import '../constants/urls.dart';
 
 class JobsProviders extends ChangeNotifier {
-  List<JobModels> _jobsModel = [];
+  final List<JobModels> _jobsModel = [];
   List<JobModels> get jobModel => _jobsModel;
 
   JobPostModel? _jobPostModel;
   JobPostModel? get jobPostModel => _jobPostModel;
 
-  Future<void> getJobs({String limit = '12'}) async {
-    final Uri url = Uri.parse('${ApiRequest.instance.apiGetJobs}?limit=$limit');
+  Future<void> getJobs({String limit = '12', String page = '1'}) async {
+    final Uri url =
+        Uri.parse('${ApiRequest.instance.apiGetJobs}?limit=$limit&page=$page');
 
     try {
       final response = await http.get(url, headers: {
@@ -21,7 +22,8 @@ class JobsProviders extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonData = json.decode(response.body);
-        _jobsModel = JobModels.jobsFromJson(jsonData).toList();
+        final List<JobModels> jobs = JobModels.jobsFromJson(jsonData).toList();
+        _jobsModel.addAll(jobs);
 
         notifyListeners();
       } else {
