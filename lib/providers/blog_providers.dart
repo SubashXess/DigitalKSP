@@ -200,11 +200,8 @@ class BlogProviders extends ChangeNotifier {
   }
 
   Future<void> getBlogByType(
-      {required String type, String limit = '10', String page = '1'}) async {
-    if (page == '1') {
-      _blogByTypeModel = [];
-    }
-
+      {required String type, int limit = 10, int page = 1}) async {
+    _blogByTypeModel = [];
     final Uri url = Uri.parse(
         '${ApiRequest.instance.apiGetBlogs}?type=$type&limit=$limit&page=$page');
 
@@ -216,15 +213,7 @@ class BlogProviders extends ChangeNotifier {
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonData = json.decode(response.body);
 
-        final List<BlogModels> newBlogs = BlogModels.blogsFromJson(jsonData);
-
-        // _blogByTypeModel.addAll(newBlogs);
-
-        if (page == '1') {
-          _blogByTypeModel = newBlogs;
-        } else {
-          _blogByTypeModel.addAll(newBlogs);
-        }
+        _blogByTypeModel = BlogModels.blogsFromJson(jsonData);
 
         notifyListeners();
       } else {
@@ -233,6 +222,7 @@ class BlogProviders extends ChangeNotifier {
     } catch (err) {
       throw Exception('Unexpected error occurred $err');
     }
+    notifyListeners();
   }
 
   void selectCategory(String? value) {}

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:digitalksp/pages/profile_walls_page/ind_profile_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/styles.dart';
@@ -17,7 +18,10 @@ class IndProfileList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         HeadlineSection(
-            headline: 'Professional frame', showMore: true, onTap: () {}),
+            headline: 'Professional frame',
+            showMore: true,
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const IndProfileListPage()))),
         const SizedBox(height: 10.0),
         SizedBox(
           width: double.infinity,

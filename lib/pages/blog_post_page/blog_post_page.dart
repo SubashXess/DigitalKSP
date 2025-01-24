@@ -23,7 +23,9 @@ class _BlogPostPageState extends State<BlogPostPage> {
     super.initState();
 
     context.read<BlogProviders>().getBlogContent(widget.blogId);
-    context.read<BlogProviders>().getBlogs(type: 'Latest', limit: 12);
+    context
+        .read<BlogProviders>()
+        .getBlogByType(type: 'Latest', limit: 10, page: 1);
   }
 
   @override
@@ -35,10 +37,9 @@ class _BlogPostPageState extends State<BlogPostPage> {
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              // https://www.pcmag.com/reviews/apple-macos-monterey
               child: IconButton(
                 onPressed: () => Utilities.shareIt(context,
-                    url: 'https://digitalksp.com/blogs/id=${widget.blogId}',
+                    url: 'https://digitalksp.com/blogs?id=${widget.blogId}',
                     subject: provider.blogPostModel!.blog.coverTitle,
                     text: provider.blogPostModel?.blog.title),
                 icon: SvgPicture.asset(

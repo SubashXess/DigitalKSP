@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:digitalksp/constants/constants.dart';
 import 'package:digitalksp/constants/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:read_more_text/read_more_text.dart';
-
 import '../../providers/wishwall_providers.dart';
+import '../../utilities/utilities.dart';
 
 class IndProfileWallPage extends StatefulWidget {
   const IndProfileWallPage({super.key, required this.profileId});
@@ -41,9 +43,21 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                 ),
                 const SizedBox(width: 4.0),
                 IconButton(
-                  onPressed: () {},
-                  iconSize: 20.0,
-                  icon: const Icon(Icons.share),
+                  onPressed: () {
+                    final provider = context.read<WishWallProviders>();
+                    Utilities.shareIt(
+                      context,
+                      url:
+                          'https://digitalksp.com/ind-profile?id=${widget.profileId}',
+                      subject: provider.indDetailProfile.first.fullName,
+                      text: 'Check out my profile on $APP_NAME',
+                    );
+                  },
+                  icon: SvgPicture.asset(
+                    'assets/icons/share-outlined.svg',
+                    width: 20.0,
+                    height: 20.0,
+                  ),
                 ),
               ],
             ),
@@ -132,14 +146,6 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                                     value: provider
                                         .indDetailProfile.first.currentCompany),
                                 _buildInfoItem(context,
-                                    label: 'Highest Qualification',
-                                    value: provider
-                                        .indDetailProfile.first.qualification),
-                                _buildInfoItem(context,
-                                    label: 'Other Qualification',
-                                    value: provider.indDetailProfile.first
-                                        .otherQualification),
-                                _buildInfoItem(context,
                                     label: 'Address',
                                     value: provider
                                         .indDetailProfile.first.address),
@@ -156,6 +162,14 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                                     label: 'Years of Experience',
                                     value: provider.indDetailProfile.first
                                         .experienceYears),
+                                _buildInfoItem(context,
+                                    label: 'Highest Qualification',
+                                    value: provider
+                                        .indDetailProfile.first.qualification),
+                                _buildInfoItem(context,
+                                    label: 'Other Qualification',
+                                    value: provider.indDetailProfile.first
+                                        .otherQualification),
                                 _buildInfoItem(context,
                                     label: 'Website',
                                     value: provider.indDetailProfile.first.url),
@@ -215,23 +229,30 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                                 ?.copyWith(fontWeight: FontWeight.w700),
                           ),
                           const SizedBox(height: 10.0),
-                          ReadMoreText(
+                          HtmlWidget(
                             provider.indDetailProfile.first.bio,
-                            numLines: 5,
-                            readMoreText: 'Read more',
-                            readLessText: 'Read less',
-                            readMoreTextStyle: Theme.of(context)
+                            textStyle: Theme.of(context)
                                 .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                    color: Theme.of(context).primaryColor),
-                            readMoreIconColor: Theme.of(context).primaryColor,
-                            readMoreAlign: Alignment.centerLeft,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(color: Colors.black54),
-                          )
+                                .bodySmall
+                                ?.copyWith(fontSize: 13.0),
+                          ),
+                          // ReadMoreText(
+                          //   provider.indDetailProfile.first.bio,
+                          //   numLines: 5,
+                          //   readMoreText: 'Read more',
+                          //   readLessText: 'Read less',
+                          //   readMoreTextStyle: Theme.of(context)
+                          //       .textTheme
+                          //       .bodyMedium
+                          //       ?.copyWith(
+                          //           color: Theme.of(context).primaryColor),
+                          //   readMoreIconColor: Theme.of(context).primaryColor,
+                          //   readMoreAlign: Alignment.centerLeft,
+                          //   style: Theme.of(context)
+                          //       .textTheme
+                          //       .bodyMedium
+                          //       ?.copyWith(color: Colors.black54),
+                          // ),
                         ],
                       ),
                     ),
@@ -250,23 +271,33 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                                 ?.copyWith(fontWeight: FontWeight.w700),
                           ),
                           const SizedBox(height: 10.0),
-                          ReadMoreText(
+                          HtmlWidget(
                             provider.indDetailProfile.first.achievements,
-                            numLines: 5,
-                            readMoreText: 'Read more',
-                            readLessText: 'Read less',
-                            readMoreTextStyle: Theme.of(context)
+                            textStyle: Theme.of(context)
                                 .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                    color: Theme.of(context).primaryColor),
-                            readMoreIconColor: Theme.of(context).primaryColor,
-                            readMoreAlign: Alignment.centerLeft,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(color: Colors.black54),
-                          )
+                                .bodySmall
+                                ?.copyWith(fontSize: 13.0),
+                          ),
+                          // ReadMoreText(
+                          //   parse(provider.indDetailProfile.first.achievements)
+                          //           .body
+                          //           ?.text ??
+                          //       '',
+                          //   numLines: 5,
+                          //   readMoreText: 'Read more',
+                          //   readLessText: 'Read less',
+                          //   readMoreTextStyle: Theme.of(context)
+                          //       .textTheme
+                          //       .bodyMedium
+                          //       ?.copyWith(
+                          //           color: Theme.of(context).primaryColor),
+                          //   readMoreIconColor: Theme.of(context).primaryColor,
+                          //   readMoreAlign: Alignment.centerLeft,
+                          //   style: Theme.of(context)
+                          //       .textTheme
+                          //       .bodyMedium
+                          //       ?.copyWith(color: Colors.black54),
+                          // ),
                         ],
                       ),
                     ),
@@ -294,14 +325,16 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                       ?.copyWith(color: Colors.black45, fontSize: 13.0)),
             ),
             const SizedBox(width: 10.0),
+            const SizedBox(width: 20.0, child: Text(':')),
             Expanded(
               flex: 2,
-              child: Text(value,
-                  textAlign: TextAlign.end,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(fontWeight: FontWeight.w500, fontSize: 13.0)),
+              child: HtmlWidget(
+                value,
+                textStyle: Theme.of(context)
+                    .textTheme
+                    .bodySmall
+                    ?.copyWith(fontSize: 13.0),
+              ),
             ),
           ],
         ),

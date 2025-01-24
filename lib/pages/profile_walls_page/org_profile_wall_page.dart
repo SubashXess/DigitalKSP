@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:digitalksp/providers/wishwall_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:read_more_text/read_more_text.dart';
-
+import '../../constants/constants.dart';
 import '../../constants/styles.dart';
+import '../../utilities/utilities.dart';
 
 class OrgProfileWallPage extends StatefulWidget {
   const OrgProfileWallPage({super.key, required this.profileId});
@@ -41,9 +43,21 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                 ),
                 const SizedBox(width: 4.0),
                 IconButton(
-                  onPressed: () {},
-                  iconSize: 20.0,
-                  icon: const Icon(Icons.share),
+                  onPressed: () {
+                    final provider = context.read<WishWallProviders>();
+                    Utilities.shareIt(
+                      context,
+                      url:
+                          'https://digitalksp.com/org-profile?id=${widget.profileId}',
+                      subject: provider.orgDetailProfile.first.orgName,
+                      text: 'Check out our organization profile on $APP_NAME',
+                    );
+                  },
+                  icon: SvgPicture.asset(
+                    'assets/icons/share-outlined.svg',
+                    width: 20.0,
+                    height: 20.0,
+                  ),
                 ),
               ],
             ),
@@ -193,23 +207,30 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                                   ?.copyWith(fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(height: 10.0),
-                            ReadMoreText(
+                            HtmlWidget(
                               provider.orgDetailProfile.first.bio,
-                              numLines: 5,
-                              readMoreText: 'Read more',
-                              readLessText: 'Read less',
-                              readMoreTextStyle: Theme.of(context)
+                              textStyle: Theme.of(context)
                                   .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                      color: Theme.of(context).primaryColor),
-                              readMoreIconColor: Theme.of(context).primaryColor,
-                              readMoreAlign: Alignment.centerLeft,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: Colors.black54),
-                            )
+                                  .bodySmall
+                                  ?.copyWith(fontSize: 13.0),
+                            ),
+                            // ReadMoreText(
+                            //   provider.orgDetailProfile.first.bio,
+                            //   numLines: 5,
+                            //   readMoreText: 'Read more',
+                            //   readLessText: 'Read less',
+                            //   readMoreTextStyle: Theme.of(context)
+                            //       .textTheme
+                            //       .bodyMedium
+                            //       ?.copyWith(
+                            //           color: Theme.of(context).primaryColor),
+                            //   readMoreIconColor: Theme.of(context).primaryColor,
+                            //   readMoreAlign: Alignment.centerLeft,
+                            //   style: Theme.of(context)
+                            //       .textTheme
+                            //       .bodyMedium
+                            //       ?.copyWith(color: Colors.black54),
+                            // ),
                           ],
                         ),
                       ),
@@ -228,23 +249,30 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                                   ?.copyWith(fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(height: 10.0),
-                            ReadMoreText(
+                            HtmlWidget(
                               provider.orgDetailProfile.first.achievements,
-                              numLines: 5,
-                              readMoreText: 'Read more',
-                              readLessText: 'Read less',
-                              readMoreTextStyle: Theme.of(context)
+                              textStyle: Theme.of(context)
                                   .textTheme
-                                  .labelLarge
-                                  ?.copyWith(
-                                      color: Theme.of(context).primaryColor),
-                              readMoreIconColor: Theme.of(context).primaryColor,
-                              readMoreAlign: Alignment.centerLeft,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: Colors.black54),
-                            )
+                                  .bodySmall
+                                  ?.copyWith(fontSize: 13.0),
+                            ),
+                            // ReadMoreText(
+                            //   provider.orgDetailProfile.first.achievements,
+                            //   numLines: 5,
+                            //   readMoreText: 'Read more',
+                            //   readLessText: 'Read less',
+                            //   readMoreTextStyle: Theme.of(context)
+                            //       .textTheme
+                            //       .labelLarge
+                            //       ?.copyWith(
+                            //           color: Theme.of(context).primaryColor),
+                            //   readMoreIconColor: Theme.of(context).primaryColor,
+                            //   readMoreAlign: Alignment.centerLeft,
+                            //   style: Theme.of(context)
+                            //       .textTheme
+                            //       .bodyMedium
+                            //       ?.copyWith(color: Colors.black54),
+                            // ),
                           ],
                         ),
                       ),
@@ -263,23 +291,30 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                                   ?.copyWith(fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(height: 10.0),
-                            ReadMoreText(
+                            HtmlWidget(
                               provider.orgDetailProfile.first.otherInformation,
-                              numLines: 5,
-                              readMoreText: 'Read more',
-                              readLessText: 'Read less',
-                              readMoreTextStyle: Theme.of(context)
+                              textStyle: Theme.of(context)
                                   .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                      color: Theme.of(context).primaryColor),
-                              readMoreIconColor: Theme.of(context).primaryColor,
-                              readMoreAlign: Alignment.centerLeft,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(color: Colors.black54),
-                            )
+                                  .bodySmall
+                                  ?.copyWith(fontSize: 13.0),
+                            ),
+                            // ReadMoreText(
+                            //   provider.orgDetailProfile.first.otherInformation,
+                            //   numLines: 5,
+                            //   readMoreText: 'Read more',
+                            //   readLessText: 'Read less',
+                            //   readMoreTextStyle: Theme.of(context)
+                            //       .textTheme
+                            //       .bodyMedium
+                            //       ?.copyWith(
+                            //           color: Theme.of(context).primaryColor),
+                            //   readMoreIconColor: Theme.of(context).primaryColor,
+                            //   readMoreAlign: Alignment.centerLeft,
+                            //   style: Theme.of(context)
+                            //       .textTheme
+                            //       .bodyMedium
+                            //       ?.copyWith(color: Colors.black54),
+                            // ),
                           ],
                         ),
                       ),

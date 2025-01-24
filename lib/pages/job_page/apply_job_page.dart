@@ -422,10 +422,11 @@ class _ApplyJobPageState extends State<ApplyJobPage> {
 
                               setState(() {
                                 _loading = false;
+                                Navigator.pop(context);
                               });
                             },
                           );
-                          _loading ? null : Navigator.pop(context);
+                          FocusScope.of(context).unfocus();
                         }
                       } else {
                         // Error

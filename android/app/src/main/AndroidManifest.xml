@@ -34,7 +34,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-              
+                <data android:scheme="http" android:host="digitalksp.com" />
                 <data android:scheme="https" android:host="digitalksp.com" android:pathPrefix="/blogs"/>
                 <data android:scheme="https" android:host="digitalksp.com" android:pathPrefix="/authors"/>
                 <data android:scheme="https" android:host="digitalksp.com" android:pathPrefix="/ind-profile"/>

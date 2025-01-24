@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:digitalksp/pages/profile_walls_page/org_profile_list_page.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/styles.dart';
 import '../../../models/wishwall/wishwall_profiles_model.dart';
@@ -16,7 +17,10 @@ class OrgProfileList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         HeadlineSection(
-            headline: 'Organization profile', showMore: true, onTap: () {}),
+            headline: 'Organization profile',
+            showMore: true,
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (_) => const OrgProfileListPage()))),
         const SizedBox(height: 10.0),
         SizedBox(
           width: double.infinity,

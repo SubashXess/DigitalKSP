@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1732949003945,
@@ -12,6 +12,18 @@
                 {
                     "date": 1732949104879,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n import '../../profile_walls_page/org_profile_wall_page.dart';\r\n import 'headline.dart';\r\n \r\n class OrgProfileList extends StatelessWidget {\r\n-  const OrgProfileList({super.key, required this.items});\r\n+  const OrgProfileList({super.key});\r\n \r\n-  final List<OrgProfileModel> items;\r\n+  \r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Column(\r\n"
+                },
+                {
+                    "date": 1737692858584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n import '../../profile_walls_page/org_profile_wall_page.dart';\r\n import 'headline.dart';\r\n \r\n class OrgProfileList extends StatelessWidget {\r\n-  const OrgProfileList({super.key});\r\n+  const OrgProfileList({super.key, required this.items});\r\n \r\n-  \r\n+  final List<OrgProfileModel> items;\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Column(\r\n"
+                },
+                {
+                    "date": 1737692923492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import 'package:cached_network_image/cached_network_image.dart';\r\n+import 'package:digitalksp/pages/profile_walls_page/org_profile_list_page.dart';\r\n import 'package:flutter/material.dart';\r\n import '../../../constants/styles.dart';\r\n import '../../../models/wishwall/wishwall_profiles_model.dart';\r\n import '../../profile_walls_page/org_profile_wall_page.dart';\r\n@@ -15,9 +16,10 @@\n     return Column(\r\n       crossAxisAlignment: CrossAxisAlignment.start,\r\n       children: [\r\n         HeadlineSection(\r\n-            headline: 'Organization profile', showMore: true, onTap: () {}),\r\n+            headline: 'Organization profile', showMore: true, onTap: () =>  Navigator.push(context,\r\n+                MaterialPageRoute(builder: (_) => const OrgProfileListPage()))),\r\n         const SizedBox(height: 10.0),\r\n         SizedBox(\r\n           width: double.infinity,\r\n           height: 194.0,\r\n"
+                },
+                {
+                    "date": 1737693475973,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,11 @@\n     return Column(\r\n       crossAxisAlignment: CrossAxisAlignment.start,\r\n       children: [\r\n         HeadlineSection(\r\n-            headline: 'Organization profile', showMore: true, onTap: () =>  Navigator.push(context,\r\n+            headline: 'Organization profile',\r\n+            showMore: true,\r\n+            onTap: () => Navigator.push(context,\r\n                 MaterialPageRoute(builder: (_) => const OrgProfileListPage()))),\r\n         const SizedBox(height: 10.0),\r\n         SizedBox(\r\n           width: double.infinity,\r\n"
                 }
             ],
             "date": 1732949003945,

@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:read_more_text/read_more_text.dart';
+import '../../constants/constants.dart';
 import '../../providers/author_providers.dart';
+import '../../utilities/utilities.dart';
 
 class AuthorPage extends StatefulWidget {
   const AuthorPage({super.key, required this.authorId});
@@ -38,13 +40,20 @@ class _AuthorPageState extends State<AuthorPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    final provider = context.read<AuthorProviders>();
+                    Utilities.shareIt(
+                      context,
+                      url:
+                          'https://digitalksp.com/authors?id=${widget.authorId}',
+                      subject: provider.authorById.first.name,
+                      text: 'Check out my profile on $APP_NAME',
+                    );
+                  },
                   icon: SvgPicture.asset(
                     'assets/icons/share-outlined.svg',
                     width: 20.0,
                     height: 20.0,
-                    alignment: Alignment.center,
-                    fit: BoxFit.scaleDown,
                   ),
                 ),
               ],

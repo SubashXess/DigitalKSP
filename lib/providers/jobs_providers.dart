@@ -63,6 +63,7 @@ class JobsProviders extends ChangeNotifier {
 
     try {
       final request = http.MultipartRequest('POST', url)
+        ..followRedirects = false
         ..fields['name'] = job.name
         ..fields['email'] = job.email
         ..fields['mobile'] = job.phone
@@ -76,7 +77,7 @@ class JobsProviders extends ChangeNotifier {
       );
       request.files.add(resume);
 
-      var response = await request.send();
+      final response = await request.send();
 
       if (response.statusCode == 200) {
         final responseBody = await response.stream.bytesToString();
@@ -85,11 +86,11 @@ class JobsProviders extends ChangeNotifier {
         if (jsonData['success'] == true) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(jsonData['message'])));
-          notifyListeners();
         } else {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(jsonData['message'])));
         }
+        notifyListeners();
       } else {
         throw Exception(
             'Failed to submit application. Status code: ${response.statusCode}');

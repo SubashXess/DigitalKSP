@@ -1,0 +1,38 @@
+{
+    "sourceFile": "lib/services/deep_link_handler.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1737721798705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1737721829902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+import 'package:flutter/material.dart';\r\n+\r\n+class DeepLinkHandler {\r\n+  static final DeepLinkHandler _instance = DeepLinkHandler._internal();\r\n+  factory DeepLinkHandler() => _instance;\r\n+  DeepLinkHandler._internal();\r\n+\r\n+  void initialize(BuildContext context) {\r\n+    // Handle the deep link here\r\n+  }\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737721851627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+import 'package:app_links/app_links.dart';\r\n+import 'package:flutter/material.dart';\r\n+\r\n+class DeepLinkHandler {\r\n+  static final DeepLinkHandler _instance = DeepLinkHandler._internal();\r\n+  factory DeepLinkHandler() => _instance;\r\n+  DeepLinkHandler._internal();\r\n+\r\n+  final AppLinks _appLinks = new AppLinks();\r\n+\r\n+  void initialize(BuildContext context) {\r\n+    // Handle the deep link here\r\n+  }\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737721901615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,10 @@\n \r\n   final AppLinks _appLinks = new AppLinks();\r\n \r\n   void initialize(BuildContext context) {\r\n-    // Handle the deep link here\r\n+   _appLinks.getInitialLink().then((url) => url != null ? _handleDeepLink(url) : null);\r\n   }\r\n }\r\n+\r\n+_handleDeepLink(Uri url) {\r\n+}\r\n"
+                },
+                {
+                    "date": 1737721907694,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,7 +12,9 @@\n     _appLinks\r\n         .getInitialLink()\r\n         .then((url) => url != null ? _handleDeepLink(url) : null);\r\n   }\r\n+\r\n+  _handleDeepLink(Uri url) {}\r\n }\r\n \r\n-_handleDeepLink(Uri url) {}\r\n+\r\n"
+                },
+                {
+                    "date": 1737721919751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,12 +7,18 @@\n   DeepLinkHandler._internal();\r\n \r\n   final AppLinks _appLinks = new AppLinks();\r\n \r\n-  void initialize(BuildContext context) {\r\n-    _appLinks\r\n-        .getInitialLink()\r\n-        .then((url) => url != null ? _handleDeepLink(url) : null);\r\n+   void initialize(BuildContext context) {\r\n+    _appLinks.getInitialAppLink().then((uri) {\r\n+      if (uri != null) {\r\n+        _handleDeepLink(uri, context);\r\n+      }\r\n+    });\r\n+\r\n+    _appLinks.uriLinkStream.listen((uri) {\r\n+      if (uri != null) {\r\n+        _handleDeepLink(uri, context);\r\n+      }\r\n+    });\r\n   }\r\n-\r\n-  _handleDeepLink(Uri url) {}\r\n }\r\n"
+                }
+            ],
+            "date": 1737721798705,
+            "name": "Commit-0",
+            "content": "class DeepLinkHandler {}"
+        }
+    ]
+}

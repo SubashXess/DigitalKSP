@@ -1,11 +1,10 @@
 import 'dart:async';
-
-import 'package:app_links/app_links.dart';
 import 'package:digitalksp/constants/app_config.dart';
 import 'package:digitalksp/pages/homepage/homepage.dart';
 import 'package:digitalksp/pages/onboard_page/onboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../services/deep_link_handler.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -20,19 +19,10 @@ class _SplashPageState extends State<SplashPage>
   late final Animation<double> _fadeAnimation;
   late final Animation<Offset> _slideAnimation;
 
-  final AppLinks _appLinks = AppLinks();
-
-  // adb shell 'am start -a android.intent.action.VIEW \
-  //   -c android.intent.category.BROWSABLE \
-  //   -d "http://www.digitalksp.com/blogs"' \
-  //   com.ddnenterprises.digitalksp
-
   @override
   void initState() {
     super.initState();
-    _appLinks.uriLinkStream.listen((uri) {
-      print('URL Listener: $uri');
-    });
+
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -49,9 +39,8 @@ class _SplashPageState extends State<SplashPage>
     ).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     );
-
     _controller.forward();
-    _checkOnboardingStatus();
+    _initializeApp(context);
   }
 
   @override
@@ -60,27 +49,36 @@ class _SplashPageState extends State<SplashPage>
     super.dispose();
   }
 
-  Future<void> _checkOnboardingStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isFirstTime = prefs.getBool('onboard-page') ?? true;
+  Future<void> _initializeApp(context) async {
+    final prefs = await SharedPreferences.getInstance();
+    final isFirstTime = prefs.getBool('onboard-page') ?? true;
+
     await Future.delayed(const Duration(seconds: 2));
-    _onNavigate(isFirstTime);
+    DeepLinkHandler().initialize(context);
+
+    if (mounted) {
+      if (isFirstTime) {
+        _navigateToOnboard();
+      } else {
+        _navigateToHome();
+      }
+    }
   }
 
-  void _onNavigate(bool value) {
-    if (value) {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (_) => const OnboardPage()),
-        (route) => false,
-      );
-    } else {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (_) => const HomePage()),
-        (route) => false,
-      );
-    }
+  void _navigateToOnboard() {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (_) => const OnboardPage()),
+      (route) => false,
+    );
+  }
+
+  void _navigateToHome() {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (_) => const HomePage()),
+      (route) => false,
+    );
   }
 
   @override
@@ -94,16 +92,18 @@ class _SplashPageState extends State<SplashPage>
           TextSpan(
             children: [
               TextSpan(
-                  text: 'Powered by ',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: Colors.black54)),
+                text: 'Powered by ',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(color: Colors.black54),
+              ),
               TextSpan(
-                  text: 'DDN Enterprise',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: Theme.of(context).primaryColor)),
+                text: 'DDN Enterprise',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: Theme.of(context).primaryColor),
+              ),
             ],
           ),
         ),
