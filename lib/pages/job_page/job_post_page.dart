@@ -7,6 +7,7 @@ import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart
 import 'package:provider/provider.dart';
 
 import '../../providers/jobs_providers.dart';
+import '../../utilities/utilities.dart';
 
 class JobPostPage extends StatefulWidget {
   const JobPostPage({super.key, required this.jobId});
@@ -35,8 +36,15 @@ class _JobPostPageState extends State<JobPostPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.share),
+                      onPressed: () => Utilities.shareIt(context,
+                          url: 'https://digitalksp.com/jobs?id=${widget.jobId}',
+                          subject: provider.jobPostModel!.jobTitle,
+                          text: provider.jobPostModel?.jobTitle),
+                      icon: SvgPicture.asset(
+                        'assets/icons/share-outlined.svg',
+                        width: 20.0,
+                        height: 20.0,
+                      ),
                     ),
                   ),
                 ],

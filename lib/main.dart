@@ -1,6 +1,7 @@
 import 'package:digitalksp/constants/constants.dart';
 import 'package:digitalksp/constants/styles.dart';
 import 'package:digitalksp/pages/splash_page.dart';
+import 'package:digitalksp/providers/ads_providers.dart';
 import 'package:digitalksp/providers/author_providers.dart';
 import 'package:digitalksp/providers/blog_providers.dart';
 import 'package:digitalksp/providers/categories_provider.dart';
@@ -27,6 +28,7 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => WishWallProviders()),
         ChangeNotifierProvider(create: (_) => JobsProviders()),
         ChangeNotifierProvider(create: (_) => SearchProviders()),
+        ChangeNotifierProvider(create: (_) => AdsProviders()),
       ],
       builder: (context, child) => MaterialApp(
         title: APP_NAME,

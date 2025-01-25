@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/models/ads/ads_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1737783276104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1737783317730,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-class Ad {\r\n+class AdsModel {\r\n   final String id;\r\n   final String addType;\r\n   final String blogId;\r\n   final String title1;\r\n@@ -10,9 +10,9 @@\n   final String link2;\r\n   final String textAd;\r\n   final String textLink;\r\n \r\n-  Ad({\r\n+  AdsModel({\r\n     required this.id,\r\n     required this.addType,\r\n     required this.blogId,\r\n     required this.title1,\r\n@@ -24,9 +24,9 @@\n     required this.textAd,\r\n     required this.textLink,\r\n   });\r\n \r\n-  factory Ad.fromJson(Map<String, dynamic> json) => Ad(\r\n+  factory AdsModel.fromJson(Map<String, dynamic> json) => AdsModel(\r\n         id: json[\"id\"],\r\n         addType: json[\"add_type\"],\r\n         blogId: json[\"blog_id\"],\r\n         title1: json[\"title_1\"],\r\n"
+                },
+                {
+                    "date": 1737783323578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,18 +38,5 @@\n         textAd: json[\"text_ad\"],\r\n         textLink: json[\"text_link\"],\r\n       );\r\n \r\n-  Map<String, dynamic> toJson() => {\r\n-        \"id\": id,\r\n-        \"add_type\": addType,\r\n-        \"blog_id\": blogId,\r\n-        \"title_1\": title1,\r\n-        \"image_1\": image1,\r\n-        \"title_2\": title2,\r\n-        \"image_2\": image2,\r\n-        \"link_1\": link1,\r\n-        \"link_2\": link2,\r\n-        \"text_ad\": textAd,\r\n-        \"text_link\": textLink,\r\n-      };\r\n }\r\n"
+                }
+            ],
+            "date": 1737783276102,
+            "name": "Commit-0",
+            "content": "class Ad {\r\n    final String id;\r\n    final String addType;\r\n    final String blogId;\r\n    final String title1;\r\n    final String image1;\r\n    final String title2;\r\n    final String image2;\r\n    final String link1;\r\n    final String link2;\r\n    final String textAd;\r\n    final String textLink;\r\n\r\n    Ad({\r\n        required this.id,\r\n        required this.addType,\r\n        required this.blogId,\r\n        required this.title1,\r\n        required this.image1,\r\n        required this.title2,\r\n        required this.image2,\r\n        required this.link1,\r\n        required this.link2,\r\n        required this.textAd,\r\n        required this.textLink,\r\n    });\r\n\r\n    factory Ad.fromJson(Map<String, dynamic> json) => Ad(\r\n        id: json[\"id\"],\r\n        addType: json[\"add_type\"],\r\n        blogId: json[\"blog_id\"],\r\n        title1: json[\"title_1\"],\r\n        image1: json[\"image_1\"],\r\n        title2: json[\"title_2\"],\r\n        image2: json[\"image_2\"],\r\n        link1: json[\"link_1\"],\r\n        link2: json[\"link_2\"],\r\n        textAd: json[\"text_ad\"],\r\n        textLink: json[\"text_link\"],\r\n    );\r\n\r\n    Map<String, dynamic> toJson() => {\r\n        \"id\": id,\r\n        \"add_type\": addType,\r\n        \"blog_id\": blogId,\r\n        \"title_1\": title1,\r\n        \"image_1\": image1,\r\n        \"title_2\": title2,\r\n        \"image_2\": image2,\r\n        \"link_1\": link1,\r\n        \"link_2\": link2,\r\n        \"text_ad\": textAd,\r\n        \"text_link\": textLink,\r\n    };\r\n}\r\n"
+        }
+    ]
+}

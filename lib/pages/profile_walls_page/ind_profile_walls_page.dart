@@ -170,9 +170,16 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                                     label: 'Other Qualification',
                                     value: provider.indDetailProfile.first
                                         .otherQualification),
-                                _buildInfoItem(context,
-                                    label: 'Website',
-                                    value: provider.indDetailProfile.first.url),
+                                _buildInfoItem(
+                                  context,
+                                  label: 'Website',
+                                  value: provider.indDetailProfile.first.url,
+                                  onTap: () async {
+                                    await Utilities.urlLauncher(
+                                        url: provider
+                                            .indDetailProfile.first.url);
+                                  },
+                                ),
                               ],
                             ),
                           ),
@@ -200,14 +207,31 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                                       ?.copyWith(fontWeight: FontWeight.w700),
                                 ),
                                 const SizedBox(height: 10.0),
-                                _buildInfoItem(context,
-                                    label: 'Mobile Number',
-                                    value:
-                                        provider.indDetailProfile.first.mobile),
-                                _buildInfoItem(context,
-                                    label: 'Email Address',
-                                    value:
-                                        provider.indDetailProfile.first.email),
+                                _buildInfoItem(
+                                  context,
+                                  label: 'Mobile Number',
+                                  value: provider.indDetailProfile.first.mobile,
+                                  onTap: () async {
+                                    RegExp phoneRegExp =
+                                        RegExp(r'^\+?\d{10,14}$');
+                                    if (phoneRegExp.hasMatch(provider
+                                        .indDetailProfile.first.mobile)) {
+                                      await Utilities.urlLauncher(
+                                          url:
+                                              'tel:${provider.indDetailProfile.first.mobile}');
+                                    }
+                                  },
+                                ),
+                                _buildInfoItem(
+                                  context,
+                                  label: 'Email Address',
+                                  value: provider.indDetailProfile.first.email,
+                                  onTap: () async {
+                                    await Utilities.urlLauncher(
+                                        url:
+                                            'mailto:${provider.indDetailProfile.first.email}');
+                                  },
+                                ),
                               ],
                             ),
                           ),
@@ -310,7 +334,7 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
   }
 
   Widget _buildInfoItem(BuildContext context,
-      {required String label, required String value}) {
+      {required String label, required String value, Function()? onTap}) {
     if (value.isNotEmpty) {
       return Padding(
         padding: const EdgeInsets.only(bottom: 14.0),
@@ -326,14 +350,18 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
             ),
             const SizedBox(width: 10.0),
             const SizedBox(width: 20.0, child: Text(':')),
+            const SizedBox(width: 10.0),
             Expanded(
               flex: 2,
-              child: HtmlWidget(
-                value,
-                textStyle: Theme.of(context)
-                    .textTheme
-                    .bodySmall
-                    ?.copyWith(fontSize: 13.0),
+              child: GestureDetector(
+                onTap: onTap,
+                child: HtmlWidget(
+                  value,
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(fontSize: 13.0),
+                ),
               ),
             ),
           ],

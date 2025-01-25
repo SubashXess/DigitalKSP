@@ -37,7 +37,7 @@ class LatestBlogList extends StatelessWidget {
             itemBuilder: (context, index) {
               return Container(
                 height: size.height,
-                width: items.length == 2 ? size.width / 2.0 - 22.0 : null,
+                width: 140.0,
                 margin: EdgeInsets.only(
                     right: index == items.length - 1 ? 0.0 : 10.0),
                 child: LatestBlogItem(item: items[index]),

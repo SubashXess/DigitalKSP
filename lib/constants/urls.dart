@@ -53,4 +53,7 @@ class ApiRequest {
 
   // Search
   String get apiSearch => '$_url/search/search.php';
+
+  // Ads
+  String get apiGetAds => '$_url/ads/ads.php';
 }

@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:digitalksp/components/author_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import '../../providers/ads_providers.dart';
 import '../../providers/blog_providers.dart';
 import '../../utilities/utilities.dart';
+import 'package:share_plus/share_plus.dart';
 import '../homepage/components/latest_blog.dart';
 import 'content_section.dart';
 
@@ -26,6 +30,7 @@ class _BlogPostPageState extends State<BlogPostPage> {
     context
         .read<BlogProviders>()
         .getBlogByType(type: 'Latest', limit: 10, page: 1);
+    context.read<AdsProviders>().getAds(id: int.tryParse(widget.blogId));
   }
 
   @override
@@ -38,10 +43,32 @@ class _BlogPostPageState extends State<BlogPostPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: IconButton(
-                onPressed: () => Utilities.shareIt(context,
-                    url: 'https://digitalksp.com/blogs?id=${widget.blogId}',
-                    subject: provider.blogPostModel!.blog.coverTitle,
-                    text: provider.blogPostModel?.blog.title),
+                onPressed: () async {
+                  // Get the image URL
+                  final imageUrl = provider.blogPostModel!.blog.coverPhoto;
+
+                  // Download the image and compress it
+                  final imageFile =
+                      await Utilities.downloadAndCompressImage(imageUrl);
+
+                  // Check if the image file exists
+                  if (await imageFile.exists()) {
+                    // Share the image along with text (title, description, URL)
+                    await Share.shareXFiles(
+                      [XFile(imageFile.path)], // List of files to share
+
+                      text:
+                          '${provider.blogPostModel!.blog.title}\n\nRead more at: https://digitalksp.com/blogs?id=${widget.blogId}', // Text content to share
+                    );
+                    log('Shared successfully: ${provider.blogPostModel!.blog.coverTitle}');
+                  } else {
+                    log('Error: Image file not accessible');
+                  }
+                },
+                // onPressed: () => Utilities.shareIt(context,
+                //     url: 'https://digitalksp.com/blogs?id=${widget.blogId}',
+                //     subject: provider.blogPostModel!.blog.coverTitle,
+                //     text: provider.blogPostModel?.blog.title),
                 icon: SvgPicture.asset(
                   'assets/icons/share-outlined.svg',
                   width: 20.0,

@@ -17,7 +17,7 @@ class _OrgProfileListPageState extends State<OrgProfileListPage> {
   @override
   void initState() {
     super.initState();
-    context.read<WishWallProviders>().getOrgProfiles();
+    context.read<WishWallProviders>().getOrgProfiles(limit: '100');
   }
 
   @override

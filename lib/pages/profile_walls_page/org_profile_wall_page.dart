@@ -178,14 +178,33 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                                         ?.copyWith(fontWeight: FontWeight.w700),
                                   ),
                                   const SizedBox(height: 10.0),
-                                  _buildInfoItem(context,
-                                      label: 'Phone Number',
-                                      value: provider
-                                          .orgDetailProfile.first.orgMobile),
-                                  _buildInfoItem(context,
-                                      label: 'Email Address',
-                                      value: provider
-                                          .orgDetailProfile.first.orgEmail),
+                                  _buildInfoItem(
+                                    context,
+                                    label: 'Phone Number',
+                                    value: provider
+                                        .orgDetailProfile.first.orgMobile,
+                                    onTap: () async {
+                                      RegExp phoneRegExp =
+                                          RegExp(r'^\+?\d{10,14}$');
+                                      if (phoneRegExp.hasMatch(provider
+                                          .orgDetailProfile.first.orgMobile)) {
+                                        await Utilities.urlLauncher(
+                                            url:
+                                                'tel:${provider.orgDetailProfile.first.orgMobile}');
+                                      }
+                                    },
+                                  ),
+                                  _buildInfoItem(
+                                    context,
+                                    label: 'Email Address',
+                                    value: provider
+                                        .orgDetailProfile.first.orgEmail,
+                                    onTap: () async {
+                                      await Utilities.urlLauncher(
+                                          url:
+                                              'mailto:${provider.orgDetailProfile.first.orgEmail}');
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -328,7 +347,7 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
   }
 
   Widget _buildInfoItem(BuildContext context,
-      {required String label, required String value}) {
+      {required String label, required String value, Function()? onTap}) {
     if (value.isNotEmpty) {
       return Padding(
         padding: const EdgeInsets.only(bottom: 14.0),
@@ -343,14 +362,19 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                       ?.copyWith(color: Colors.black45, fontSize: 13.0)),
             ),
             const SizedBox(width: 10.0),
+            const SizedBox(width: 20.0, child: Text(':')),
+            const SizedBox(width: 10.0),
             Expanded(
               flex: 2,
-              child: Text(value,
-                  textAlign: TextAlign.end,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(fontWeight: FontWeight.w500, fontSize: 13.0)),
+              child: GestureDetector(
+                onTap: onTap,
+                child: Text(value,
+                    textAlign: TextAlign.end,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall
+                        ?.copyWith(fontSize: 13.0)),
+              ),
             ),
           ],
         ),

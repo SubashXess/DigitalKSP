@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:digitalksp/utilities/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../constants/styles.dart';
 import '../../models/blog_post_model.dart';
 
 class ContentSection extends StatelessWidget {
@@ -74,16 +73,10 @@ class ContentSection extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 24.0),
             child: HtmlWidget(
               content.content,
-              textStyle: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: Colors.black.withOpacity(0.65)),
+              textStyle: Theme.of(context).textTheme.bodyMedium,
               onTapUrl: (url) async {
-                if (await canLaunchUrl(Uri.parse(url))) {
-                  return await launchUrl(Uri.parse(url));
-                } else {
-                  throw 'Could not launch $url';
-                }
+                await Utilities.urlLauncher(url: url);
+                return true;
               },
             ),
           ),
@@ -176,21 +169,20 @@ class DynamicImageWidget extends StatelessWidget {
                           height: dynamicHeight,
                           margin: const EdgeInsets.only(bottom: 20.0),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.borderRadius),
-                            color: Colors.grey.shade200,
+                            // borderRadius: BorderRadius.circular(
+                            //     AppDimensions.borderRadius),
+                            // color: Colors.grey.shade200,
                             image: DecorationImage(
                               image:
                                   CachedNetworkImageProvider(imagePaths[index]),
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                         ),
                       );
                     }
 
-                    return const SizedBox
-                        .shrink(); // Fallback if no size is available
+                    return const SizedBox.shrink();
                   },
                 )
               : const SizedBox.shrink();

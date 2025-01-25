@@ -19,7 +19,7 @@ class _IndProfileListPageState extends State<IndProfileListPage> {
   @override
   void initState() {
     super.initState();
-    context.read<WishWallProviders>().getIndProfiles();
+    context.read<WishWallProviders>().getIndProfiles(limit: '100');
   }
 
   @override
