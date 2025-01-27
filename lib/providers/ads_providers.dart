@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:digitalksp/models/ads/ads_model.dart';
-import 'package:flutter/foundation.dart';
+import 'package:digitalksp/utilities/utilities.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../constants/urls.dart';
 
@@ -26,6 +27,40 @@ class AdsProviders extends ChangeNotifier {
       }
     } catch (err) {
       throw Exception('Unexpected error occured $err');
+    }
+  }
+
+  Future<void> submitAdClick(context,
+      {required String link, required AdClickModel model}) async {
+    final Uri url = Uri.parse(ApiRequest.instance.apiAdLead);
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          ApiRequest.CONTENT_TYPE: ApiRequest.CONTENT_TYPE_JSON,
+        },
+        body: json.encode(model.toJson()),
+      );
+
+      if (response.statusCode == 200) {
+        Utilities.showSnackBar(
+          context: context,
+          message: 'Submit successfully',
+        );
+        Navigator.of(context).pop();
+        await Utilities.urlLauncher(url: link);
+      } else {
+        Utilities.showSnackBar(
+          context: context,
+          message: 'Failed to submit. Please try again later.',
+        );
+      }
+    } catch (err) {
+      Utilities.showSnackBar(
+        context: context,
+        message: 'Unexpected error occurred. Please try again.',
+      );
     }
   }
 }

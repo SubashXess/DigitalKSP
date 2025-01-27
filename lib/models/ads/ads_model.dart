@@ -56,3 +56,26 @@ class AdsModel {
     return categories.map((data) => AdsModel.fromJson(data)).toList();
   }
 }
+
+class AdClickModel {
+  final int blogId;
+  final String blogType;
+  final String name;
+  final String email;
+  final String contact;
+
+  const AdClickModel(
+      {required this.blogId,
+      required this.blogType,
+      required this.name,
+      required this.email,
+      required this.contact});
+
+  Map<String, dynamic> toJson() => {
+        "blog_id": blogId,
+        "blog_type": blogType,
+        "name": name,
+        "email": email,
+        "contact": contact,
+      };
+}

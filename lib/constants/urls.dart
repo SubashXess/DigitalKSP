@@ -56,4 +56,5 @@ class ApiRequest {
 
   // Ads
   String get apiGetAds => '$_url/ads/ads.php';
+  String get apiAdLead => '$_url/ads/on_ad_click.php';
 }

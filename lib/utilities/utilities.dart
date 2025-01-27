@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:digitalksp/constants/app_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -139,6 +138,31 @@ class Utilities {
     } catch (e) {
       return null;
     }
+  }
+
+  static void showSnackBar({
+    required BuildContext context,
+    required String message,
+    Color backgroundColor = Colors.black,
+    Duration duration = const Duration(seconds: 3),
+    SnackBarAction? action,
+  }) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(
+            message,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: Colors.white),
+          ),
+          backgroundColor: backgroundColor,
+          duration: duration,
+          action: action,
+        ),
+      );
   }
 
   static String formatFileSize(int bytes) {

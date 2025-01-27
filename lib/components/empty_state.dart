@@ -47,7 +47,10 @@ Future showEmptyState(
               Text(
                 header,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w600, fontSize: 18.0),
               ),
               const SizedBox(height: 10.0),
               Text(

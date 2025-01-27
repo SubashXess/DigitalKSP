@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
@@ -19,11 +17,9 @@ class InternetProvider extends ChangeNotifier {
 
     if (result.contains(ConnectivityResult.none)) {
       _hasInternet = false;
-      log('No Internet connection: 5566789');
-
       showEmptyState(
         context,
-        icon: 'assets/icons/home.svg',
+        icon: 'assets/icons/no-wifi.svg',
         header: 'Oops! No Internet Connection',
         subtitle: 'No internet connection found. Please check your connection',
         buttonText: 'Try again',

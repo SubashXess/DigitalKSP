@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:digitalksp/components/author_card.dart';
+import 'package:digitalksp/models/ads/ads_model.dart';
 import 'package:digitalksp/widgets/buttons_widget.dart';
 import 'package:digitalksp/widgets/form_field_widget.dart';
 import 'package:flutter/material.dart';
@@ -114,7 +115,8 @@ class _BlogPostPageState extends State<BlogPostPage> {
                     adsProvider.ads.isEmpty
                         ? const SizedBox()
                         : GestureDetector(
-                            onTap: () => _showAdDialog(context),
+                            onTap: () => _showAdDialog(
+                                url: adsProvider.ads.first.textLink),
                             child: Container(
                               width: size.width,
                               margin:
@@ -178,9 +180,13 @@ class _BlogPostPageState extends State<BlogPostPage> {
                     const SizedBox(height: 20.0),
                     adsProvider.ads.isEmpty
                         ? const SizedBox()
-                        : CachedNetworkImage(
-                            imageUrl: adsProvider.ads.first.image2,
-                            fit: BoxFit.fitWidth,
+                        : GestureDetector(
+                            onTap: () =>
+                                _showAdDialog(url: adsProvider.ads.first.link2),
+                            child: CachedNetworkImage(
+                              imageUrl: adsProvider.ads.first.image2,
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
                     SizedBox(height: adsProvider.ads.isEmpty ? 0.0 : 20.0),
                     LatestBlogList(items: provider.latestBlogModel),
@@ -192,7 +198,7 @@ class _BlogPostPageState extends State<BlogPostPage> {
     });
   }
 
-  void _showAdDialog(BuildContext context) {
+  void _showAdDialog({required String url}) {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController emailController = TextEditingController();
     final TextEditingController phoneController = TextEditingController();
@@ -216,25 +222,63 @@ class _BlogPostPageState extends State<BlogPostPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 RoundedFormField(
-                    controller: nameController,
-                    node: nameNode,
-                    hintText: 'Your full name',
-                    hintColor: Colors.black54,
-                    maxLength: 60),
+                  controller: nameController,
+                  node: nameNode,
+                  hintText: 'Your full name',
+                  hintColor: Colors.black54,
+                  maxLength: 60,
+                  autofillHints: const [AutofillHints.name],
+                  keyboardType: TextInputType.name,
+                  textInputAction: TextInputAction.next,
+                  capitalization: TextCapitalization.words,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Name is required';
+                    } else if (value.length < 3) {
+                      return 'Enter valid name please';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 10.0),
                 RoundedFormField(
-                    controller: emailController,
-                    node: emailNode,
-                    hintText: 'Email address',
-                    hintColor: Colors.black54,
-                    maxLength: 60),
+                  controller: emailController,
+                  node: emailNode,
+                  hintText: 'Email address',
+                  hintColor: Colors.black54,
+                  maxLength: 60,
+                  autofillHints: const [AutofillHints.email],
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Email is required';
+                    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                        .hasMatch(value)) {
+                      return 'Enter a valid email address';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 10.0),
                 RoundedFormField(
-                    controller: phoneController,
-                    node: phoneNode,
-                    hintText: 'Phone number',
-                    hintColor: Colors.black54,
-                    maxLength: 60),
+                  controller: phoneController,
+                  node: phoneNode,
+                  hintText: 'Phone number',
+                  hintColor: Colors.black54,
+                  maxLength: 15,
+                  autofillHints: const [AutofillHints.telephoneNumberLocal],
+                  keyboardType: TextInputType.phone,
+                  textInputAction: TextInputAction.done,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Phone number is required';
+                    } else if (!RegExp(r'^[0-9]{10,15}$').hasMatch(value)) {
+                      return 'Enter a valid phone number';
+                    }
+                    return null;
+                  },
+                ),
               ],
             ),
           ),
@@ -242,8 +286,30 @@ class _BlogPostPageState extends State<BlogPostPage> {
           actions: [
             RoundedButton(
               label: 'Submit',
-              onTap: () {
-                Navigator.of(context).pop();
+              onTap: () async {
+                FocusScope.of(context).unfocus();
+                final ads = context.read<AdsProviders>();
+
+                if (nameController.text.trim().isEmpty ||
+                    emailController.text.trim().isEmpty ||
+                    phoneController.text.trim().isEmpty) {
+                  Utilities.showSnackBar(
+                    context: context,
+                    message: 'All fields are required',
+                  );
+                  return;
+                }
+                await ads.submitAdClick(
+                  context,
+                  link: url,
+                  model: AdClickModel(
+                    blogId: int.parse(widget.blogId),
+                    blogType: ads.ads.first.addType,
+                    name: nameController.text.trim(),
+                    email: emailController.text.trim(),
+                    contact: phoneController.text.trim(),
+                  ),
+                );
               },
             ),
             const SizedBox(height: 20.0),
