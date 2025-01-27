@@ -28,6 +28,7 @@ class RoundedFormField extends StatelessWidget {
     this.inputFormatters,
     this.borderRadius,
     this.fillColor,
+    this.hintColor,
     this.borderSide = BorderSide.none,
   });
 
@@ -54,6 +55,7 @@ class RoundedFormField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final BorderRadius? borderRadius;
   final Color? fillColor;
+  final Color? hintColor;
   final BorderSide borderSide;
 
   @override
@@ -105,7 +107,7 @@ class RoundedFormField extends StatelessWidget {
             hintStyle: Theme.of(context)
                 .textTheme
                 .labelSmall
-                ?.copyWith(color: Colors.grey.shade500),
+                ?.copyWith(color: hintColor ?? Colors.grey.shade500),
           ),
           validator: validator,
           onTap: onTap,

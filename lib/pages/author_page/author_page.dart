@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:read_more_text/read_more_text.dart';
-import '../../constants/constants.dart';
 import '../../providers/author_providers.dart';
 import '../../utilities/utilities.dart';
 
@@ -40,15 +39,20 @@ class _AuthorPageState extends State<AuthorPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
-                  onPressed: () {
+                  onPressed: () async {
                     final provider = context.read<AuthorProviders>();
-                    Utilities.shareIt(
-                      context,
-                      url:
-                          'https://digitalksp.com/authors?id=${widget.authorId}',
-                      subject: provider.authorById.first.name,
-                      text: 'Check out my profile on $APP_NAME',
+                    await Utilities.shareContent(
+                      imageUrl: provider.authorById.first.photoUrl,
+                      text:
+                          '*${provider.authorById.first.name}*\n\nTake a moment to check out my profile! You\'ll find all my posts and ideas in one place.\n\nDiscover more here: https://digitalksp.com/authors?id=${widget.authorId}',
                     );
+                    // Utilities.shareIt(
+                    //   context,
+                    //   url:
+                    //       'https://digitalksp.com/authors?id=${widget.authorId}',
+                    //   subject: provider.authorById.first.name,
+                    //   text: 'Check out my profile on $APP_NAME',
+                    // );
                   },
                   icon: SvgPicture.asset(
                     'assets/icons/share-outlined.svg',

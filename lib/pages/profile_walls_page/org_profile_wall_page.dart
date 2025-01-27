@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../../constants/constants.dart';
 import '../../constants/styles.dart';
 import '../../utilities/utilities.dart';
 
@@ -43,15 +42,22 @@ class _OrgProfileWallPageState extends State<OrgProfileWallPage> {
                 ),
                 const SizedBox(width: 4.0),
                 IconButton(
-                  onPressed: () {
+                  onPressed: () async {
                     final provider = context.read<WishWallProviders>();
-                    Utilities.shareIt(
-                      context,
-                      url:
-                          'https://digitalksp.com/org-profile?id=${widget.profileId}',
-                      subject: provider.orgDetailProfile.first.orgName,
-                      text: 'Check out our organization profile on $APP_NAME',
+
+                    await Utilities.shareContent(
+                      imageUrl: provider.orgDetailProfile.first.profilePhoto,
+                      text:
+                          'Learn more about ${provider.orgDetailProfile.first.orgName}\n\nExplore more: https://digitalksp.com/org-profile?id=${widget.profileId}',
                     );
+
+                    // Utilities.shareIt(
+                    //   context,
+                    //   url:
+                    //       'https://digitalksp.com/org-profile?id=${widget.profileId}',
+                    //   subject: provider.orgDetailProfile.first.orgName,
+                    //   text: 'Check out our organization profile on $APP_NAME',
+                    // );
                   },
                   icon: SvgPicture.asset(
                     'assets/icons/share-outlined.svg',

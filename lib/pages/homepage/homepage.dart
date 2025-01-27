@@ -30,12 +30,11 @@ class _HomePageState extends State<HomePage> {
   late final ScrollController _scrollController;
 
   bool _hasLoading = true;
-  bool _isFetchingMore = false; // To handle pagination
+  bool _isFetchingMore = false;
   late final List<DrawerModel> _drawerItem;
 
-  // Pagination variables
   int currentPage = 1;
-  final int perPage = 12; // Number of blogs per page
+  final int perPage = 12;
 
   @override
   void initState() {
@@ -52,6 +51,7 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
+  // Scroll listener for infinite scrolling
   void _onScroll() {
     if (_scrollController.position.pixels ==
             _scrollController.position.maxScrollExtent &&
@@ -66,39 +66,56 @@ class _HomePageState extends State<HomePage> {
       _hasLoading = true;
     });
 
-    await Future.wait([
-      context.read<BlogProviders>().getBlogs(type: 'Front Banner', limit: 12),
-      context.read<BlogProviders>().getBlogs(type: 'Latest', limit: 12),
-      context.read<BlogProviders>().getBlogs(type: 'Featured', limit: 12),
-      context.read<BlogProviders>().getBlogs(type: 'Most Popular', limit: 12),
-      context.read<BlogProviders>().getBlogs(type: 'Normal', limit: 12),
-      context.read<BlogProviders>().getBlogs(type: 'Recent', limit: 4),
-      context.read<WishWallProviders>().getIndProfiles(),
-      context.read<WishWallProviders>().getOrgProfiles(),
-      context.read<CategoriesProvider>().getCategory(),
-      context.read<JobsProviders>().getJobs(),
-    ]);
-
-    setState(() {
-      _hasLoading = false;
-    });
+    try {
+      await Future.wait([
+        context.read<BlogProviders>().getBlogs(type: 'Front Banner', limit: 12),
+        context.read<BlogProviders>().getBlogs(type: 'Latest', limit: 12),
+        context.read<BlogProviders>().getBlogs(type: 'Featured', limit: 12),
+        context.read<BlogProviders>().getBlogs(type: 'Most Popular', limit: 12),
+        context.read<BlogProviders>().getBlogs(type: 'Normal', limit: 12),
+        context.read<BlogProviders>().getBlogs(type: 'Recent', limit: 4),
+        context.read<WishWallProviders>().getIndProfiles(),
+        context.read<WishWallProviders>().getOrgProfiles(),
+        context.read<CategoriesProvider>().getCategory(),
+        context.read<JobsProviders>().getJobs(),
+      ]);
+    } catch (e) {
+      // Handle error (e.g., show a snack bar or a dialog)
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Failed to load data: $e')));
+    } finally {
+      if (mounted) {
+        setState(() {
+          _hasLoading = false;
+        });
+      }
+    }
   }
 
   Future<void> _fetchMoreBlogs() async {
-    if (_isFetchingMore) return;
+    if (_isFetchingMore)
+      return; // Prevent fetching more while data is being fetched
 
     setState(() {
       _isFetchingMore = true;
     });
 
-    currentPage++;
-    await context
-        .read<BlogProviders>()
-        .getBlogs(type: 'Normal', limit: perPage, page: currentPage);
-
-    setState(() {
-      _isFetchingMore = false;
-    });
+    try {
+      currentPage++;
+      await context
+          .read<BlogProviders>()
+          .getBlogs(type: 'Normal', limit: perPage, page: currentPage);
+    } catch (e) {
+      // Handle error for fetching more blogs
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error loading more blogs: $e')));
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isFetchingMore = false;
+        });
+      }
+    }
   }
 
   @override

@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:digitalksp/constants/constants.dart';
 import 'package:digitalksp/constants/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,15 +42,21 @@ class _IndProfileWallPageState extends State<IndProfileWallPage> {
                 ),
                 const SizedBox(width: 4.0),
                 IconButton(
-                  onPressed: () {
+                  onPressed: () async {
                     final provider = context.read<WishWallProviders>();
-                    Utilities.shareIt(
-                      context,
-                      url:
-                          'https://digitalksp.com/ind-profile?id=${widget.profileId}',
-                      subject: provider.indDetailProfile.first.fullName,
-                      text: 'Check out my profile on $APP_NAME',
+
+                    await Utilities.shareContent(
+                      imageUrl: provider.indDetailProfile.first.profilePhoto,
+                      text:
+                          '${provider.indDetailProfile.first.fullName}\'s professional profile! Learn about their expertise and experiences.\n\nExplore more: https://digitalksp.com/ind-profile?id=${widget.profileId}',
                     );
+                    // Utilities.shareIt(
+                    //   context,
+                    //   url:
+                    //       'https://digitalksp.com/ind-profile?id=${widget.profileId}',
+                    //   subject: provider.indDetailProfile.first.fullName,
+                    //   text: 'Check out my profile on $APP_NAME',
+                    // );
                   },
                   icon: SvgPicture.asset(
                     'assets/icons/share-outlined.svg',

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 50,
+            "activePatchIndex": 51,
             "patches": [
                 {
                     "date": 1731390618496,
@@ -208,6 +208,10 @@
                 {
                     "date": 1737800546718,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,22 +64,22 @@\n         <intent>\r\n             <action android:name=\"android.intent.action.PROCESS_TEXT\"/>\r\n             <data android:mimeType=\"text/plain\"/>\r\n         </intent>\r\n-         <intent>\r\n-    <action android:name=\"android.intent.action.VIEW\" />\r\n-    <data android:scheme=\"https\" />\r\n-  </intent>\r\n-  <intent>\r\n-    <action android:name=\"android.intent.action.VIEW\" />\r\n-    <data android:scheme=\"mailto\" />\r\n-  </intent>\r\n-  <intent>\r\n-    <action android:name=\"android.intent.action.VIEW\" />\r\n-    <data android:scheme=\"tel\" />\r\n-  </intent>\r\n-  <intent>\r\n-    <action android:name=\"android.intent.action.VIEW\" />\r\n-    <data android:scheme=\"sms\" />\r\n-  </intent>\r\n+        <intent>\r\n+            <action android:name=\"android.intent.action.VIEW\" />\r\n+            <data android:scheme=\"https\" />\r\n+        </intent>\r\n+        <intent>\r\n+            <action android:name=\"android.intent.action.VIEW\" />\r\n+            <data android:scheme=\"mailto\" />\r\n+        </intent>\r\n+        <intent>\r\n+            <action android:name=\"android.intent.action.VIEW\" />\r\n+            <data android:scheme=\"tel\" />\r\n+        </intent>\r\n+        <intent>\r\n+            <action android:name=\"android.intent.action.VIEW\" />\r\n+            <data android:scheme=\"sms\" />\r\n+        </intent>\r\n     </queries>\r\n </manifest>\r\n"
+                },
+                {
+                    "date": 1737958497964,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,8 @@\n             <intent-filter android:autoVerify=\"true\">\r\n                 <action android:name=\"android.intent.action.VIEW\" />\r\n                 <category android:name=\"android.intent.category.DEFAULT\" />\r\n                 <category android:name=\"android.intent.category.BROWSABLE\" />\r\n-                <data android:scheme=\"http\" android:host=\"digitalksp.com\" />\r\n                 <data android:scheme=\"https\" android:host=\"digitalksp.com\" android:pathPrefix=\"/blogs\"/>\r\n                 <data android:scheme=\"https\" android:host=\"digitalksp.com\" android:pathPrefix=\"/authors\"/>\r\n                 <data android:scheme=\"https\" android:host=\"digitalksp.com\" android:pathPrefix=\"/ind-profile\"/>\r\n                 <data android:scheme=\"https\" android:host=\"digitalksp.com\" android:pathPrefix=\"/org-profile\"/>\r\n"
                 }
             ],
             "date": 1731390618496,

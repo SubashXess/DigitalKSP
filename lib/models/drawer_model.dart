@@ -15,6 +15,7 @@ class DrawerModel {
         title: 'Organization Profile',
         icon: 'assets/icons/office-outlined.svg'),
     const DrawerModel(title: 'About us', icon: 'assets/icons/about.svg'),
+    const DrawerModel(title: 'Invite a friend', icon: 'assets/icons/users.svg'),
     const DrawerModel(title: 'Rate us', icon: 'assets/icons/star.svg'),
   ];
 }

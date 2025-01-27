@@ -1,6 +1,7 @@
 import 'package:app_links/app_links.dart';
 import 'package:digitalksp/components/empty_state.dart';
 import 'package:digitalksp/pages/author_page/author_page.dart';
+import 'package:digitalksp/pages/job_page/job_post_page.dart';
 import 'package:digitalksp/pages/profile_walls_page/ind_profile_walls_page.dart';
 import 'package:digitalksp/pages/profile_walls_page/org_profile_wall_page.dart';
 import 'package:flutter/material.dart';
@@ -75,6 +76,18 @@ class DeepLinkHandler {
         );
       } else {
         _navigateToErrorPage(context, "Missing profile ID");
+      }
+    } else if (path.startsWith('/jobs')) {
+      final jobId = uri.queryParameters['id'];
+      if (jobId != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => JobPostPage(jobId: jobId),
+          ),
+        );
+      } else {
+        _navigateToErrorPage(context, "Missing Job ID");
       }
     } else {
       _navigateToErrorPage(context, "Invalid path");

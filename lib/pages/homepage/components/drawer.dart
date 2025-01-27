@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:digitalksp/constants/app_config.dart';
 import 'package:digitalksp/constants/styles.dart';
 import 'package:digitalksp/models/drawer_model.dart';
@@ -5,10 +7,12 @@ import 'package:digitalksp/pages/about_us_page/about_us_page.dart';
 import 'package:digitalksp/pages/author_page/author_list_page.dart';
 import 'package:digitalksp/pages/job_page/job_list_page.dart';
 import 'package:digitalksp/pages/profile_walls_page/org_profile_list_page.dart';
+import 'package:digitalksp/utilities/utilities.dart';
 import 'package:digitalksp/widgets/buttons_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../constants/constants.dart';
 import '../../profile_walls_page/ind_profile_list_page.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -94,6 +98,12 @@ class DrawerWidget extends StatelessWidget {
                   icon: items[6].icon,
                   onTap: () => _onItemPressed(context, 6),
                 ),
+                DrawerItem(
+                  size: size,
+                  title: items[7].title,
+                  icon: items[7].icon,
+                  onTap: () => _onItemPressed(context, 7),
+                ),
               ],
             ),
             const Spacer(),
@@ -150,6 +160,13 @@ class DrawerWidget extends StatelessWidget {
             context, MaterialPageRoute(builder: (_) => const AboutUsPage()));
         break;
       case 6:
+        Utilities.shareIt(context,
+            text:
+                "Hi! I'm using the Digital KSP app, and it's awesome! Give it a try: $PLAY_STORE_LINK",
+            url: '',
+            subject: '');
+        break;
+      case 7:
         // Open dialogs
         showDialog(
           context: context,
@@ -186,7 +203,9 @@ class DrawerWidget extends StatelessWidget {
                             right: 0.0,
                             bottom: -20.0,
                             child: SvgPicture.asset(
-                              'assets/icons/android-rating.svg',
+                              Platform.isIOS
+                                  ? 'assets/icons/ios-rating.svg'
+                                  : 'assets/icons/android-rating.svg',
                               width: 180.0,
                               height: 180.0,
                               fit: BoxFit.scaleDown,

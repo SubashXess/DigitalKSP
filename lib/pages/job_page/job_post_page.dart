@@ -36,10 +36,19 @@ class _JobPostPageState extends State<JobPostPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: IconButton(
-                      onPressed: () => Utilities.shareIt(context,
-                          url: 'https://digitalksp.com/jobs?id=${widget.jobId}',
-                          subject: provider.jobPostModel!.jobTitle,
-                          text: provider.jobPostModel?.jobTitle),
+                      onPressed: () async {
+                        await Utilities.shareContent(
+                          imageUrl: provider.jobPostModel!.companyLogo.isEmpty
+                              ? null
+                              : provider.jobPostModel!.companyLogo,
+                          text:
+                              '${provider.jobPostModel!.jobTitle} at *${provider.jobPostModel!.companyName}*\n\nApply now and learn more at: https://digitalksp.com/jobs?id=${widget.jobId}',
+                        );
+                      },
+                      // onPressed: () => Utilities.shareIt(context,
+                      //     url: 'https://digitalksp.com/jobs?id=${widget.jobId}',
+                      //     subject: provider.jobPostModel!.jobTitle,
+                      //     text: provider.jobPostModel?.jobTitle),
                       icon: SvgPicture.asset(
                         'assets/icons/share-outlined.svg',
                         width: 20.0,

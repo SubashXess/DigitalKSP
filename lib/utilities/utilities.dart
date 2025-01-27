@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:digitalksp/constants/app_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path/path.dart' as path;
-import 'package:image/image.dart' as img;
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:file_picker/file_picker.dart';
@@ -10,31 +11,67 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Utilities {
-  static Future<File> downloadAndCompressImage(String imageUrl) async {
+  // static Future<File> downloadAndCompressImage(String imageUrl) async {
+  //   try {
+  //     final response = await http.get(Uri.parse(imageUrl));
+
+  //     if (response.statusCode == 200) {
+  //       img.Image? image =
+  //           img.decodeImage(Uint8List.fromList(response.bodyBytes));
+  //       if (image == null) {
+  //         throw Exception("Failed to decode image");
+  //       }
+
+  //       final compressedImage = img.encodeJpg(image, quality: 80);
+
+  //       final tempDir = await getTemporaryDirectory();
+  //       final tempPath = tempDir.path;
+  //       final filePath = '$tempPath/temp_compressed_image.jpg';
+  //       final compressedFile = File(filePath)
+  //         ..writeAsBytesSync(compressedImage);
+
+  //       return compressedFile;
+  //     } else {
+  //       throw Exception('Failed to load image');
+  //     }
+  //   } catch (e) {
+  //     throw 'Error downloading and compressing image: $e';
+  //   }
+  // }
+
+  static Future<File> downloadImage(
+      {required String url, String filename = 'temp_image.jpg'}) async {
+    final response = await http.get(Uri.parse(url));
+    final temp = await getTemporaryDirectory();
+    final file = File('${temp.path}/$filename');
+    await file.writeAsBytes(response.bodyBytes);
+    return file;
+  }
+
+  static Future<void> shareContent(
+      {String? imageUrl, String? text, String? subject}) async {
     try {
-      final response = await http.get(Uri.parse(imageUrl));
+      if (imageUrl != null) {
+        final imageFile = await downloadImage(url: imageUrl);
 
-      if (response.statusCode == 200) {
-        img.Image? image =
-            img.decodeImage(Uint8List.fromList(response.bodyBytes));
-        if (image == null) {
-          throw Exception("Failed to decode image");
-        }
-
-        final compressedImage = img.encodeJpg(image, quality: 80);
-
-        final tempDir = await getTemporaryDirectory();
-        final tempPath = tempDir.path;
-        final filePath = '$tempPath/temp_compressed_image.jpg';
-        final compressedFile = File(filePath)
-          ..writeAsBytesSync(compressedImage);
-
-        return compressedFile;
+        await Share.shareXFiles(
+          [XFile(imageFile.path)],
+          text: text,
+          subject: subject,
+        );
       } else {
-        throw Exception('Failed to load image');
+        ByteData imageByte = await rootBundle.load(AppConfig.instance.appIcon);
+        final temp = await getTemporaryDirectory();
+        final path = '${temp.path}/local-temp-image.jpg';
+        File(path).writeAsBytesSync(imageByte.buffer.asUint8List());
+        await Share.shareXFiles(
+          [XFile(path)],
+          text: text,
+          subject: subject,
+        );
       }
     } catch (e) {
-      throw 'Error downloading and compressing image: $e';
+      throw Exception('Failed to share content $e');
     }
   }
 

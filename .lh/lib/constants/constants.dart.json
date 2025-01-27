@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1730787298480,
@@ -12,6 +12,14 @@
                 {
                     "date": 1730787435038,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,6 @@\n+// ignore_for_file: constant_identifier_names\r\n+\r\n const String APP_NAME = 'Digital KSP';\r\n+const String COMPANY_NAME = 'Digital KSP';\r\n+const String PRIVACY_URL = 'https://digitalksp.com/privacy/';\r\n+const String TERMS_AND_CONDITIONS_URL = 'https://digitalksp.com/terms-and-conditions/';\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1737971717479,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,4 +4,5 @@\n const String COMPANY_NAME = 'Digital KSP';\r\n const String PRIVACY_URL = 'https://digitalksp.com/privacy/';\r\n const String TERMS_AND_CONDITIONS_URL =\r\n     'https://digitalksp.com/terms-and-conditions/';\r\n+const String CONTACT_US_URL = 'https://play.google.com/store/apps/details?id=com.ddnenterprises.digitalksp';\r\n"
+                },
+                {
+                    "date": 1737971753126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,6 +4,6 @@\n const String COMPANY_NAME = 'Digital KSP';\r\n const String PRIVACY_URL = 'https://digitalksp.com/privacy/';\r\n const String TERMS_AND_CONDITIONS_URL =\r\n     'https://digitalksp.com/terms-and-conditions/';\r\n-const String CONTACT_US_URL =\r\n+const String PLAY_STORE_LINK =\r\n     'https://play.google.com/store/apps/details?id=com.ddnenterprises.digitalksp';\r\n"
                 }
             ],
             "date": 1730787298480,
